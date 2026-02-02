@@ -1,11 +1,12 @@
-import { Metadata } from 'next';
-import { client } from '@/sanity/lib/client';
-import { GALLERY_QUERY } from '@/sanity/lib/queries';
-import { urlFor } from '@/sanity/lib/image';
+import { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { GALLERY_QUERY } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
+import { FadeIn, StaggerContainer } from "@/components/Motion";
 
 export const metadata: Metadata = {
-  title: 'Gallery - CLRLC',
-  description: 'Moments from our community.',
+  title: "Gallery - CLRLC",
+  description: "Moments from our community.",
 };
 
 export const revalidate = 60;
@@ -20,35 +21,43 @@ export default async function GalleryPage() {
   }
 
   return (
-    <div className="container py-16 lg:py-24 space-y-12">
+    <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-12">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold font-heading text-primary">Gallery</h1>
-        <p className="text-muted-foreground">
-          Moments from our workshops, training programs and community engagements.
-        </p>
+        <FadeIn>
+          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+            Gallery
+          </h1>
+          <p className="text-muted-foreground">
+            Moments from our workshops, meetups, and conferences.
+          </p>
+        </FadeIn>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.map((img: any) => (
-          <div key={img._id} className="relative group overflow-hidden rounded-xl aspect-square bg-muted">
-             {img.image && (
-                <img 
-                   src={urlFor(img.image).width(600).height(600).fit('crop').url()} 
-                   alt={img.title || "Gallery Image"} 
-                   className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {images.map((item: any) => (
+          <FadeIn key={item._id}>
+            <div className="relative group overflow-hidden rounded-xl aspect-square bg-muted">
+              {item.image && (
+                <img
+                  src={urlFor(item.image).width(800).height(800).url()}
+                  alt={item.caption || "Gallery Image"}
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                 />
-             )}
-             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                <p className="text-white text-center font-medium">{img.title}</p>
-             </div>
-          </div>
+              )}
+              {item.caption && (
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <p className="text-white font-medium">{item.caption}</p>
+                </div>
+              )}
+            </div>
+          </FadeIn>
         ))}
-         {images.length === 0 && (
-           <div className="col-span-full text-center py-12 text-muted-foreground">
-              No images found. Please add gallery items via the CMS.
-           </div>
+        {images.length === 0 && (
+          <div className="col-span-full text-center py-12 text-muted-foreground">
+            No images found. Please add content via the CMS.
+          </div>
         )}
-      </div>
+      </StaggerContainer>
     </div>
   );
 }

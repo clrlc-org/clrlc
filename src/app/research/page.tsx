@@ -1,75 +1,94 @@
-import { Metadata } from 'next';
-import { client } from '@/sanity/lib/client';
-import { RESEARCH_QUERY } from '@/sanity/lib/queries';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ExternalLink } from 'lucide-react';
+import { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { RESEARCH_QUERY } from "@/sanity/lib/queries";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { FadeIn, StaggerContainer } from "@/components/Motion";
+import { ExternalLink, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Research - CLRLC',
-  description: 'Our research and publications.',
+  title: "Research - CLRLC",
+  description: "Our research and publications.",
 };
 
 export const revalidate = 60;
 
 export default async function ResearchPage() {
-  let publications = [];
+  let researches = []; // Renamed from publications to researches
   try {
-    publications = await client.fetch(RESEARCH_QUERY);
+    researches = await client.fetch(RESEARCH_QUERY);
   } catch (error) {
     console.error("Sanity fetch error:", error);
-    publications = [];
+    researches = [];
   }
 
   return (
-    <div className="container py-16 lg:py-24 space-y-12">
+    <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-12">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold font-heading text-primary">Research & Publications</h1>
-        <p className="text-muted-foreground">
-          Exploring the frontiers of low-resource language technology.
-        </p>
+        <FadeIn>
+          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+            Research & Publications
+          </h1>
+          <p className="text-muted-foreground">
+            Explore our latest findings, datasets, and technical reports.
+          </p>
+        </FadeIn>
       </div>
 
-      <div className="space-y-6 max-w-4xl mx-auto">
-        {publications.map((pub: any) => (
-          <Card key={pub._id} className="hover:border-primary/50 transition-colors">
-            <CardHeader>
-               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div className="space-y-1">
-                     <div className="flex items-center gap-2">
-                        <Badge variant="outline">{pub.category ? pub.category.toUpperCase() : 'RESEARCH'}</Badge>
-                        {pub.publishedAt && <span className="text-xs text-muted-foreground">{pub.publishedAt}</span>}
-                     </div>
-                     <CardTitle className="text-xl">
-                        {pub.link ? (
-                           <a href={pub.link} target="_blank" rel="noreferrer" className="hover:underline hover:text-primary flex items-center gap-2">
-                              {pub.title} <ExternalLink className="w-4 h-4 opacity-50" />
-                           </a>
-                        ) : (
-                           pub.title
-                        )}
-                     </CardTitle>
-                  </div>
-               </div>
-               {pub.authors && (
-                  <CardDescription>
-                     By: {pub.authors.join(', ')}
-                  </CardDescription>
-               )}
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                {pub.description}
-              </p>
-            </CardContent>
-          </Card>
+      <StaggerContainer className="space-y-6 max-w-4xl mx-auto">
+        {researches.map((item: any) => (
+          <FadeIn key={item._id}>
+            <Card className="hover:shadow-md transition-shadow">
+              <CardHeader>
+                <div className="flex justify-between items-start mb-2">
+                  <Badge variant="outline">
+                    {item.category ? item.category.toUpperCase() : "RESEARCH"}
+                  </Badge>
+                  {item.link && (
+                    <Button variant="ghost" size="sm" asChild>
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="gap-2"
+                      >
+                        Read Paper <FileText className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
+                </div>
+                <CardTitle className="text-xl md:text-2xl">
+                  {item.title}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {item.authors && item.authors.length > 0
+                    ? item.authors.join(", ")
+                    : "CLRLC Research Team"}
+                </CardDescription>
+              </CardHeader>
+              {item.description && (
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
+                </CardContent>
+              )}
+            </Card>
+          </FadeIn>
         ))}
-        {publications.length === 0 && (
-           <div className="text-center py-12 text-muted-foreground">
-              No publications found. Please add research via the CMS.
-           </div>
+        {researches.length === 0 && (
+          <div className="text-center py-12 text-muted-foreground">
+            No research publications found. Please add content via the CMS.
+          </div>
         )}
-      </div>
+      </StaggerContainer>
     </div>
   );
 }
