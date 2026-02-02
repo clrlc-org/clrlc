@@ -1,65 +1,104 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowRight, Globe, Users, BookOpen, Calendar, Mail } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32 bg-primary text-primary-foreground overflow-hidden">
+        <div className="absolute inset-0 bg-primary/95" /> {/* Soften the solid color if needed or use image bg */}
+        <div className="container relative z-10 flex flex-col items-center text-center space-y-8">
+          <h1 className="text-4xl lg:text-6xl font-extrabold tracking-tight font-heading">
+            Empowering Low-Resource Languages & Cultures in AI
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-2xl text-lg lg:text-xl text-primary-foreground/90">
+            A global, community-driven initiative committed to advancing representation, 
+            collaboration, and innovation for underrepresented languages.
           </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+             <Button size="lg" variant="secondary" asChild>
+                <Link href="/mission">Our Mission</Link>
+             </Button>
+             <Button size="lg" variant="outline" className="text-primary bg-background border-none hover:bg-background/90" asChild>
+                <Link href="/community">Join Community</Link>
+             </Button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Quick Links / Highlights */}
+      <section className="py-16 bg-background">
+        <div className="container space-y-12">
+           <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold font-heading text-primary">Explore CLRLC</h2>
+              <p className="text-muted-foreground">Discover our initiatives, research, and ways to get involved.</p>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="hover:shadow-lg transition-shadow">
+                 <CardHeader>
+                    <Globe className="w-10 h-10 text-primary mb-2" />
+                    <CardTitle>Research & Data</CardTitle>
+                 </CardHeader>
+                 <CardContent>
+                    <p className="text-muted-foreground mb-4">
+                       We curate high-quality datasets and build models for low-resource languages.
+                       NLP, Speech, and Machine Learning.
+                    </p>
+                    <Link href="/research" className="text-primary font-medium hover:underline inline-flex items-center">
+                       View Publications <ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
+                 </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                 <CardHeader>
+                    <Calendar className="w-10 h-10 text-primary mb-2" />
+                    <CardTitle>Events & Workshops</CardTitle>
+                 </CardHeader>
+                 <CardContent>
+                    <p className="text-muted-foreground mb-4">
+                       Join our workshops, webinars, and conferences. Connect with experts and learners.
+                    </p>
+                    <Link href="/events" className="text-primary font-medium hover:underline inline-flex items-center">
+                       Upcoming Events <ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
+                 </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                 <CardHeader>
+                    <Users className="w-10 h-10 text-primary mb-2" />
+                    <CardTitle>Community</CardTitle>
+                 </CardHeader>
+                 <CardContent>
+                    <p className="text-muted-foreground mb-4">
+                       A global network of researchers, linguists, and technologists. 
+                       Mentorship, training, and collaboration.
+                    </p>
+                    <Link href="/community" className="text-primary font-medium hover:underline inline-flex items-center">
+                       Join Us <ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
+                 </CardContent>
+              </Card>
+           </div>
         </div>
-      </main>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-20 bg-muted/50">
+         <div className="container text-center space-y-6">
+            <h2 className="text-3xl font-bold font-heading">Ready to Contribute?</h2>
+            <p className="max-w-xl mx-auto text-muted-foreground">
+               Whether you are a researcher, student, or community member, there is a place for you at CLRLC.
+            </p>
+            <Button size="lg" asChild>
+               <Link href="/contact">Contact Us <Mail className="w-4 h-4 ml-2" /></Link>
+            </Button>
+         </div>
+      </section>
     </div>
   );
 }
