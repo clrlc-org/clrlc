@@ -52,7 +52,7 @@ export default function ProgramsPage() {
           <h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 mt-2">
             Programs & Initiatives
           </h1>
-          <p className="max-w-2xl mx-auto text-xl text-muted-foreground leading-relaxed">
+          <p className="max-w-2xl mx-auto text-2xl mt-4 text-muted-foreground leading-relaxed">
             Overview of CLRLC programs and initiatives aimed at democratizing AI
             for under-resourced languages.
           </p>
@@ -90,7 +90,7 @@ export default function ProgramsPage() {
                     {program.title}
                   </h2>
                   <div className="h-1 w-20 bg-primary rounded-full" />
-                  <p className="text-lg text-slate-600 leading-relaxed text-balance">
+                  <p className="text-2xl text-slate-600 leading-relaxed text-balance">
                     {program.description}
                   </p>
                 </div>

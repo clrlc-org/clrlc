@@ -37,7 +37,7 @@ export default async function TeamPage() {
           <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
             Our Team
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-xl text-muted-foreground">
             Meet the researchers and leaders driving our mission.
           </p>
         </FadeIn>
@@ -60,14 +60,14 @@ export default async function TeamPage() {
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <CardTitle className="text-lg">{member.name}</CardTitle>
-                  <CardDescription className="text-primary font-medium">
+                  <CardTitle className="text-2xl">{member.name}</CardTitle>
+                  <CardDescription className="text-primary font-medium text-lg">
                     {member.role}
                   </CardDescription>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground line-clamp-4 leading-relaxed">
+                <p className="text-lg text-muted-foreground line-clamp-4 leading-relaxed">
                   {member.bio}
                 </p>
 

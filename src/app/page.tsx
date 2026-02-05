@@ -11,9 +11,24 @@ import {
 } from "lucide-react";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 
-export default function Home() {
+import { client } from "@/sanity/lib/client";
+import { EVENTS_QUERY } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
+
+export default async function Home() {
+  let featuredEvent = null;
+  try {
+    const events = await client.fetch(EVENTS_QUERY);
+    if (events && events.length > 0) {
+      featuredEvent = events[0]; // Get the latest event
+    }
+  } catch (error) {
+    console.error("Error fetching events:", error);
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
+      {/* ... (Hero and Features sections remain unchanged) ... */}
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-background">
         {/* Background Pattern */}
@@ -32,7 +47,7 @@ export default function Home() {
             <FadeIn delay={0.2}>
               <h1 className="text-5xl md:text-7xl font-bold font-heading tracking-tight text-slate-900 leading-[1.1]">
                 No Language or Culture <br />
-                <span className="text-primary transparent items-center">
+                <span className="text-[#4b6995] transparent items-center">
                   Left Behind
                 </span>
               </h1>
@@ -153,7 +168,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeIn direction="right">
               <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-bold font-heading">
+                <h2 className="text-4xl md:text-5xl font-bold font-heading text-white">
                   Global Impact
                 </h2>
                 <p className="text-xl text-primary-foreground/80 leading-relaxed">
@@ -210,7 +225,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- LATEST HIGHLIGHTS (Dynamic Placeholder styling) --- */}
+      {/* --- LATEST HIGHLIGHTS (Dynamic) --- */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex justify-between items-end mb-12">
@@ -236,8 +251,18 @@ export default function Home() {
             <FadeIn delay={0.1}>
               <Card className="border-none shadow-none bg-transparent group h-full">
                 <div className="aspect-[16/9] rounded-2xl overflow-hidden mb-4 bg-slate-200 relative">
-                  {/* Placeholder for Dynamic Image */}
-                  <div className="absolute inset-0 bg-slate-300 animate-pulse group-hover:scale-105 transition-transform duration-500"></div>
+                  {featuredEvent?.image ? (
+                    <img
+                      src={urlFor(featuredEvent.image)
+                        .width(800)
+                        .height(450)
+                        .url()}
+                      alt={featuredEvent.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-slate-300 animate-pulse group-hover:scale-105 transition-transform duration-500"></div>
+                  )}
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary">
                     Featured
                   </div>
@@ -245,20 +270,32 @@ export default function Home() {
                 <CardContent className="p-0 space-y-2">
                   <div className="flex items-center gap-4 text-sm text-slate-500">
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" /> Dec 1, 2025
+                      <Calendar className="w-4 h-4" />{" "}
+                      {featuredEvent?.date
+                        ? new Date(featuredEvent.date).toLocaleDateString(
+                            undefined,
+                            {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            },
+                          )
+                        : "Coming Soon"}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" /> Mexico City
-                    </span>
+                    {featuredEvent?.location && (
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" /> {featuredEvent.location}
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
-                    <Link href="/events">
-                      CLRLC-LLMs Workshop @ NeurIPS 2025
+                    <Link href={featuredEvent?.link || "/events"}>
+                      {featuredEvent?.title || "Upcoming Event"}
                     </Link>
                   </h3>
                   <p className="text-slate-600 line-clamp-2">
-                    Centering Low-Resource Languages and Cultures in the Age of
-                    Large Language Models. Join us for this pivotal workshop.
+                    {featuredEvent?.description ||
+                      "Stay tuned for our next big event. Join us to learn more about low-resource languages in AI."}
                   </p>
                 </CardContent>
               </Card>

@@ -16,9 +16,8 @@ export default function AboutPage() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <div className="prose prose-lg dark:prose-invert mx-auto">
+          <div className="prose prose-2xl text-xl leading-normal dark:prose-invert mx-auto">
             <p>
-              The{" "}
               <strong>
                 Center for Low-Resource Languages & Cultures (CLRLC)
               </strong>{" "}

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, ChevronDown } from "lucide-react";
@@ -81,27 +82,16 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div
+        <Link href="/" className="relative h-12 w-32">
+          <Image
+            src="/logo.png"
+            alt="CLRLC Logo"
+            fill
             className={cn(
-              "h-10 w-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl transition-colors",
-              !scrolled && pathname === "/"
-                ? "bg-white text-primary shadow-lg"
-                : "",
+              "object-contain transition-all duration-300",
+              !scrolled && pathname === "/" ? "" : "brightness-0 invert-0",
             )}
-          >
-            C
-          </div>
-          <span
-            className={cn(
-              "text-xl font-bold tracking-tight font-heading transition-colors",
-              !scrolled && pathname === "/"
-                ? "text-slate-900"
-                : "text-slate-900",
-            )}
-          >
-            CLRLC
-          </span>
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -112,7 +102,7 @@ export function Navbar() {
                 <DropdownMenu key={item.name}>
                   <DropdownMenuTrigger
                     className={cn(
-                      "flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary outline-none focus:text-primary",
+                      "flex items-center gap-1 text-lg font-medium transition-colors hover:text-primary outline-none focus:text-primary",
                       !scrolled && pathname === "/"
                         ? "text-slate-600 hover:text-slate-900"
                         : "text-slate-600 hover:text-primary",
@@ -147,7 +137,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative group py-2",
+                  "text-lg font-medium transition-colors hover:text-primary relative group py-2",
                   !scrolled && pathname === "/"
                     ? "text-slate-600 hover:text-slate-900"
                     : "text-slate-600 hover:text-primary",
@@ -173,7 +163,9 @@ export function Navbar() {
                 : "bg-primary text-white",
             )}
           >
-            <Link href="/contact">Get Involved</Link>
+            <Link href="/contact" className="text-lg">
+              Get Involved
+            </Link>
           </Button>
         </nav>
 
@@ -197,13 +189,13 @@ export function Navbar() {
               className="w-[300px] sm:w-[400px] flex flex-col gap-0 px-0"
             >
               <div className="p-6 border-b flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 bg-primary rounded-md flex items-center justify-center text-white font-bold text-lg">
-                    C
-                  </div>
-                  <span className="text-lg font-bold font-heading text-slate-900">
-                    CLRLC
-                  </span>
+                <div className="relative h-10 w-28">
+                  <Image
+                    src="/logo.png"
+                    alt="CLRLC Logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
 
@@ -218,7 +210,7 @@ export function Navbar() {
                 <nav className="flex flex-col gap-6">
                   {navItems.map((item) => (
                     <div key={item.name} className="space-y-3">
-                      <div className="text-sm font-bold text-slate-400 uppercase tracking-wider">
+                      <div className="text-lg font-bold text-slate-400 uppercase tracking-wider">
                         {item.name}
                       </div>
                       {item.items ? (
@@ -229,7 +221,7 @@ export function Navbar() {
                               href={subItem.href}
                               onClick={() => setIsOpen(false)}
                               className={cn(
-                                "text-lg font-medium transition-colors block py-1",
+                                "text-2xl font-medium transition-colors block py-1",
                                 pathname === subItem.href
                                   ? "text-primary font-semibold"
                                   : "text-slate-600 hover:text-slate-900",
@@ -244,7 +236,7 @@ export function Navbar() {
                           href={item.href!}
                           onClick={() => setIsOpen(false)}
                           className={cn(
-                            "text-lg font-medium block py-1",
+                            "text-2xl font-medium block py-1",
                             pathname === item.href
                               ? "text-primary font-semibold"
                               : "text-slate-600 hover:text-slate-900",
@@ -264,7 +256,9 @@ export function Navbar() {
                   asChild
                   onClick={() => setIsOpen(false)}
                 >
-                  <Link href="/contact">Get Involved</Link>
+                  <Link href="/contact" className="text-xl">
+                    Get Involved
+                  </Link>
                 </Button>
               </div>
             </SheetContent>

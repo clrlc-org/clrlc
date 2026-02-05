@@ -76,7 +76,7 @@ export default function ContactPage() {
           <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
             Ways to get in touch with CLRLC
           </h1>
-          <p className="text-xl text-slate-600">
+          <p className="text-3xl text-slate-600">
             We are always open to questions, partnerships, and collaborations.
           </p>
         </FadeIn>
@@ -90,7 +90,7 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold font-heading text-slate-900 mb-2">
                 Send us a message
               </h2>
-              <p className="text-slate-600">
+              <p className="text-lg text-slate-600">
                 Submissions go directly to our admin team.
               </p>
             </div>
@@ -220,10 +220,10 @@ export default function ContactPage() {
                       <link.icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-slate-900 group-hover:text-primary transition-colors">
+                      <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary transition-colors">
                         {link.name}
                       </h4>
-                      <p className="text-sm text-slate-500">{link.label}</p>
+                      <p className="text-base text-slate-500">{link.label}</p>
                     </div>
                   </Link>
                 ))}

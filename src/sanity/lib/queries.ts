@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity'
+import { groq } from "next-sanity";
 
 export const MEMBERS_QUERY = groq`*[_type == "member"] | order(order asc) {
   _id,
@@ -7,18 +7,19 @@ export const MEMBERS_QUERY = groq`*[_type == "member"] | order(order asc) {
   bio,
   image,
   socials
-}`
+}`;
 
 export const EVENTS_QUERY = groq`*[_type == "event"] | order(date desc) {
   _id,
   title,
   slug,
   date,
+  location,
   type,
   description,
   link,
   image
-}`
+}`;
 
 export const RESEARCH_QUERY = groq`*[_type == "research"] | order(publishedAt desc) {
   _id,
@@ -28,11 +29,11 @@ export const RESEARCH_QUERY = groq`*[_type == "research"] | order(publishedAt de
   description,
   link,
   publishedAt
-}`
+}`;
 
 export const GALLERY_QUERY = groq`*[_type == "gallery"] | order(_createdAt desc) {
   _id,
   title,
   image,
   tag
-}`
+}`;

@@ -20,7 +20,7 @@ export default function CommunityPage() {
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-2xl text-muted-foreground leading-normal">
               Be part of a global network of researchers, linguists, and
               technologists working to democratize AI.
             </p>
@@ -56,20 +56,26 @@ export default function CommunityPage() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left pt-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold text-primary">collaborate</h3>
-                  <p className="text-sm text-slate-600">
+                  <h3 className="font-bold text-primary text-xl">
+                    collaborate
+                  </h3>
+                  <p className="text-lg text-slate-600">
                     Connect with peers worldwide and work on impactful projects.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-bold text-primary">Access Resources</h3>
-                  <p className="text-sm text-slate-600">
+                  <h3 className="font-bold text-primary text-xl">
+                    Access Resources
+                  </h3>
+                  <p className="text-lg text-slate-600">
                     Get access to datasets, tools, and mentorship opportunities.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-bold text-primary">Make an Impact</h3>
-                  <p className="text-sm text-slate-600">
+                  <h3 className="font-bold text-primary text-xl">
+                    Make an Impact
+                  </h3>
+                  <p className="text-lg text-slate-600">
                     Contribute to preserving languages and empowering
                     communities.
                   </p>

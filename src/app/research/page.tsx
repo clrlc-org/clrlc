@@ -38,7 +38,7 @@ export default async function ResearchPage() {
           <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary mb-8 text-center md:text-left">
             Research Overview
           </h1>
-          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+          <div className="space-y-8 text-2xl text-muted-foreground leading-normal">
             <p>
               Research at the Center for Low-Resource Languages & Cultures
               (CLRLC) is open to anyone interested in low-resource and
@@ -136,7 +136,7 @@ export default async function ResearchPage() {
             <h2 className="text-3xl font-bold font-heading mb-2">
               Publications & Papers
             </h2>
-            <p className="text-xl text-muted-foreground italic">
+            <p className="text-3xl text-muted-foreground italic">
               “Check back for our latest publications.”
             </p>
           </div>

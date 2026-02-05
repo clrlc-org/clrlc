@@ -63,7 +63,7 @@ export default function PartnersPage() {
           <h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 mt-2">
             Partners & Sponsorship
           </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-3xl text-muted-foreground leading-normal">
             The Center for Low-Resource Languages & Cultures is open to
             collaboration with communities, organisations, and funders who share
             our commitment to inclusive, ethical, and culturally grounded
@@ -81,7 +81,7 @@ export default function PartnersPage() {
               <h2 className="text-3xl font-bold font-heading text-slate-900">
                 Building a Better Future Together
               </h2>
-              <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+              <div className="space-y-4 text-2xl text-slate-600 leading-relaxed">
                 <p>
                   We welcome partnerships and sponsorships to support our
                   mission. By working together, we can address the challenges
@@ -118,7 +118,7 @@ export default function PartnersPage() {
                         <h4 className="font-semibold text-slate-900">
                           {area.title}
                         </h4>
-                        <p className="text-sm text-slate-600 mt-1">
+                        <p className="text-lg text-slate-600 mt-1">
                           {area.description}
                         </p>
                       </div>
@@ -139,7 +139,7 @@ export default function PartnersPage() {
             <h2 className="text-3xl md:text-4xl font-bold font-heading">
               Interested in Collaborating?
             </h2>
-            <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+            <p className="text-2xl md:text-3xl text-primary-foreground/90 max-w-2xl mx-auto">
               If you are interested in sponsoring a project, supporting our
               work, or exploring a partnership, we would be delighted to hear
               from you.

@@ -19,7 +19,7 @@ export default function MissionPage() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-2xl text-muted-foreground leading-normal">
             "Our mission is to advance the representation and inclusion of
             low-resource languages and cultures in Artificial Intelligence by
             fostering collaboration among researchers, linguists, technologists,
@@ -55,17 +55,17 @@ export default function MissionPage() {
             <Card className="bg-muted/30 border-none shadow-sm h-full">
               <CardContent className="pt-6 flex flex-col items-center text-center space-y-4">
                 <item.icon className="w-12 h-12 text-primary" />
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <p className="text-lg text-muted-foreground">{item.desc}</p>
               </CardContent>
             </Card>
           </FadeIn>
         ))}
       </StaggerContainer>
 
-      <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert text-center">
+      <div className="max-w-4xl mx-auto prose prose-2xl dark:prose-invert text-center">
         <FadeIn delay={0.4}>
-          <p>
+          <p className="text-xl leading-normal">
             We aim to create innovative and impactful solutions through data
             curation, applied AI/ NLP research, training programs, mentorship,
             workshops and conferences. Our training and mentorship programs
@@ -73,7 +73,7 @@ export default function MissionPage() {
             those interested in learning and building inclusive, culturally
             intelligent AI language technologies.
           </p>
-          <p>
+          <p className="text-xl leading-normal">
             By connecting experts, nurturing talent, and promoting meaningful
             knowledge exchange, we aim to empower underrepresented communities,
             preserve cultural heritage, and drive sustainable progress in AI for

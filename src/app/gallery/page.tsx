@@ -27,7 +27,7 @@ export default async function GalleryPage() {
           <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
             Gallery
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-xl text-muted-foreground">
             Moments from our workshops, meetups, and conferences.
           </p>
         </FadeIn>
@@ -40,13 +40,13 @@ export default async function GalleryPage() {
               {item.image && (
                 <img
                   src={urlFor(item.image).width(800).height(800).url()}
-                  alt={item.caption || "Gallery Image"}
+                  alt={item.title || "Gallery Image"}
                   className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                 />
               )}
-              {item.caption && (
+              {item.title && (
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <p className="text-white font-medium">{item.caption}</p>
+                  <p className="text-white font-medium text-xl">{item.title}</p>
                 </div>
               )}
             </div>
