@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -13,16 +13,45 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
-const navItems = [
-  { name: "About", href: "/about" },
-  { name: "Mission", href: "/mission" },
-  { name: "Research", href: "/research" },
-  { name: "Events", href: "/events" },
-  { name: "Team", href: "/team" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Community", href: "/community" },
+interface NavItem {
+  name: string;
+  href?: string;
+  items?: { name: string; href: string }[];
+}
+
+const navItems: NavItem[] = [
+  {
+    name: "About",
+    items: [
+      { name: "About CLRLC", href: "/about" },
+      { name: "Mission", href: "/mission" },
+      { name: "Team", href: "/team" },
+    ],
+  },
+  {
+    name: "What We Do",
+    items: [
+      { name: "Programs & Initiatives", href: "/programs" },
+      { name: "Research", href: "/research" },
+      { name: "Events", href: "/events" },
+    ],
+  },
+  {
+    name: "Community",
+    items: [
+      { name: "Community Overview", href: "/community" },
+      { name: "Gallery", href: "/gallery" },
+      { name: "Partners & Sponsorship", href: "/partners" },
+    ],
+  },
 ];
 
 export function Navbar() {
@@ -36,6 +65,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isCurrent = (item: NavItem) => {
+    if (item.href) return pathname === item.href;
+    if (item.items) return item.items.some((sub) => pathname === sub.href);
+    return false;
+  };
+
   return (
     <header
       className={cn(
@@ -47,10 +82,9 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          {/* Logo Placeholder */}
           <div
             className={cn(
-              "h-10 w-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl",
+              "h-10 w-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl transition-colors",
               !scrolled && pathname === "/"
                 ? "bg-white text-primary shadow-lg"
                 : "",
@@ -60,7 +94,7 @@ export function Navbar() {
           </div>
           <span
             className={cn(
-              "text-xl font-bold tracking-tight font-heading",
+              "text-xl font-bold tracking-tight font-heading transition-colors",
               !scrolled && pathname === "/"
                 ? "text-slate-900"
                 : "text-slate-900",
@@ -71,28 +105,65 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative group py-2",
-                !scrolled && pathname === "/"
-                  ? "text-slate-600 hover:text-slate-900"
-                  : "text-slate-600 hover:text-primary",
-                pathname === item.href ? "text-primary font-semibold" : "",
-              )}
-            >
-              {item.name}
-              <span
+        <nav className="hidden lg:flex items-center gap-6">
+          {navItems.map((item) => {
+            if (item.items) {
+              return (
+                <DropdownMenu key={item.name}>
+                  <DropdownMenuTrigger
+                    className={cn(
+                      "flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary outline-none focus:text-primary",
+                      !scrolled && pathname === "/"
+                        ? "text-slate-600 hover:text-slate-900"
+                        : "text-slate-600 hover:text-primary",
+                      isCurrent(item) ? "text-primary font-semibold" : "",
+                    )}
+                  >
+                    {item.name}
+                    <ChevronDown className="h-4 w-4" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-[200px]">
+                    {item.items.map((subItem) => (
+                      <DropdownMenuItem key={subItem.href} asChild>
+                        <Link
+                          href={subItem.href}
+                          className={cn(
+                            "cursor-pointer w-full",
+                            pathname === subItem.href &&
+                              "text-primary font-medium",
+                          )}
+                        >
+                          {subItem.name}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              );
+            }
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href!}
                 className={cn(
-                  "absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform origin-right group-hover:origin-left group-hover:scale-x-100",
-                  pathname === item.href ? "scale-x-100" : "",
+                  "text-sm font-medium transition-colors hover:text-primary relative group py-2",
+                  !scrolled && pathname === "/"
+                    ? "text-slate-600 hover:text-slate-900"
+                    : "text-slate-600 hover:text-primary",
+                  pathname === item.href ? "text-primary font-semibold" : "",
                 )}
-              />
-            </Link>
-          ))}
+              >
+                {item.name}
+                <span
+                  className={cn(
+                    "absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform origin-right group-hover:origin-left group-hover:scale-x-100",
+                    pathname === item.href ? "scale-x-100" : "",
+                  )}
+                />
+              </Link>
+            );
+          })}
           <Button
             asChild
             className={cn(
@@ -134,7 +205,6 @@ export function Navbar() {
                     CLRLC
                   </span>
                 </div>
-                {/* Close button is automatically rendered by SheetContent */}
               </div>
 
               <VisuallyHidden.Root>
@@ -145,21 +215,45 @@ export function Navbar() {
               </VisuallyHidden.Root>
 
               <div className="flex-1 overflow-y-auto py-6 px-6">
-                <nav className="flex flex-col gap-1">
+                <nav className="flex flex-col gap-6">
                   {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={cn(
-                        "text-lg font-medium px-4 py-3 rounded-lg transition-colors",
-                        pathname === item.href
-                          ? "bg-primary/10 text-primary font-semibold"
-                          : "text-slate-600 hover:bg-slate-50 hover:text-slate-900",
+                    <div key={item.name} className="space-y-3">
+                      <div className="text-sm font-bold text-slate-400 uppercase tracking-wider">
+                        {item.name}
+                      </div>
+                      {item.items ? (
+                        <div className="flex flex-col gap-2 pl-4 border-l-2 border-slate-100">
+                          {item.items.map((subItem) => (
+                            <Link
+                              key={subItem.href}
+                              href={subItem.href}
+                              onClick={() => setIsOpen(false)}
+                              className={cn(
+                                "text-lg font-medium transition-colors block py-1",
+                                pathname === subItem.href
+                                  ? "text-primary font-semibold"
+                                  : "text-slate-600 hover:text-slate-900",
+                              )}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      ) : (
+                        <Link
+                          href={item.href!}
+                          onClick={() => setIsOpen(false)}
+                          className={cn(
+                            "text-lg font-medium block py-1",
+                            pathname === item.href
+                              ? "text-primary font-semibold"
+                              : "text-slate-600 hover:text-slate-900",
+                          )}
+                        >
+                          {item.name}
+                        </Link>
                       )}
-                    >
-                      {item.name}
-                    </Link>
+                    </div>
                   ))}
                 </nav>
               </div>

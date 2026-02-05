@@ -31,19 +31,19 @@ export default function Home() {
 
             <FadeIn delay={0.2}>
               <h1 className="text-5xl md:text-7xl font-bold font-heading tracking-tight text-slate-900 leading-[1.1]">
-                Bridging the Gap in <br />
+                No Language or Culture <br />
                 <span className="text-primary transparent items-center">
-                  Language AI
+                  Left Behind
                 </span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.3}>
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-600 leading-relaxed text-balance">
-                The Center for Low-Resource Languages & Cultures (CLRLC) is a
-                global ecosystem dedicated to democratizing Artificial
-                Intelligence through ethical data curation, inclusive research,
-                and community-driven innovation.
+                Center for Low-Resource Languages & Cultures (CLRLC) is a global
+                ecosystem dedicated to democratizing Artificial Intelligence
+                through ethical data curation, inclusive research, and
+                community-driven innovation.
               </p>
             </FadeIn>
 

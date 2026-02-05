@@ -66,10 +66,12 @@ export default function MissionPage() {
       <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert text-center">
         <FadeIn delay={0.4}>
           <p>
-            We aim to create innovative and impactful solutions. Our training
-            and mentorship programs support learners at beginner, intermediate,
-            and advanced levels, for those interested in learning and building
-            inclusive, culturally intelligent AI language technologies.
+            We aim to create innovative and impactful solutions through data
+            curation, applied AI/ NLP research, training programs, mentorship,
+            workshops and conferences. Our training and mentorship programs
+            support learners at beginner, intermediate, and advanced levels, for
+            those interested in learning and building inclusive, culturally
+            intelligent AI language technologies.
           </p>
           <p>
             By connecting experts, nurturing talent, and promoting meaningful
