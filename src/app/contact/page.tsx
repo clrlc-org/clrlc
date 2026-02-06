@@ -54,12 +54,12 @@ export default function ContactPage() {
       icon: Twitter,
       label: "Follow us on X",
     },
-    {
-      name: "Slack",
-      href: "https://centerforlowr-m0i1128.slack.com/",
-      icon: Slack,
-      label: "Join our Slack Community",
-    },
+    // {
+    //   name: "Slack",
+    //   href: "https://centerforlowr-m0i1128.slack.com/",
+    //   icon: Slack,
+    //   label: "Join our Slack Community",
+    // },
     {
       name: "GitHub",
       href: "https://github.com/clrlc-org",

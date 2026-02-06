@@ -20,10 +20,10 @@ export default function MissionPage() {
         </FadeIn>
         <FadeIn delay={0.2}>
           <p className="text-2xl text-muted-foreground leading-normal">
-            "Our mission is to advance the representation and inclusion of
+            Our mission is to advance the representation and inclusion of
             low-resource languages and cultures in Artificial Intelligence by
             fostering collaboration among researchers, linguists, technologists,
-            and communities worldwide."
+            and communities worldwide.
           </p>
         </FadeIn>
       </div>

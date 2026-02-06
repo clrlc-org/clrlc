@@ -36,9 +36,9 @@ export default async function ResearchPage() {
       <div className="max-w-4xl mx-auto space-y-8">
         <FadeIn>
           <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary mb-8 text-center md:text-left">
-            Research Overview
+            Overview of Research
           </h1>
-          <div className="space-y-8 text-2xl text-muted-foreground leading-normal">
+          <div className="space-y-8 text-xl text-muted-foreground leading-normal">
             <p>
               Research at the Center for Low-Resource Languages & Cultures
               (CLRLC) is open to anyone interested in low-resource and

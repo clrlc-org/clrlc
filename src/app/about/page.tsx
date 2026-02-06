@@ -40,8 +40,12 @@ export default function AboutPage() {
 
         {/* Placeholder for visuals */}
         <FadeIn delay={0.4}>
-          <div className="w-full h-64 bg-muted rounded-xl flex items-center justify-center text-muted-foreground">
-            [Visuals representing team collaboration or CLRLC activities]
+          <div className="w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-lg mx-auto max-w-5xl">
+            <img
+              src="/images/about-collaboration-young.png"
+              alt="Young researchers collaborating at CLRLC"
+              className="w-full h-full object-cover"
+            />
           </div>
         </FadeIn>
       </div>

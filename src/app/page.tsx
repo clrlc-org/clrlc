@@ -197,7 +197,7 @@ export default async function Home() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 text-center translate-y-8">
+                <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 text-center">
                   <div className="text-4xl font-bold mb-2">500+</div>
                   <div className="text-sm text-primary-foreground/80 font-medium tracking-wide">
                     MEMBERS
@@ -213,7 +213,7 @@ export default async function Home() {
                 </div>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 text-center translate-y-8">
+                <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 text-center">
                   <div className="text-4xl font-bold mb-2">10+</div>
                   <div className="text-sm text-primary-foreground/80 font-medium tracking-wide">
                     LANGUAGES

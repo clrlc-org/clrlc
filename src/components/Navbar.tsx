@@ -87,10 +87,7 @@ export function Navbar() {
             src="/logo.png"
             alt="CLRLC Logo"
             fill
-            className={cn(
-              "object-contain transition-all duration-300",
-              !scrolled && pathname === "/" ? "" : "brightness-0 invert-0",
-            )}
+            className="object-contain transition-all duration-300"
           />
         </Link>
 

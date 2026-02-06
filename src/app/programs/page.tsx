@@ -53,8 +53,8 @@ export default function ProgramsPage() {
             Programs & Initiatives
           </h1>
           <p className="max-w-2xl mx-auto text-2xl mt-4 text-muted-foreground leading-relaxed">
-            Overview of CLRLC programs and initiatives aimed at democratizing AI
-            for under-resourced languages.
+            Overview of CLRLC programs and initiatives aimed at making AI
+            accessible for under-resourced languages
           </p>
         </FadeIn>
       </div>

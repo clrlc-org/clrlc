@@ -23,7 +23,13 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 // Helper component for Event Card to reduce duplication
-function EventCard({ event }: { event: any }) {
+function EventCard({
+  event,
+  isPast = false,
+}: {
+  event: any;
+  isPast?: boolean;
+}) {
   return (
     <Card className="flex flex-col h-full hover:shadow-lg transition-shadow overflow-hidden">
       {event.image && (
@@ -69,7 +75,7 @@ function EventCard({ event }: { event: any }) {
         {event.link ? (
           <Button asChild className="w-full">
             <a href={event.link} target="_blank" rel="noreferrer">
-              Register / Details
+              {isPast ? "Read more" : "Register / Details"}
             </a>
           </Button>
         ) : (
@@ -153,7 +159,7 @@ export default async function EventsPage() {
             {pastEvents.map((event: any) => (
               <FadeIn key={event._id}>
                 <div className="opacity-80 hover:opacity-100 transition-opacity">
-                  <EventCard event={event} />
+                  <EventCard event={event} isPast={true} />
                 </div>
               </FadeIn>
             ))}

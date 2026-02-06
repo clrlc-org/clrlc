@@ -60,7 +60,7 @@ export default function PartnersPage() {
           <span className="text-primary font-bold tracking-wider uppercase text-sm">
             Collaborate With Us
           </span>
-          <h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 mt-2">
+          <h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 my-4">
             Partners & Sponsorship
           </h1>
           <p className="text-3xl text-muted-foreground leading-normal">
