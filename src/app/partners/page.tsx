@@ -63,11 +63,10 @@ export default function PartnersPage() {
           <h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 my-4">
             Partners & Sponsorship
           </h1>
-          <p className="text-3xl text-muted-foreground leading-normal">
-            The Center for Low-Resource Languages & Cultures is open to
-            collaboration with communities, organisations, and funders who share
-            our commitment to inclusive, ethical, and culturally grounded
-            language technologies.
+          <p className="text-2xl text-muted-foreground leading-normal">
+            Become a Partner or Sponsor. Work with us to empower
+            underrepresented languages and cultures through responsible and
+            inclusive AI.
           </p>
         </FadeIn>
       </div>

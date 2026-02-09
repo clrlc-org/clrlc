@@ -21,8 +21,8 @@ export default function CommunityPage() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-2xl text-muted-foreground leading-normal">
-              Be part of a global network of researchers, linguists, and
-              technologists working to democratize AI.
+              Be part of a global network advancing research and technology for
+              low-resource languages and cultures.
             </p>
           </FadeIn>
           <FadeIn delay={0.4}>
@@ -57,7 +57,7 @@ export default function CommunityPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left pt-6">
                 <div className="space-y-2">
                   <h3 className="font-bold text-primary text-xl">
-                    collaborate
+                    C ollaborate
                   </h3>
                   <p className="text-lg text-slate-600">
                     Connect with peers worldwide and work on impactful projects.

@@ -161,7 +161,7 @@ export function Navbar() {
             )}
           >
             <Link href="/contact" className="text-lg">
-              Get Involved
+              Contact Us
             </Link>
           </Button>
         </nav>
@@ -254,7 +254,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                 >
                   <Link href="/contact" className="text-xl">
-                    Get Involved
+                    Contact Us
                   </Link>
                 </Button>
               </div>
