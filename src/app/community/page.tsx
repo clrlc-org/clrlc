@@ -57,7 +57,7 @@ export default function CommunityPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left pt-6">
                 <div className="space-y-2">
                   <h3 className="font-bold text-primary text-xl">
-                    C ollaborate
+                    Collaborate
                   </h3>
                   <p className="text-lg text-slate-600">
                     Connect with peers worldwide and work on impactful projects.
