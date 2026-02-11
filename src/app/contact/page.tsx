@@ -34,7 +34,7 @@ export default function ContactPage() {
       e.currentTarget.reset();
     } catch (err) {
       setError(
-        "Failed to send message. Please try again later or email us directly at clrlc.center@gmail.com",
+        "Failed to send message. Please try again later or email us directly at info@clrlc.org",
       );
     } finally {
       setIsSubmitting(false);
@@ -191,10 +191,10 @@ export default function ContactPage() {
                     Email Us
                   </p>
                   <a
-                    href="mailto:clrlc.center@gmail.com"
+                    href="mailto:info@clrlc.org"
                     className="text-lg font-semibold text-slate-900 hover:text-primary transition-colors"
                   >
-                    clrlc.center@gmail.com
+                    info@clrlc.org
                   </a>
                 </div>
               </div>
