@@ -59,6 +59,12 @@ export const metadata: Metadata = {
     description:
       "Advancing the representation of low-resource languages and cultures in Artificial Intelligence.",
     images: ["/logo.jpg"],
+    site: "@clrlc_org",
+    creator: "@clrlc_org",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

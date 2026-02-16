@@ -50,7 +50,7 @@ export default function ContactPage() {
     },
     {
       name: "X (Twitter)",
-      href: "https://x.com/clrlc",
+      href: "https://x.com/clrlc_org",
       icon: Twitter,
       label: "Follow us on X",
     },

@@ -72,7 +72,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://x.com/clrlc_center"
+                  href="https://x.com/clrlc_org"
                   target="_blank"
                   rel="noreferrer"
                   className="hover:text-white transition-colors"
