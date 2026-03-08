@@ -18,7 +18,7 @@ const programs = [
     reverse: false,
   },
   {
-    title: "Workshops, Mentorship & Training",
+    title: "Workshops, Mentorship and Training",
     description:
       "Empowering the next generation of AI researchers and practitioners through intensive workshops, long-term mentorship programs, and technical training designed to build local capacity and expertise.",
     image: "/images/programs/workshop.png",
@@ -102,3 +102,4 @@ export default function ProgramsPage() {
     </div>
   );
 }
+
