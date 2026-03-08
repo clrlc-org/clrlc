@@ -40,7 +40,7 @@ export default async function ResearchPage() {
           </h1>
           <div className="space-y-8 text-xl text-muted-foreground leading-normal">
             <p>
-              Research at the Center for Low-Resource Languages & Cultures
+              Research at the Center for Low-Resource Languages and Cultures
               (CLRLC) is open to anyone interested in low-resource and
               multilingual language technologies, including students,
               researchers, practitioners, and community members. Our research
@@ -193,3 +193,4 @@ export default async function ResearchPage() {
     </div>
   );
 }
+
