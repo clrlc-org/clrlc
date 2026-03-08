@@ -119,10 +119,11 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-700 text-center text-base text-gray-400">
-          © {new Date().getFullYear()} Center for Low-Resource Languages &
+          © {new Date().getFullYear()} Center for Low-Resource Languages and
           Cultures. All rights reserved.
         </div>
       </div>
     </footer>
   );
 }
+
