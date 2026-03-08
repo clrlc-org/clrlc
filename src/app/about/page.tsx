@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/Motion";
 
 export const metadata: Metadata = {
   title: "About CLRLC",
-  description: "Learn about the Center for Low-Resource Languages & Cultures.",
+  description: "Learn about the Center for Low-Resource Languages and Cultures.",
 };
 
 export default function AboutPage() {
@@ -19,7 +19,7 @@ export default function AboutPage() {
           <div className="prose prose-2xl text-xl leading-normal dark:prose-invert mx-auto">
             <p>
               <strong>
-                Center for Low-Resource Languages & Cultures (CLRLC)
+                Center for Low-Resource Languages and Cultures (CLRLC)
               </strong>{" "}
               is a global, community-driven initiative committed to advancing
               the representation of low-resource languages and cultures in
@@ -52,3 +52,4 @@ export default function AboutPage() {
     </div>
   );
 }
+
