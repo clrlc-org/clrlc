@@ -180,21 +180,39 @@ export default function ContactPage() {
           <FadeIn delay={0.3}>
             <div className="space-y-6">
               <h3 className="text-xl font-bold font-heading text-slate-900 border-b pb-2">
-                General Enquiries
+                General Enquiries Email us ;
               </h3>
+
               <div className="flex items-center gap-4 text-slate-600 group">
                 <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-slate-500 uppercase tracking-wide">
-                    Email Us
+                    Organisation Email Address :
                   </p>
                   <a
                     href="mailto:info@clrlc.org"
                     className="text-lg font-semibold text-slate-900 hover:text-primary transition-colors"
                   >
                     info@clrlc.org
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 text-slate-600 group">
+                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                  <Mail className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-500 uppercase tracking-wide">
+                    Admin Email Address:
+                  </p>
+                  <a
+                    href="mailto:clrlc.center@gmail.com"
+                    className="text-lg font-semibold text-slate-900 hover:text-primary transition-colors"
+                  >
+                    clrlc.center@gmail.com
                   </a>
                 </div>
               </div>
