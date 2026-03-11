@@ -114,7 +114,20 @@ export function Footer() {
                   Get in Touch
                 </Link>
               </li>
-              <a href="mailto:info@clrlc.org">Email: info@clrlc.org</a>
+
+              <li>
+                <a href="mailto:info@clrlc.org">
+                  <span>Organisation Email Address:</span>
+                  <br /> info@clrlc.org
+                </a>
+              </li>
+
+              <li>
+                <a href="mailto:clrlc.center@gmail.com">
+                  <span>Admin Email Address: </span>
+                  <br /> clrlc.center@gmail.com
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -126,4 +139,3 @@ export function Footer() {
     </footer>
   );
 }
-
