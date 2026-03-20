@@ -46,9 +46,9 @@ export default async function Home() {
 
             <FadeIn delay={0.2}>
               <h1 className="text-5xl md:text-7xl font-bold font-heading tracking-tight text-slate-900 leading-[1.1]">
-                No Language or Culture <br />
+                Every Voice Deserves <br />
                 <span className="text-[#4b6995] transparent items-center">
-                  Left Behind
+                  to be Heard
                 </span>
               </h1>
             </FadeIn>
