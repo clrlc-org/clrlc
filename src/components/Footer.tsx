@@ -116,15 +116,15 @@ export function Footer() {
               </li>
 
               <li>
-                <span>Organisation Email Address:</span>
                 <a href="mailto:info@clrlc.org">
+                  <span>Organisation Email Address:</span>
                   <br /> info@clrlc.org
                 </a>
               </li>
 
               <li>
-                <span>Admin Email Address: </span>
                 <a href="mailto:clrlc.center@gmail.com">
+                  <span>Admin Email Address: </span>
                   <br /> clrlc.center@gmail.com
                 </a>
               </li>
