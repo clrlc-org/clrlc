@@ -10,6 +10,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
+import { SectionHeading, Subheading } from "@/components/Heading";
 
 import { client } from "@/sanity/lib/client";
 import { EVENTS_QUERY } from "@/sanity/lib/queries";
@@ -45,12 +46,10 @@ export default async function Home() {
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <h1 className="text-5xl md:text-7xl font-bold font-heading tracking-tight text-slate-900 leading-[1.1]">
+              <SectionHeading as="h1" align="center">
                 Every Voice Deserves <br />
-                <span className="text-[#4b6995] transparent items-center">
-                  to be Heard
-                </span>
-              </h1>
+                <span className="text-[#4b6995]">to be Heard</span>
+              </SectionHeading>
             </FadeIn>
 
             <FadeIn delay={0.3}>
@@ -95,9 +94,7 @@ export default async function Home() {
                 <div className="h-14 w-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <BookOpen className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                  Research & Data
-                </h3>
+                <Subheading className="mb-3">Research & Data</Subheading>
                 <p className="text-slate-600 mb-6 leading-relaxed">
                   Pioneering NLP and speech technology for under-resourced
                   languages. We strictly adhere to ethical data curation
@@ -118,9 +115,7 @@ export default async function Home() {
                 <div className="h-14 w-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Calendar className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                  Events & Workshops
-                </h3>
+                <Subheading className="mb-3">Events & Workshops</Subheading>
                 <p className="text-slate-600 mb-6 leading-relaxed">
                   Global conferences, hands-on workshops, and webinars designed
                   to foster knowledge exchange and collaboration.
@@ -140,9 +135,7 @@ export default async function Home() {
                 <div className="h-14 w-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Users className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                  Community
-                </h3>
+                <Subheading className="mb-3">Community</Subheading>
                 <p className="text-slate-600 mb-6 leading-relaxed">
                   A thriving ecosystem of linguists, technologists, and
                   researchers. Join our mentorship programs and networks.
@@ -168,9 +161,9 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeIn direction="right">
               <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-bold font-heading text-white">
+                <SectionHeading as="h2" invert>
                   Global Impact
-                </h2>
+                </SectionHeading>
                 <p className="text-xl text-primary-foreground/80 leading-relaxed">
                   We are building a future where AI speaks every language. Our
                   work spans continents, bringing together diverse voices to
@@ -230,9 +223,9 @@ export default async function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl font-bold font-heading text-slate-900 mb-2">
+              <SectionHeading as="h2" className="mb-2">
                 Latest Updates
-              </h2>
+              </SectionHeading>
               <p className="text-slate-600">
                 News, research, and community stories.
               </p>
@@ -288,11 +281,11 @@ export default async function Home() {
                       </span>
                     )}
                   </div>
-                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                  <Subheading className="group-hover:text-primary transition-colors">
                     <Link href={featuredEvent?.link || "/events"}>
                       {featuredEvent?.title || "Upcoming Event"}
                     </Link>
-                  </h3>
+                  </Subheading>
                   <p className="text-slate-600 line-clamp-2">
                     {featuredEvent?.description ||
                       "Stay tuned for our next big event. Join us to learn more about low-resource languages in AI."}

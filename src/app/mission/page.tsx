@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Database, BrainCircuit, GraduationCap, Users } from "lucide-react";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
+import { SectionHeading, Subheading } from "@/components/Heading";
 
 export const metadata: Metadata = {
   title: "Our Mission - CLRLC",
@@ -14,9 +15,9 @@ export default function MissionPage() {
     <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-16">
       <div className="max-w-4xl mx-auto text-center space-y-6">
         <FadeIn>
-          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+          <SectionHeading as="h1" align="center">
             Our Mission
-          </h1>
+          </SectionHeading>
         </FadeIn>
         <FadeIn delay={0.2}>
           <p className="text-2xl text-muted-foreground leading-normal">
@@ -55,7 +56,7 @@ export default function MissionPage() {
             <Card className="bg-muted/30 border-none shadow-sm h-full">
               <CardContent className="pt-6 flex flex-col items-center text-center space-y-4">
                 <item.icon className="w-12 h-12 text-primary" />
-                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <Subheading>{item.title}</Subheading>
                 <p className="text-lg text-muted-foreground">{item.desc}</p>
               </CardContent>
             </Card>

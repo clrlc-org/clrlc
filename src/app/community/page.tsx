@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { Card, CardContent } from "@/components/ui/card"; // Added this import for the new Card component
+import { SectionHeading, Subheading } from "@/components/Heading";
 
 export const metadata: Metadata = {
   title: "Community - CLRLC",
@@ -15,9 +16,9 @@ export default function CommunityPage() {
       <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 max-w-4xl space-y-12">
         <div className="text-center space-y-6">
           <FadeIn>
-            <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+            <SectionHeading as="h1" align="center">
               Join Our Community
-            </h1>
+            </SectionHeading>
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-2xl text-muted-foreground leading-normal">
@@ -51,30 +52,24 @@ export default function CommunityPage() {
         <FadeIn delay={0.6}>
           <Card className="bg-slate-50 border-none shadow-sm p-8 text-center">
             <CardContent className="space-y-4">
-              <h2 className="text-2xl font-bold text-slate-900">
+              <SectionHeading as="h2" align="center">
                 Why Join CLRLC?
-              </h2>
+              </SectionHeading>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left pt-6">
                 <div className="space-y-2">
-                  <h3 className="font-bold text-primary text-xl">
-                    Collaborate
-                  </h3>
+                  <Subheading>Collaborate</Subheading>
                   <p className="text-lg text-slate-600">
                     Connect with peers worldwide and work on impactful projects.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-bold text-primary text-xl">
-                    Access Resources
-                  </h3>
+                  <Subheading>Access Resources</Subheading>
                   <p className="text-lg text-slate-600">
                     Get access to datasets, tools, and mentorship opportunities.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-bold text-primary text-xl">
-                    Make an Impact
-                  </h3>
+                  <Subheading>Make an Impact</Subheading>
                   <p className="text-lg text-slate-600">
                     Contribute to preserving languages and empowering
                     communities.

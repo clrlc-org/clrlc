@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
+import { SectionHeading, Subheading } from "@/components/Heading";
 import {
   Handshake,
   Heart,
@@ -60,9 +61,9 @@ export default function PartnersPage() {
           <span className="text-primary font-bold tracking-wider uppercase text-sm">
             Collaborate With Us
           </span>
-          <h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 my-4">
+          <SectionHeading as="h1" align="center" className="my-4">
             Partners & Sponsorship
-          </h1>
+          </SectionHeading>
           <p className="text-2xl text-muted-foreground leading-normal">
             Become a Partner or Sponsor. Work with us to empower
             underrepresented languages and cultures through responsible and
@@ -77,9 +78,9 @@ export default function PartnersPage() {
           {/* Left Side: Introduction */}
           <FadeIn delay={0.2}>
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold font-heading text-slate-900">
+              <SectionHeading as="h2">
                 Building a Better Future Together
-              </h2>
+              </SectionHeading>
               <div className="space-y-4 text-2xl text-slate-600 leading-relaxed">
                 <p>
                   We welcome partnerships and sponsorships to support our
@@ -102,9 +103,9 @@ export default function PartnersPage() {
 
           {/* Right Side: Areas of Support */}
           <div className="bg-slate-50/50 p-6 md:p-8 rounded-3xl border border-slate-100">
-            <h3 className="text-xl font-bold font-heading text-slate-900 mb-6 text-center lg:text-left">
+            <Subheading className="mb-6 text-center lg:text-left">
               Areas for Collaboration
-            </h3>
+            </Subheading>
             <StaggerContainer className="grid gap-4">
               {supportAreas.map((area) => (
                 <FadeIn key={area.title}>
@@ -135,9 +136,9 @@ export default function PartnersPage() {
         <div className="container mx-auto px-4 md:px-6 max-w-4xl">
           <div className="bg-primary rounded-3xl p-8 md:p-12 text-center text-white space-y-6 shadow-xl">
             <Handshake className="h-12 w-12 mx-auto text-primary-foreground/80 mb-4" />
-            <h2 className="text-3xl md:text-4xl font-bold font-heading">
+            <SectionHeading as="h2" invert align="center">
               Interested in Collaborating?
-            </h2>
+            </SectionHeading>
             <p className="text-2xl md:text-3xl text-primary-foreground/90 max-w-2xl mx-auto">
               If you are interested in sponsoring a project, supporting our
               work, or exploring a partnership, we would be delighted to hear

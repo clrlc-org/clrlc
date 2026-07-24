@@ -8,7 +8,8 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Linkedin, Twitter, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
+import { LinkedinIcon, TwitterIcon } from "@/components/icons/brand-icons";
 import {
   Dialog,
   DialogContent,
@@ -38,12 +39,12 @@ interface TeamMemberCardProps {
 export function TeamMemberCard({ member }: TeamMemberCardProps) {
   const SocialIcon = ({ platform }: { platform: string }) => {
     if (platform.toLowerCase().includes("linkedin"))
-      return <Linkedin className="h-5 w-5" />;
+      return <LinkedinIcon className="h-5 w-5" />;
     if (
       platform.toLowerCase().includes("twitter") ||
       platform.toLowerCase().includes("x")
     )
-      return <Twitter className="h-5 w-5" />;
+      return <TwitterIcon className="h-5 w-5" />;
     return <Globe className="h-5 w-5" />;
   };
 
