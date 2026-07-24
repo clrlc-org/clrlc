@@ -3,6 +3,7 @@ import { client } from "@/sanity/lib/client";
 import { GALLERY_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
+import { SectionHeading } from "@/components/Heading";
 
 export const metadata: Metadata = {
   title: "Gallery - CLRLC",
@@ -24,9 +25,9 @@ export default async function GalleryPage() {
     <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-12">
       <div className="text-center space-y-4">
         <FadeIn>
-          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+          <SectionHeading as="h1" align="center">
             Gallery
-          </h1>
+          </SectionHeading>
           <p className="text-xl text-muted-foreground">
             Moments from our workshops, meetups, and conferences.
           </p>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { SectionHeading } from "@/components/Heading";
 
 export const metadata: Metadata = {
   title: "Programs - CLRLC",
@@ -49,9 +50,9 @@ export default function ProgramsPage() {
           <span className="text-primary font-bold tracking-wider uppercase text-sm">
             What We Do
           </span>
-          <h1 className="text-4xl lg:text-6xl font-bold font-heading text-slate-900 mt-2">
+          <SectionHeading as="h1" align="center" className="mt-2">
             Programs & Initiatives
-          </h1>
+          </SectionHeading>
           <p className="max-w-2xl mx-auto text-2xl mt-4 text-muted-foreground leading-relaxed">
             Overview of CLRLC programs and initiatives aimed at making AI
             accessible for under-resourced languages
@@ -86,9 +87,7 @@ export default function ProgramsPage() {
 
                 {/* Text Side */}
                 <div className="flex-1 space-y-6">
-                  <h2 className="text-3xl font-bold text-slate-900 font-heading">
-                    {program.title}
-                  </h2>
+                  <SectionHeading as="h2">{program.title}</SectionHeading>
                   <div className="h-1 w-20 bg-primary rounded-full" />
                   <p className="text-2xl text-slate-600 leading-relaxed text-balance">
                     {program.description}

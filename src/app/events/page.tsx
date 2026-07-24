@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { MapPin } from "lucide-react";
+import { SectionHeading } from "@/components/Heading";
 
 export const metadata: Metadata = {
   title: "Events - CLRLC",
@@ -62,7 +63,7 @@ function EventCard({
             )}
           </div>
         </div>
-        <CardTitle className="line-clamp-2 leading-tight">
+        <CardTitle className="line-clamp-2 leading-tight text-2xl font-heading font-bold text-primary">
           {event.title}
         </CardTitle>
       </CardHeader>
@@ -116,9 +117,9 @@ export default async function EventsPage() {
     <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-16">
       <div className="text-center space-y-4">
         <FadeIn>
-          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+          <SectionHeading as="h1" align="center">
             Events
-          </h1>
+          </SectionHeading>
           <p className="text-xl text-muted-foreground">
             Workshops, conferences, and webinars.
           </p>
@@ -127,7 +128,9 @@ export default async function EventsPage() {
 
       <section className="space-y-8">
         <FadeIn>
-          <h2 className="text-3xl font-bold border-b pb-4">Upcoming Events</h2>
+          <SectionHeading as="h2" className="border-b pb-4">
+            Upcoming Events
+          </SectionHeading>
         </FadeIn>
         {upcomingEvents.length > 0 ? (
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -151,9 +154,9 @@ export default async function EventsPage() {
       {pastEvents.length > 0 && (
         <section className="space-y-8">
           <FadeIn>
-            <h2 className="text-3xl font-bold border-b pb-4 text-slate-500">
+            <SectionHeading as="h2" className="border-b pb-4 text-slate-500">
               Past Events
-            </h2>
+            </SectionHeading>
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pastEvents.map((event: any) => (

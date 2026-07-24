@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { FadeIn } from "@/components/Motion";
+import { SectionHeading } from "@/components/Heading";
 
 export const metadata: Metadata = {
   title: "About CLRLC",
@@ -11,9 +12,9 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-12">
       <div className="max-w-4xl mx-auto space-y-8 text-center">
         <FadeIn>
-          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+          <SectionHeading as="h1" align="center">
             About Us
-          </h1>
+          </SectionHeading>
         </FadeIn>
         <FadeIn delay={0.2}>
           <div className="prose prose-2xl text-xl leading-normal dark:prose-invert mx-auto">

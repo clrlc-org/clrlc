@@ -6,16 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
+import { SectionHeading, Subheading } from "@/components/Heading";
 import { sendEmail } from "@/lib/sendEmail";
+import { Loader2, Mail, MessageSquare } from "lucide-react";
 import {
-  Loader2,
-  Mail,
-  Linkedin,
-  Twitter,
-  Github,
-  Slack,
-  MessageSquare,
-} from "lucide-react";
+  LinkedinIcon,
+  TwitterIcon,
+  GithubIcon,
+} from "@/components/icons/brand-icons";
 import Link from "next/link";
 
 export default function ContactPage() {
@@ -45,13 +43,13 @@ export default function ContactPage() {
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/company/center-for-low-resource-languages-and-culture/",
-      icon: Linkedin,
+      icon: LinkedinIcon,
       label: "Follow us on LinkedIn",
     },
     {
       name: "X (Twitter)",
       href: "https://x.com/clrlc_org",
-      icon: Twitter,
+      icon: TwitterIcon,
       label: "Follow us on X",
     },
     // {
@@ -63,7 +61,7 @@ export default function ContactPage() {
     {
       name: "GitHub",
       href: "https://github.com/clrlc-org",
-      icon: Github,
+      icon: GithubIcon,
       label: "Contribute on GitHub",
     },
   ];
@@ -73,9 +71,9 @@ export default function ContactPage() {
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center space-y-6">
         <FadeIn>
-          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+          <SectionHeading as="h1" align="center">
             Ways to get in touch with CLRLC
-          </h1>
+          </SectionHeading>
           <p className="text-3xl text-slate-600">
             We are always open to questions, partnerships, and collaborations.
           </p>
@@ -87,9 +85,9 @@ export default function ContactPage() {
         <FadeIn delay={0.2} className="w-full">
           <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold font-heading text-slate-900 mb-2">
+              <SectionHeading as="h2" className="mb-2">
                 Send us a message
-              </h2>
+              </SectionHeading>
               <p className="text-lg text-slate-600">
                 Submissions go directly to our admin team.
               </p>
@@ -100,7 +98,7 @@ export default function ContactPage() {
                 <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                   <MessageSquare className="w-6 h-6 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold">Message Sent!</h3>
+                <Subheading>Message Sent!</Subheading>
                 <p>
                   Thank you for reaching out. We will get back to you shortly.
                 </p>
@@ -179,9 +177,9 @@ export default function ContactPage() {
           {/* General Inquiries */}
           <FadeIn delay={0.3}>
             <div className="space-y-6">
-              <h3 className="text-xl font-bold font-heading text-slate-900 border-b pb-2">
+              <Subheading className="border-b pb-2">
                 General Enquiries Email us ;
-              </h3>
+              </Subheading>
 
               <div className="flex items-center gap-4 text-slate-600 group">
                 <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
@@ -222,9 +220,9 @@ export default function ContactPage() {
           {/* Connect With Us */}
           <FadeIn delay={0.4}>
             <div className="space-y-6">
-              <h3 className="text-xl font-bold font-heading text-slate-900 border-b pb-2">
+              <Subheading className="border-b pb-2">
                 Connect With Us
-              </h3>
+              </Subheading>
               <StaggerContainer className="grid gap-4">
                 {contactLinks.map((link) => (
                   <Link

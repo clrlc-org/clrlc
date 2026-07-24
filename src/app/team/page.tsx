@@ -4,6 +4,7 @@ import { MEMBERS_QUERY } from "@/sanity/lib/queries";
 
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { TeamMemberCard } from "@/components/TeamMemberCard";
+import { SectionHeading } from "@/components/Heading";
 
 export const metadata: Metadata = {
   title: "Our Team - CLRLC",
@@ -26,9 +27,9 @@ export default async function TeamPage() {
     <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-12">
       <div className="text-center space-y-4">
         <FadeIn>
-          <h1 className="text-4xl lg:text-5xl font-bold font-heading text-primary">
+          <SectionHeading as="h1" align="center">
             Our Team
-          </h1>
+          </SectionHeading>
           <p className="text-xl text-muted-foreground">
             Meet the researchers and leaders driving our mission.
           </p>
