@@ -54,7 +54,6 @@ const STATIC_EVENTS = [
     staticImage: "/images/event_3.png",
     speaker: null,
     speakerRole: null,
-    // No recording exists for this event, only a link to more details/description
     ctaLabel: "Read More",
   },
 ];
@@ -101,7 +100,13 @@ function EventRow({ event, isPast = false }: { event: any; isPast?: boolean }) {
   const typeColor =
     TYPE_COLOR[event.type] ?? "bg-white text-slate-600 border-slate-200";
 
-  const ctaLabel = event.ctaLabel ?? (isPast ? "Watch Recording" : "Register / Details");
+  const isRecordingLink =
+    typeof event.link === "string" &&
+    (event.link.includes("youtube.com") || event.link.includes("youtu.be"));
+
+  const ctaLabel =
+    event.ctaLabel ??
+    (isPast ? (isRecordingLink ? "Watch Recording" : "Read More") : "Register / Details");
 
   return (
     <article
@@ -206,6 +211,7 @@ function EventRow({ event, isPast = false }: { event: any; isPast?: boolean }) {
 
 
 export default async function EventsPage() {
+  // Fetch from Sanity
   let sanityEvents: any[] = [];
   try {
     sanityEvents = await client.fetch(EVENTS_QUERY);
@@ -213,6 +219,7 @@ export default async function EventsPage() {
     console.error("Sanity fetch error:", error);
   }
 
+  // Merge: Sanity events take priority; if Sanity is empty, use static events
   const allEvents: any[] =
     sanityEvents.length > 0 ? sanityEvents : STATIC_EVENTS;
 
