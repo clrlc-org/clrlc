@@ -153,7 +153,6 @@ function EventRow({ event, isPast = false }: { event: any; isPast?: boolean }) {
 
 
 export default async function EventsPage() {
-  // Fetch from Sanity
   let sanityEvents: any[] = [];
   try {
     sanityEvents = await client.fetch(EVENTS_QUERY);
@@ -221,7 +220,6 @@ export default async function EventsPage() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────────────── */}
       {/* FILTER BAR */}
       {/* ──────────────────────────────────────────────────────────────────── */}
       <div className="sticky top-[60px] z-20 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
