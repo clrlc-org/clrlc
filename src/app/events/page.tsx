@@ -15,49 +15,6 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-const STATIC_EVENTS = [
-  {
-    _id: "static-1",
-    title: "Research Skills for Emerging Researchers: From Ideas to publication",
-    date: "2026-07-03T14:00:00.000Z",
-    location: "Online (Zoom)",
-    type: "webinar",
-    description:
-      "A live webinar covering essential research skills for emerging researchers in low-resource language and AI fields. Led by PhD Researcher Opeyemi Osakuade from the University of Edinburgh.",
-    link: "https://youtu.be/pDIeFJNeCkc?si=KJ04jLZhL4W0MJGA",
-    staticImage: "/images/event_1.png",
-    speaker: "Opeyemi Osakuade",
-    speakerRole: "PhD Researcher, University of Edinburgh & Advisor at CLRLC",
-  },
-  {
-    _id: "static-2",
-    title: "Culturally Aware AI Systems for Low-Resource Languages",
-    date: "2026-05-08T20:00:00.000Z",
-    location: "Online (Zoom)",
-    type: "webinar",
-    description:
-      "Building Inclusive Language Technology — An online webinar exploring multilingual-first language modeling and culturally aware AI systems. Speaker: Alejandro Rodriguez Salamanca, Senior Research Engineer at Cohere Labs.",
-    link: "https://youtu.be/eas_73swCjc?si=M9CfXNtcI6xwyFR4",
-    staticImage: "/images/event_2.png",
-    speaker: "Alejandro Rodriguez Salamanca",
-    speakerRole: "Senior Research Engineer, Cohere Labs",
-  },
-  {
-    _id: "static-3",
-    title: "CLRLC-LLMs Workshop @ NeurIPS 2025",
-    date: "2025-12-01T09:00:00.000Z",
-    location: "Hilton Mexico City Reforma, Mexico City, Mexico",
-    type: "workshop",
-    description:
-      "Centering Low-Resource Languages and Cultures in the Age of Large Language Models — a full-day workshop co-located with NeurIPS 2025, featuring invited talks, paper presentations, and panel discussions.",
-    link: "https://clrlcllms.github.io/CLRLCLLMs-workshop.github.io-NeurIPS-2025/",
-    staticImage: "/images/event_3.png",
-    speaker: null,
-    speakerRole: null,
-    ctaLabel: "Read More",
-  },
-];
-
 
 const TYPE_LABEL: Record<string, string> = {
   webinar: "Webinar",
@@ -93,8 +50,8 @@ function formatTime(dateStr: string) {
 
 function EventRow({ event, isPast = false }: { event: any; isPast?: boolean }) {
   const imgSrc = event.image
-    ? urlFor(event.image).width(600).height(420).url()
-    : event.staticImage || null;
+    ? urlFor(event.image).width(800).url()
+    : null;
 
   const typeLabel = TYPE_LABEL[event.type] ?? event.type;
   const typeColor =
@@ -127,8 +84,6 @@ function EventRow({ event, isPast = false }: { event: any; isPast?: boolean }) {
             <span className="text-slate-400 text-sm">No Image</span>
           </div>
         )}
-        {/* Overlay gradient for image–content blend */}
-        <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-r from-transparent to-white hidden md:block" />
       </div>
 
       {/* Content */}
@@ -148,19 +103,6 @@ function EventRow({ event, isPast = false }: { event: any; isPast?: boolean }) {
           <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-snug group-hover:text-primary transition-colors">
             {event.title}
           </h3>
-
-          {/* Speaker if available */}
-          {event.speaker && (
-            <p className="text-sm font-medium text-slate-700">
-              {event.speaker}
-              {event.speakerRole && (
-                <span className="text-slate-500 font-normal">
-                  {" "}
-                  — {event.speakerRole}
-                </span>
-              )}
-            </p>
-          )}
 
           {/* Description */}
           {event.description && (
@@ -219,9 +161,7 @@ export default async function EventsPage() {
     console.error("Sanity fetch error:", error);
   }
 
-  // Merge: Sanity events take priority; if Sanity is empty, use static events
-  const allEvents: any[] =
-    sanityEvents.length > 0 ? sanityEvents : STATIC_EVENTS;
+  const allEvents: any[] = sanityEvents;
 
   const now = new Date();
   const upcomingEvents = allEvents
