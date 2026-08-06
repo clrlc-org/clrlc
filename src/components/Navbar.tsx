@@ -38,11 +38,8 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: "What We Do",
-    items: [
-      { name: "Programs & Initiatives", href: "/programs" },
-      { name: "Events", href: "/events" },
-    ],
+    name: "Events",
+    href: "/events",
   },
   {
     name: "Research",

@@ -136,10 +136,10 @@ export default function PartnersPage() {
         <div className="container mx-auto px-4 md:px-6 max-w-4xl">
           <div className="bg-primary rounded-3xl p-8 md:p-12 text-center text-white space-y-6 shadow-xl">
             <Handshake className="h-12 w-12 mx-auto text-primary-foreground/80 mb-4" />
-            <SectionHeading as="h2" invert align="center">
+            <SectionHeading as="h2" align="center">
               Interested in Collaborating?
             </SectionHeading>
-            <p className="text-2xl md:text-3xl text-primary-foreground/90 max-w-2xl mx-auto">
+            <p className="text-2xl md:text-3xl text-slate-600 max-w-2xl mx-auto">
               If you are interested in sponsoring a project, supporting our
               work, or exploring a partnership, we would be delighted to hear
               from you.

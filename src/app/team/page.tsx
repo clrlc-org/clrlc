@@ -30,9 +30,6 @@ export default async function TeamPage() {
           <SectionHeading as="h1" align="center">
             Our Team
           </SectionHeading>
-          <p className="text-xl text-muted-foreground">
-            Meet the researchers and leaders driving our mission.
-          </p>
         </FadeIn>
       </div>
 

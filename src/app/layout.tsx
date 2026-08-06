@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Nunito, Montserrat } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-const nunito = Nunito({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-nunito",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  weight: ["600", "700", "800"],
+  variable: "--font-fraunces",
   display: "swap",
 });
 
@@ -76,7 +77,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${nunito.variable} ${montserrat.variable} h-full`}
+      className={`${inter.variable} ${fraunces.variable} h-full`}
     >
       <body className="flex min-h-full flex-col font-sans antialiased text-foreground bg-background">
         <Navbar />

@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 interface SectionHeadingProps {
   children: React.ReactNode;
   as?: "h1" | "h2";
-  invert?: boolean;
   align?: "left" | "center";
   className?: string;
 }
@@ -11,7 +10,6 @@ interface SectionHeadingProps {
 export function SectionHeading({
   children,
   as: Tag = "h2",
-  invert = false,
   align = "left",
   className,
 }: SectionHeadingProps) {
@@ -20,9 +18,8 @@ export function SectionHeading({
   return (
     <Tag
       className={cn(
-        "font-heading font-extrabold uppercase tracking-wide",
+        "font-heading font-extrabold uppercase tracking-wide text-slate-900",
         sizeClasses,
-        invert ? "text-white" : "text-primary",
         align === "center" && "text-center",
         className,
       )}
@@ -40,7 +37,7 @@ interface SubheadingProps {
 
 export function Subheading({ children, as: Tag = "h3", className }: SubheadingProps) {
   return (
-    <Tag className={cn("font-heading font-bold text-2xl text-primary", className)}>
+    <Tag className={cn("font-heading font-bold text-2xl text-slate-900", className)}>
       {children}
     </Tag>
   );
