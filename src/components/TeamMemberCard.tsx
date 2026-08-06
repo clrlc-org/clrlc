@@ -122,7 +122,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
               </AvatarFallback>
             </Avatar>
             <div className="space-y-1 text-left">
-              <DialogTitle className="text-3xl font-bold font-heading text-primary">
+              <DialogTitle className="text-3xl font-bold font-heading text-slate-900">
                 {member.name}
               </DialogTitle>
               <div className="text-xl font-medium text-muted-foreground">

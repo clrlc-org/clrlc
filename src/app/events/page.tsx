@@ -63,7 +63,7 @@ function EventCard({
             )}
           </div>
         </div>
-        <CardTitle className="line-clamp-2 leading-tight text-2xl font-heading font-bold text-primary">
+        <CardTitle className="line-clamp-2 leading-tight text-2xl font-heading font-bold text-slate-900">
           {event.title}
         </CardTitle>
       </CardHeader>

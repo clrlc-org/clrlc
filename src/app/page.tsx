@@ -48,7 +48,7 @@ export default async function Home() {
             <FadeIn delay={0.2}>
               <SectionHeading as="h1" align="center">
                 Every Voice Deserves <br />
-                <span className="text-[#4b6995]">to be Heard</span>
+                <span className="text-primary">to be Heard</span>
               </SectionHeading>
             </FadeIn>
 
@@ -153,7 +153,7 @@ export default async function Home() {
       </section>
 
       {/* --- STATS / IMPACT SECTION --- */}
-      <section className="py-24 bg-primary text-white overflow-hidden relative">
+      <section className="py-14 lg:py-20 bg-primary text-white overflow-hidden relative">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary to-slate-800 opacity-50"></div>
 
@@ -161,10 +161,10 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeIn direction="right">
               <div className="space-y-6">
-                <SectionHeading as="h2" invert>
+                <SectionHeading as="h2">
                   Global Impact
                 </SectionHeading>
-                <p className="text-xl text-primary-foreground/80 leading-relaxed">
+                <p className="text-xl text-white leading-relaxed">
                   We are building a future where AI speaks every language. Our
                   work spans continents, bringing together diverse voices to
                   solve complex technical challenges.
@@ -199,7 +199,7 @@ export default async function Home() {
               </FadeIn>
               <FadeIn delay={0.3}>
                 <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 text-center">
-                  <div className="text-4xl font-bold mb-2">20+</div>
+                  <div className="text-4xl font-bold mb-2">2+</div>
                   <div className="text-sm text-primary-foreground/80 font-medium tracking-wide">
                     PROJECTS
                   </div>

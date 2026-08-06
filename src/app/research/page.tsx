@@ -14,51 +14,53 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-const markAnimClass: Record<number, string> = {
+const floatAnimClass: Record<number, string> = {
   1: "[animation-name:research-float-1]",
   2: "[animation-name:research-float-2]",
   3: "[animation-name:research-float-3]",
 };
 
 const floatingLanguages = [
-  { name: "Yorùbá", top: "8%", left: "18%", duration: "12s", delay: "-2s", size: "text-sm sm:text-base", anim: 2, color: "text-white" },
-  { name: "Hausa", top: "14%", left: "78%", duration: "14s", delay: "-6s", size: "text-base sm:text-lg", anim: 3, color: "text-white" },
-  { name: "Igbo", top: "26%", left: "6%", duration: "10s", delay: "-4s", size: "text-sm", anim: 1, color: "text-white/80" },
-  { name: "Swahili", top: "22%", left: "88%", duration: "13s", delay: "-8s", size: "text-base sm:text-lg", anim: 2, color: "text-white" },
-  { name: "Amharic", top: "46%", left: "4%", duration: "11s", delay: "-1s", size: "text-sm", anim: 1, color: "text-white/80" },
-  { name: "Zulu", top: "40%", left: "94%", duration: "15s", delay: "-9s", size: "text-base sm:text-lg", anim: 3, color: "text-white" },
-  { name: "Twi", top: "68%", left: "10%", duration: "9s", delay: "-3s", size: "text-sm", anim: 1, color: "text-white/80" },
-  { name: "Wolof", top: "74%", left: "86%", duration: "12s", delay: "-7s", size: "text-base sm:text-lg", anim: 2, color: "text-white" },
-  { name: "Shona", top: "86%", left: "26%", duration: "14s", delay: "-5s", size: "text-sm sm:text-base", anim: 2, color: "text-white" },
-  { name: "Somali", top: "90%", left: "62%", duration: "10s", delay: "-10s", size: "text-sm", anim: 1, color: "text-white/80" },
-  { name: "Oromo", top: "10%", left: "48%", duration: "13s", delay: "-11s", size: "text-base sm:text-lg", anim: 3, color: "text-white" },
-  { name: "Xhosa", top: "90%", left: "42%", duration: "11s", delay: "-4.5s", size: "text-sm", anim: 1, color: "text-white/80" },
-  { name: "Quechua", top: "56%", left: "8%", duration: "15s", delay: "-6.5s", size: "text-sm sm:text-base", anim: 2, color: "text-teal-300/80" },
-  { name: "Tigrinya", top: "60%", left: "92%", duration: "9s", delay: "-2.5s", size: "text-sm", anim: 1, color: "text-teal-300/80" },
-  { name: "Nahuatl", top: "4%", left: "62%", duration: "12.5s", delay: "-8.5s", size: "text-sm sm:text-base", anim: 2, color: "text-purple-300/70" },
-  { name: "Māori", top: "94%", left: "10%", duration: "13.5s", delay: "-3.5s", size: "text-sm", anim: 1, color: "text-purple-300/70" },
+  { name: "Yoruba", top: "6%", left: "10%", duration: "12s", delay: "-2s", size: "text-sm sm:text-base", anim: 2, color: "text-white" },
+  { name: "Hausa", top: "5%", left: "32%", duration: "14s", delay: "-6s", size: "text-base sm:text-lg", anim: 3, color: "text-white" },
+  { name: "Igbo", top: "8%", left: "55%", duration: "10s", delay: "-4s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Swahili", top: "4%", left: "78%", duration: "13s", delay: "-8s", size: "text-base sm:text-lg", anim: 2, color: "text-white" },
+  { name: "Amharic", top: "10%", left: "95%", duration: "11s", delay: "-1s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Zulu", top: "22%", left: "20%", duration: "15s", delay: "-9s", size: "text-base sm:text-lg", anim: 3, color: "text-white" },
+  { name: "Twi", top: "20%", left: "45%", duration: "9s", delay: "-3s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Wolof", top: "25%", left: "68%", duration: "12s", delay: "-7s", size: "text-lg sm:text-xl", anim: 2, color: "text-white" },
+  { name: "Shona", top: "18%", left: "88%", duration: "14s", delay: "-5s", size: "text-sm sm:text-base", anim: 2, color: "text-white" },
+  { name: "Somali", top: "30%", left: "5%", duration: "10s", delay: "-10s", size: "text-sm", anim: 1, color: "text-teal-300/80" },
+  { name: "Oromo", top: "38%", left: "30%", duration: "13s", delay: "-11s", size: "text-base sm:text-lg", anim: 3, color: "text-white" },
+  { name: "Xhosa", top: "42%", left: "55%", duration: "11s", delay: "-4.5s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Quechua", top: "35%", left: "80%", duration: "15s", delay: "-6.5s", size: "text-sm sm:text-base", anim: 2, color: "text-teal-300/80" },
+  { name: "Guarani", top: "48%", left: "12%", duration: "9s", delay: "-2.5s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Nahuatl", top: "55%", left: "40%", duration: "12.5s", delay: "-8.5s", size: "text-lg sm:text-xl", anim: 3, color: "text-white" },
+  { name: "Maori", top: "50%", left: "65%", duration: "13.5s", delay: "-3.5s", size: "text-sm sm:text-base", anim: 2, color: "text-white" },
+  { name: "Cherokee", top: "58%", left: "90%", duration: "11s", delay: "-9.5s", size: "text-sm", anim: 1, color: "text-purple-300/70" },
+  { name: "Tagalog", top: "65%", left: "22%", duration: "14s", delay: "-1.5s", size: "text-base sm:text-lg", anim: 2, color: "text-white" },
+  { name: "Uyghur", top: "70%", left: "48%", duration: "10s", delay: "-6s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Tibetan", top: "68%", left: "72%", duration: "15s", delay: "-12s", size: "text-sm sm:text-base", anim: 2, color: "text-purple-300/70" },
+  { name: "Maithili", top: "75%", left: "8%", duration: "9.5s", delay: "-4s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Sinhala", top: "80%", left: "33%", duration: "12s", delay: "-7.5s", size: "text-base sm:text-lg", anim: 3, color: "text-white" },
+  { name: "Khmer", top: "85%", left: "58%", duration: "13s", delay: "-10.5s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Lao", top: "78%", left: "82%", duration: "11.5s", delay: "-2.8s", size: "text-sm sm:text-base", anim: 2, color: "text-white" },
+  { name: "Fula", top: "90%", left: "15%", duration: "14.5s", delay: "-5.5s", size: "text-sm", anim: 1, color: "text-teal-300/80" },
+  { name: "Bambara", top: "92%", left: "42%", duration: "10.5s", delay: "-8s", size: "text-base sm:text-lg", anim: 2, color: "text-white" },
+  { name: "Tigrinya", top: "88%", left: "65%", duration: "13.5s", delay: "-3s", size: "text-sm", anim: 1, color: "text-white/80" },
+  { name: "Kinyarwanda", top: "95%", left: "88%", duration: "12s", delay: "-11.5s", size: "text-sm sm:text-base", anim: 3, color: "text-white" },
 ];
 
 const focusAreas = [
   {
     name: "Data Curation",
     description:
-      "We curate high-quality speech and text datasets for African and other low-resource languages, supporting research, model development, benchmarking, and inclusive language technologies.",
+      "We curate high-quality speech and text datasets for African and other low-resource languages, powering NLP tasks such as machine translation, ASR, and speech-to-speech translation, with expert annotation for linguistic and cultural accuracy.",
   },
   {
     name: "Language Models & Resources",
     description:
-      "We develop language models, benchmarks, and open resources that bring underrepresented languages into modern AI systems.",
-  },
-  {
-    name: "Training & Mentorship",
-    description:
-      "We build capacity through structured training programmes and mentorship, supporting students, researchers, and practitioners as they grow in NLP and AI.",
-  },
-  {
-    name: "Webinars, Workshops & Events",
-    description:
-      "We host webinars, workshops, and community events that connect researchers, developers, linguists, and language communities for collaboration and knowledge exchange.",
+      "We develop language models, benchmarks, and open resources that bring underrepresented languages and their cultures into modern AI systems, in collaboration with researchers and institutions worldwide.",
   },
 ];
 
@@ -74,10 +76,10 @@ export default async function ResearchPage() {
   return (
     <div>
       {/* Overview */}
-      <section className="relative overflow-hidden bg-primary pt-32 pb-20 lg:pt-40 lg:pb-28">
+      <section className="relative overflow-hidden bg-primary pt-28 pb-10 lg:pt-36 lg:pb-14">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeading as="h1" invert className="mb-6 lg:mb-8">
+            <SectionHeading as="h1" className="text-slate-900 mb-6 lg:mb-8">
               Advancing AI:
               <br />
               For Every Language
@@ -87,10 +89,6 @@ export default async function ResearchPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <FadeIn>
               <style>{`
-                @keyframes research-mark-rotate {
-                  from { transform: rotate(0deg); }
-                  to { transform: rotate(360deg); }
-                }
                 @keyframes research-float-1 {
                   0%, 100% { opacity: 0; transform: translateY(0); }
                   15%, 50% { opacity: 0.35; transform: translateY(-6px); }
@@ -111,7 +109,7 @@ export default async function ResearchPage() {
                 {floatingLanguages.map((item) => (
                   <span
                     key={item.name}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-heading font-semibold pointer-events-none motion-reduce:[animation-name:none] ${markAnimClass[item.anim]} ${item.size} ${item.color}`}
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-heading font-semibold pointer-events-none motion-reduce:[animation-name:none] ${floatAnimClass[item.anim]} ${item.size} ${item.color}`}
                     style={{
                       top: item.top,
                       left: item.left,
@@ -124,77 +122,11 @@ export default async function ResearchPage() {
                     {item.name}
                   </span>
                 ))}
-
-                <svg
-                  viewBox="0 0 100 100"
-                  aria-hidden="true"
-                  className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 origin-center [animation:research-mark-rotate_36s_linear_infinite] motion-reduce:[animation:none] sm:h-28 sm:w-28 lg:h-36 lg:w-36"
-                >
-                  <defs>
-                    <linearGradient
-                      id="research-mark-gradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#14b8a6" />
-                      <stop offset="50%" stopColor="#1e3a8a" />
-                      <stop offset="100%" stopColor="#7c3aed" />
-                    </linearGradient>
-                  </defs>
-                  <circle
-                    cx="50"
-                    cy="42"
-                    r="30"
-                    fill="none"
-                    stroke="url(#research-mark-gradient)"
-                    strokeWidth="3"
-                  />
-                  <ellipse
-                    cx="50"
-                    cy="42"
-                    rx="13"
-                    ry="30"
-                    fill="none"
-                    stroke="url(#research-mark-gradient)"
-                    strokeWidth="2"
-                    opacity="0.85"
-                  />
-                  <line
-                    x1="20"
-                    y1="42"
-                    x2="80"
-                    y2="42"
-                    stroke="url(#research-mark-gradient)"
-                    strokeWidth="2"
-                    opacity="0.85"
-                  />
-                  <path
-                    d="M24 28 Q50 20 76 28"
-                    fill="none"
-                    stroke="url(#research-mark-gradient)"
-                    strokeWidth="2"
-                    opacity="0.6"
-                  />
-                  <path
-                    d="M24 56 Q50 64 76 56"
-                    fill="none"
-                    stroke="url(#research-mark-gradient)"
-                    strokeWidth="2"
-                    opacity="0.6"
-                  />
-                  <path
-                    d="M32 66 L22 84 L44 70 Z"
-                    fill="url(#research-mark-gradient)"
-                    opacity="0.9"
-                  />
-                </svg>
               </div>
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <p className="text-xl lg:text-2xl leading-relaxed text-white/70 max-w-3xl">
+              <p className="text-xl lg:text-2xl leading-relaxed text-white max-w-3xl">
                 Our research focuses on advancing AI for low-resource
                 languages through the development of high-quality speech and
                 text dataset. We combine interdisciplinary research with
@@ -210,12 +142,12 @@ export default async function ResearchPage() {
       <section className="bg-background py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeading as="h2" className="text-4xl sm:text-4xl lg:text-5xl mb-6 lg:mb-8">
+            <SectionHeading as="h2" className="text-4xl sm:text-4xl lg:text-5xl text-slate-900 mb-6 lg:mb-8">
               What We Focus On
             </SectionHeading>
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {focusAreas.map((area, index) => (
               <FadeIn key={area.name} delay={index * 0.1}>
                 <div className="h-full rounded-2xl border border-border bg-background p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/30">
@@ -231,10 +163,10 @@ export default async function ResearchPage() {
       </section>
 
       {/* Projects */}
-      <section className="bg-primary py-20 lg:py-28">
+      <section className="bg-primary py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeading as="h2" invert className="text-4xl sm:text-4xl lg:text-5xl mb-6 lg:mb-8">
+            <SectionHeading as="h2" className="text-4xl sm:text-4xl lg:text-5xl text-slate-900 mb-6 lg:mb-8">
               Projects
             </SectionHeading>
           </FadeIn>
@@ -246,7 +178,7 @@ export default async function ResearchPage() {
                   Dataset / Machine Translation
                 </span>
 
-                <Subheading className="mb-4">YorGe-CS Corpus</Subheading>
+                <Subheading className="mb-4 uppercase">YorGe-CS Corpus</Subheading>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">
                   A Yoruba–German code-switched machine translation corpus
                   covering five domains: Education, Food, Business,
@@ -254,9 +186,6 @@ export default async function ResearchPage() {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="inline-flex items-center rounded-full bg-white border border-border px-4 py-1.5 text-sm font-medium text-primary">
-                    2,006 Sentence Pairs
-                  </span>
                   <span className="inline-flex items-center rounded-full bg-white border border-border px-4 py-1.5 text-sm font-medium text-primary">
                     5 Domains
                   </span>
@@ -267,7 +196,7 @@ export default async function ResearchPage() {
 
             <FadeIn delay={0.1}>
               <div className="h-full flex flex-col justify-center rounded-2xl border border-border bg-background p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/30">
-                <Subheading className="mb-4">Langture</Subheading>
+                <Subheading className="mb-4 uppercase">Langture</Subheading>
                 <div>
                   <Badge>Coming Soon</Badge>
                 </div>
@@ -281,7 +210,7 @@ export default async function ResearchPage() {
       <section className="bg-background py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <SectionHeading as="h2" className="text-4xl sm:text-4xl lg:text-5xl mb-6 lg:mb-8">
+            <SectionHeading as="h2" className="text-4xl sm:text-4xl lg:text-5xl text-slate-900 mb-6 lg:mb-8">
               Publications & Papers
             </SectionHeading>
           </FadeIn>

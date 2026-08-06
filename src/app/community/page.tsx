@@ -27,7 +27,7 @@ export default function CommunityPage() {
             </p>
           </FadeIn>
           <FadeIn delay={0.4}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Button size="lg" className="rounded-full px-8 text-lg" asChild>
                 <a
                   href="https://forms.gle/SYxmHtsQjgpESMYv7"
@@ -35,6 +35,15 @@ export default function CommunityPage() {
                   rel="noreferrer"
                 >
                   Fill Membership Form
+                </a>
+              </Button>
+              <Button size="lg" className="rounded-full px-8 text-lg" asChild>
+                <a
+                  href="https://docs.google.com/forms/d/1_ZRIERK7PXB0gFoo1gQgnuCS-HvwMZlm_WepTnStkJ0/viewform"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Request to Join the CLRLC Core Team
                 </a>
               </Button>
               <Button
