@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   Card,
   CardContent,
@@ -13,18 +14,16 @@ import { LinkedinIcon, TwitterIcon } from "@/components/icons/brand-icons";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { urlFor } from "@/sanity/lib/image";
 
 interface TeamMember {
   _id: string;
   name: string;
   role: string;
-  image: any;
+  image: string; // Changed to string for local image paths
   bio: string;
   socials?: {
     platform: string;
@@ -56,7 +55,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
             <Avatar className="h-48 w-48 border-4 border-white shadow-lg">
               {member.image && (
                 <AvatarImage
-                  src={urlFor(member.image).width(400).height(400).url()}
+                  src={member.image}
                   alt={member.name}
                   className="object-cover"
                 />
@@ -113,7 +112,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
             <Avatar className="h-32 w-32 sm:h-40 sm:w-40">
               {member.image && (
                 <AvatarImage
-                  src={urlFor(member.image).width(400).height(400).url()}
+                  src={member.image}
                   alt={member.name}
                 />
               )}
