@@ -68,7 +68,7 @@ const TeamMemberCard = ({ member }) => {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
-            <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center mb-6 border-b border-gray-100 pb-6">
+            <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center mb-6 border-b border-gray-100 pb-6 text-left">
               <div className="h-28 w-28 sm:h-36 sm:w-36 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center">
                 {member.image ? (
                   <img src={member.image} alt={member.name} className="object-cover h-full w-full" />
@@ -76,7 +76,7 @@ const TeamMemberCard = ({ member }) => {
                   <span className="text-4xl text-[#4DB2C8] font-bold">{getInitials(member.name)}</span>
                 )}
               </div>
-              <div className="space-y-2 text-left">
+              <div className="space-y-2">
                 <h2 className="text-3xl font-bold text-gray-900">{member.name}</h2>
                 <div className="text-lg font-medium text-[#1B7586]">{member.role}</div>
                 {member.socials && (
@@ -90,7 +90,7 @@ const TeamMemberCard = ({ member }) => {
                 )}
               </div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 text-left">
               <p className="text-[17px] text-gray-600 font-light leading-relaxed whitespace-pre-line">
                 {member.bio}
               </p>

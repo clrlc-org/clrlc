@@ -83,33 +83,37 @@ const Home = () => {
          </FadeIn>
       </div>
 
-      {/* 3. Global Impact Section */}
-      <div className="bg-white py-24 border-y border-gray-100">
+      {/* 3. Global Impact Section - UPDATED TO MATCH SCREENSHOT */}
+      <div className="bg-gradient-to-r from-[#176170] to-[#1c788a] py-24 shadow-inner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             
-            <div className="lg:w-1/2 space-y-6">
+            {/* Left Content Area */}
+            <div className="lg:w-1/2 space-y-5">
               <FadeIn direction="right" delay={0.1}>
-                <h2 className="text-[#1B7586] font-bold tracking-widest uppercase text-sm mb-2">Global Impact</h2>
-                <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                  We are building a future where AI speaks every language.
-                </h3>
+                <h2 className="text-[#0a2329] font-extrabold tracking-wider uppercase text-3xl md:text-4xl font-serif mb-6">
+                  GLOBAL IMPACT
+                </h2>
               </FadeIn>
               <FadeIn direction="right" delay={0.2}>
-                <p className="text-xl text-gray-500 font-light leading-relaxed">
+                <p className="text-lg md:text-xl text-white font-medium leading-relaxed">
+                  We are building a future where AI speaks every language.
+                </p>
+                <p className="text-lg md:text-xl text-white font-medium leading-relaxed">
                   Our work spans continents, bringing together diverse voices to solve complex technical challenges.
                 </p>
               </FadeIn>
               <FadeIn direction="right" delay={0.3}>
                 <div className="pt-4">
-                  <Link to="/team" className="inline-block bg-white border-2 border-[#1B7586] text-[#1B7586] hover:bg-[#1B7586] hover:text-white px-8 py-3.5 rounded-full font-semibold transition-all">
+                  <Link to="/team" className="inline-block bg-white text-gray-700 hover:text-[#1B7586] hover:bg-gray-50 px-8 py-3 rounded-full font-medium transition-all shadow-md">
                     Meet the Team
                   </Link>
                 </div>
               </FadeIn>
             </div>
 
-            <div className="lg:w-1/2 w-full grid grid-cols-2 gap-6">
+            {/* Right Stats Grid Area */}
+            <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4 md:gap-6">
               {[
                 { number: "5+", label: "CONTINENTS" },
                 { number: "500+", label: "MEMBERS" },
@@ -117,9 +121,9 @@ const Home = () => {
                 { number: "10+", label: "LANGUAGES" }
               ].map((stat, idx) => (
                 <FadeIn key={idx} direction="up" delay={0.2 + (idx * 0.1)}>
-                  <div className="bg-[#F7FAFC] border border-gray-100 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow duration-300">
-                    <div className="text-4xl md:text-5xl font-black text-[#1B7586] mb-2">{stat.number}</div>
-                    <div className="text-sm font-semibold text-gray-500 tracking-widest uppercase">{stat.label}</div>
+                  <div className="bg-white/10 border border-white/10 rounded-2xl p-8 md:p-10 text-center hover:bg-white/20 transition-colors duration-300 backdrop-blur-md shadow-lg h-full flex flex-col justify-center">
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.number}</div>
+                    <div className="text-xs md:text-sm font-semibold text-white/90 tracking-widest uppercase">{stat.label}</div>
                   </div>
                 </FadeIn>
               ))}
@@ -129,15 +133,15 @@ const Home = () => {
         </div>
       </div>
 
-      {/* 4. Latest Updates Section (Blank state pending team approval) */}
+      {/* 4. Global Engagements Placeholders */}
       <div className="py-24 bg-[#F7FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <FadeIn direction="up">
             <div className="flex justify-between items-end mb-12 border-b border-gray-200 pb-6">
               <div>
-                <h2 className="text-[#1B7586] font-bold tracking-widest uppercase text-sm mb-2">News & Events</h2>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900">Latest Updates</h3>
+                <h2 className="text-[#1B7586] font-bold tracking-widest uppercase text-sm mb-2">Global Engagements</h2>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900">Recent Outings</h3>
               </div>
               <Link to="/events" className="hidden sm:inline-flex items-center gap-2 text-[#4DB2C8] hover:text-[#1B7586] font-semibold transition-colors">
                 View All <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
@@ -145,14 +149,27 @@ const Home = () => {
             </div>
           </FadeIn>
 
-          <FadeIn direction="up" delay={0.2}>
-            {/* Developer placeholder for the team */}
-            <div className="min-h-[250px] w-full flex items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl bg-gray-50/50">
-              <p className="text-gray-500 font-medium tracking-wide">
-                Content pending team approval...
-              </p>
-            </div>
-          </FadeIn>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Indaba Placeholder */}
+            <FadeIn direction="up" delay={0.2}>
+              <div className="min-h-[220px] w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl bg-gray-50/50 p-6 text-center hover:bg-gray-100 transition-colors">
+                <h4 className="text-2xl font-bold text-gray-800 mb-3">Deep Learning Indaba</h4>
+                <p className="text-gray-500 font-medium tracking-wide">
+                  [ Details & Photos Pending Meeting ]
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* NeurIPS Placeholder */}
+            <FadeIn direction="up" delay={0.3}>
+              <div className="min-h-[220px] w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl bg-gray-50/50 p-6 text-center hover:bg-gray-100 transition-colors">
+                <h4 className="text-2xl font-bold text-gray-800 mb-3">NeurIPS Workshop</h4>
+                <p className="text-gray-500 font-medium tracking-wide">
+                  [ Details & Photos Pending Meeting ]
+                </p>
+              </div>
+            </FadeIn>
+          </div>
 
         </div>
       </div>

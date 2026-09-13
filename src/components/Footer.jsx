@@ -40,13 +40,19 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-[#1B7586] text-white">
+    <footer className="border-t bg-[#1B7586] text-white font-sans">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           
           <div className="space-y-4 lg:col-span-2">
-            <Link to="/" className="block relative h-12 w-40 mb-6">
-              <img src="/logo.jpg" alt="CLRLC Logo" className="object-contain h-full w-full brightness-0 invert" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
+            {/* CSS Magic Trick applied directly to the image */}
+            <Link to="/" className="inline-block relative h-14 w-auto mb-6 hover:opacity-80 transition-opacity">
+              <img 
+                src="/logo.jpg" 
+                alt="CLRLC Logo" 
+                className="object-contain h-full w-full"
+                style={{ filter: 'invert(1) grayscale(1) brightness(200%)', mixBlendMode: 'screen' }} 
+              />
             </Link>
             <p className="text-lg text-gray-100 max-w-sm leading-relaxed font-light">
               Building inclusive language technologies for low-resource languages and cultures.
