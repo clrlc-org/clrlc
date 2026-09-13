@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+/*import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Database, BrainCircuit, GraduationCap, Users } from "lucide-react";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
@@ -85,3 +85,4 @@ export default function MissionPage() {
     </div>
   );
 }
+*/
