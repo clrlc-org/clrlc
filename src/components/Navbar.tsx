@@ -31,11 +31,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     name: "About",
-    items: [
-      { name: "About CLRLC", href: "/about" },
-      { name: "Mission", href: "/mission" },
-      { name: "Team", href: "/team" },
-    ],
+    href: "/about", // <-- Cleaned up to be a direct link!
   },
   {
     name: "Events",
@@ -131,7 +127,7 @@ export function Navbar() {
 
             return (
               <Link
-                key={item.href}
+                key={item.name}
                 href={item.href!}
                 className={cn(
                   "text-lg font-medium transition-colors hover:text-primary relative group py-2",

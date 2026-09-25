@@ -41,7 +41,7 @@ export function FadeIn({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: false, margin: "-50px" }}
       variants={variants}
       className={cn(className)}
     >
@@ -65,7 +65,7 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: false, margin: "-50px" }}
       variants={{
         visible: { transition: { staggerChildren, delayChildren: delay } },
       }}
@@ -89,7 +89,7 @@ export function ScaleIn({
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: false }}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className={cn(className)}
     >
