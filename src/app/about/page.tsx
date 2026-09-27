@@ -59,6 +59,17 @@ export default function AboutPage() {
         { platform: "linkedin", url: "https://www.linkedin.com/in/anushadixit1901/" },
         { platform: "twitter", url: "https://x.com/dixit_anus46806/" }
       ]
+    },
+   {
+      _id: "6",
+      name: "Olamide Adekeye",
+      role: "Engineering Lead",
+      image: "/team/Olamide Adekeye.jpg", 
+      bio: "Olamide Adekeye is a software engineer and technology educator specializing in full-stack web applications, IoT hardware systems, and artificial intelligence. Through his postgraduate research in Computer Science at the University of Lagos, he focuses on advancing Vision-Language-Action models. As the Engineering Lead at CLRLC, Olamide architects and maintains the platform's digital infrastructure to support inclusive AI research and global community engagement.",
+      socials: [
+        { platform: "linkedin", url: "https://www.linkedin.com/in/olamide-adekeye-18772a213" },
+        { platform: "twitter", url: "https://x.com/Olamide_junior_" }
+      ]
     }
   ];
 
@@ -76,34 +87,34 @@ export default function AboutPage() {
           </FadeIn>
           
           <FadeIn delay={0.2}>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-black leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight mb-6">
               We Build <span className="text-[#1B7586]">Together.</span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.3}>
             <div className="flex flex-wrap justify-center items-center gap-4 text-sm md:text-base font-bold text-black uppercase tracking-widest mb-16">
-              <span>Language</span> <span className="text-gray-400 hidden sm:block">•</span>
-              <span>Research</span> <span className="text-gray-400 hidden sm:block">•</span>
-              <span>Learning</span> <span className="text-gray-400 hidden sm:block">•</span>
+              <span>Language</span> <span className="text-black hidden sm:block">•</span>
+              <span>Research</span> <span className="text-black hidden sm:block">•</span>
+              <span>Learning</span> <span className="text-black hidden sm:block">•</span>
               <span>Diversity</span>
             </div>
           </FadeIn>
         </div>
 
-        <div className="space-y-8 text-lg md:text-[19px] text-black font-normal leading-relaxed max-w-6xl mx-auto text-left">
+        <div className="space-y-8 text-lg text-black font-normal leading-relaxed max-w-6xl mx-auto text-left">
           <FadeIn delay={0.4}>
-            <p className="text-xl md:text-2xl font-serif font-normal text-black mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl font-serif font-normal text-black mb-8 leading-relaxed">
               Center for Low-Resource Languages and Cultures (CLRLC) is a language research AI organisation dedicated to advancing research and innovation for low-resource languages.
             </p>
           </FadeIn>
           <FadeIn delay={0.5}>
-            <p>
+            <p className="text-black">
               We build inclusive speech- and text-based datasets for African and other low-resource languages, and we partner closely with the communities who speak them. From there, we create the resources, research, and knowledge that keep the languages and cultures alive in the age of AI, and make artificial intelligence more inclusive, accurate, and culturally grounded.
             </p>
           </FadeIn>
           <FadeIn delay={0.6}>
-            <p>
+            <p className="text-black">
               We work at the meeting point of language and culture, moving beyond language data to preserve the knowledge and worldviews embedded in each language. Our goal is to ensure that tomorrow's AI does not simply translate words, but understands the people, contexts, and cultures behind them.
             </p>
           </FadeIn>
@@ -118,7 +129,7 @@ export default function AboutPage() {
               <div className="w-14 h-14 bg-[#1B7586]/10 rounded-2xl flex items-center justify-center mb-6 text-[#1B7586]">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"></path></svg>
               </div>
-              <h2 className="text-3xl font-serif font-bold text-black mb-4">Our Mission</h2>
+              <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">Our Mission</h2>
               <p className="text-lg text-black font-normal leading-relaxed">
                 Our mission is to solve one problem: building inclusive AI that speaks African and other low-resource languages. We bring together researchers, linguists, technologists, and communities to create the high-quality datasets and models that make it possible.
               </p>
@@ -130,7 +141,7 @@ export default function AboutPage() {
               <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6 text-white backdrop-blur-sm">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
               </div>
-              <h2 className="text-3xl font-serif font-bold mb-4">Our Vision</h2>
+              <h2 className="text-2xl md:text-3xl font-serif font-bold mb-4">Our Vision</h2>
               <p className="text-lg text-white font-normal leading-relaxed">
                 A future where African and other low-resource languages are fully part of AI, and where the technology works for the people who speak them, from the elders who carry each language and its culture forward to the youngest generation.
               </p>
@@ -145,7 +156,7 @@ export default function AboutPage() {
           <FadeIn delay={0.1}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-[#1B7586] font-bold tracking-widest uppercase text-sm mb-2">Our Pillars</h2>
-              <h3 className="text-3xl md:text-4xl font-serif font-bold text-black mb-4">Our work runs across four connected areas.</h3>
+              <h3 className="text-2xl md:text-3xl font-serif font-bold text-black mb-4">Our work runs across four connected areas.</h3>
             </div>
           </FadeIn>
 
@@ -155,7 +166,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm text-[#4DB2C8]">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
                 </div>
-                <h4 className="text-xl font-serif font-bold text-black mb-3">Data Curation</h4>
+                <h4 className="text-lg font-serif font-bold text-black mb-3">Data Curation</h4>
                 <p className="text-black font-normal leading-relaxed flex-grow">We curate high-quality, inclusive speech and text datasets for African and other low-resource languages.</p>
               </div>
             </FadeIn>
@@ -165,7 +176,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm text-[#4DB2C8]">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 </div>
-                <h4 className="text-xl font-serif font-bold text-black mb-3">Applied AI Research</h4>
+                <h4 className="text-lg font-serif font-bold text-black mb-3">Applied AI Research</h4>
                 <p className="text-black font-normal leading-relaxed flex-grow">We build and evaluate models for translation, speech, and natural language processing in under-resourced languages.</p>
               </div>
             </FadeIn>
@@ -175,7 +186,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm text-[#4DB2C8]">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
                 </div>
-                <h4 className="text-xl font-serif font-bold text-black mb-3">Training & Mentorship</h4>
+                <h4 className="text-lg font-serif font-bold text-black mb-3">Training & Mentorship</h4>
                 <p className="text-black font-normal leading-relaxed flex-grow">We help people navigate their way into tech, guiding learners from beginner to advanced as they build inclusive technologies.</p>
               </div>
             </FadeIn>
@@ -185,7 +196,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm text-[#4DB2C8]">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 </div>
-                <h4 className="text-xl font-serif font-bold text-black mb-3">Knowledge Exchange</h4>
+                <h4 className="text-lg font-serif font-bold text-black mb-3">Knowledge Exchange</h4>
                 <p className="text-black font-normal leading-relaxed flex-grow">We connect experts, communities, and institutions through workshops, conferences, and webinars.</p>
               </div>
             </FadeIn>
@@ -199,8 +210,8 @@ export default function AboutPage() {
           <FadeIn delay={0.2}>
             <div className="max-w-3xl mb-16 border-l-4 border-[#1B7586] pl-6">
               <h2 className="text-[#1B7586] font-bold tracking-widest uppercase text-sm mb-2">Our Network</h2>
-              <h3 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4 tracking-tight">Meet the Team</h3>
-              <p className="text-xl text-gray-500 font-light leading-relaxed">
+              <h3 className="text-3xl md:text-4xl font-serif font-bold text-black mb-4 tracking-tight">Meet the Team</h3>
+              <p className="text-lg text-black font-light leading-relaxed">
                 A global network of researchers, linguists, and engineers dedicated to building inclusive language technologies.
               </p>
             </div>
