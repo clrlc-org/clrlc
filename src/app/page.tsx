@@ -17,9 +17,19 @@ import { client } from "@/sanity/lib/client";
 import { EVENTS_QUERY, RESEARCH_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
+interface ResearchArticle {
+  _id: string;
+  title: string;
+  category?: string;
+  authors?: string[];
+  description: string;
+  link?: string;
+  publishedAt?: string;
+}
+
 export default async function Home() {
   let featuredEvent = null;
-  let researchArticles = [];
+  let researchArticles: ResearchArticle[] = [];
 
   try {
     const events = await client.fetch(EVENTS_QUERY);
@@ -314,7 +324,7 @@ export default async function Home() {
             {/* Secondary Updates List */}
             <StaggerContainer className="space-y-6">
               {researchArticles.length > 0 ? (
-                researchArticles.map((article, i) => (
+                researchArticles.map((article: ResearchArticle, i) => (
                   <FadeIn key={article._id} delay={0.2 * (i + 1)}>
                     <Link href={article.link || "#"}>
                       <div className="flex gap-4 group cursor-pointer hover:bg-white p-4 rounded-xl transition-colors">
