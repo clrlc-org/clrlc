@@ -53,46 +53,48 @@ export function NewsletterForm({ variant = 'light' }: NewsletterFormProps) {
   const labelClass = isDark ? 'text-white/90' : 'text-slate-600';
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md">
-      <div className="space-y-3">
-        <div className="flex gap-3">
-          <input
-            type="email"
-            value={email}
-            onChange={handleChange}
-            placeholder="Enter your email"
-            disabled={isSubmitting}
-            className={`flex-1 px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 ${inputBgClass} ${inputBorderClass}`}
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            style={{
-              backgroundColor: '#FF6719',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#E5570F';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#FF6719';
-            }}
-            className="px-6 py-3 text-white font-semibold rounded-lg transition-all disabled:opacity-50 flex items-center gap-2 whitespace-nowrap"
-          >
-            {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
+    <div className="flex justify-center w-full">
+      <form onSubmit={handleSubmit} className="w-full max-w-[480px]">
+        <div className="space-y-3">
+          <div className="flex flex-col md:flex-row gap-3">
+            <input
+              type="email"
+              value={email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              disabled={isSubmitting}
+              className={`flex-1 px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 ${inputBgClass} ${inputBorderClass}`}
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                backgroundColor: '#FF6719',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#E5570F';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#FF6719';
+              }}
+              className="px-6 py-3 text-white font-semibold rounded-lg transition-all disabled:opacity-50 flex items-center justify-center gap-2 whitespace-nowrap md:whitespace-nowrap w-full md:w-auto"
+            >
+              {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
 
-        {error && (
-          <p className={`text-sm ${errorTextClass}`}>
-            {error}
+          {error && (
+            <p className={`text-sm text-center ${errorTextClass}`}>
+              {error}
+            </p>
+          )}
+
+          <p className={`text-sm text-center ${labelClass}`}>
+            No spam.
           </p>
-        )}
-
-        <p className={`text-sm ${labelClass}`}>
-          No spam.
-        </p>
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
   );
 }
