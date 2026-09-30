@@ -78,44 +78,30 @@ export default async function NewsletterPage() {
 
   return (
     <div className="flex flex-col min-h-screen pt-20 lg:pt-28">
-      {/* Header Section */}
-      <section className="relative py-16 lg:py-24 bg-background overflow-hidden">
-        <div className="absolute inset-0 pattern-grid opacity-30 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-
-        <div className="container mx-auto relative z-10 px-4 md:px-6">
-          <FadeIn delay={0.1}>
-            <div className="max-w-2xl mx-auto text-center">
-              <SectionHeading as="h1" className="mb-4">
-                The CLRLC Newsletter
-              </SectionHeading>
-              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
-                Research updates, dataset releases, community highlights and opportunities
-                in low-resource language technology, straight to your inbox.
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Subscribe Section */}
-      <section className="py-16 lg:py-20 bg-white border-b">
+      {/* Header Section with Newsletter CTA */}
+      <section className="py-20 lg:py-28 bg-gradient-to-br from-primary to-[#0d5f6b] text-white">
         <div className="container mx-auto px-4 md:px-6">
           <FadeIn delay={0.1}>
-            <div className="max-w-2xl mx-auto">
-              {/* Substack Embed */}
-              <div className="mb-6">
+            <div className="max-w-3xl mx-auto text-center space-y-8">
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                  Join Our Community of Language Technologists
+                </h1>
+                <p className="text-lg text-primary-foreground/90">
+                  Be part of a global movement advancing AI for every language. Get curated research,
+                  new datasets, and community stories delivered to your inbox every week.
+                </p>
+              </div>
+
+              <div>
                 <iframe
                   src="https://clrlcorg.substack.com/embed"
                   width="100%"
                   height="320"
-                  style={{ border: "none", background: "white" }}
+                  style={{ border: "none", background: "transparent" }}
                   title="CLRLC Newsletter Subscribe"
                 />
               </div>
-              <p className="text-center text-sm text-slate-500">
-                No spam. Unsubscribe anytime.
-              </p>
             </div>
           </FadeIn>
         </div>
@@ -202,35 +188,6 @@ export default async function NewsletterPage() {
           </div>
         </section>
       )}
-
-      {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-primary to-[#0d5f6b] text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <FadeIn delay={0.1}>
-            <div className="max-w-3xl mx-auto text-center space-y-8">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                  Join Our Community of Language Technologists
-                </h2>
-                <p className="text-lg text-primary-foreground/90 mb-8">
-                  Be part of a global movement advancing AI for every language. Get curated research,
-                  new datasets, and community stories delivered to your inbox every week.
-                </p>
-              </div>
-
-              <div>
-                <iframe
-                  src="https://clrlcorg.substack.com/embed"
-                  width="100%"
-                  height="320"
-                  style={{ border: "none", background: "transparent" }}
-                  title="CLRLC Newsletter Subscribe"
-                />
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
     </div>
   );
 }
