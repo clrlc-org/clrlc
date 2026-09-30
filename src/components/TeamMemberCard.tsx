@@ -30,9 +30,25 @@ interface TeamMember {
 
 interface TeamMemberCardProps {
   member: TeamMember;
+  size?: "compact" | "large";
 }
 
-export function TeamMemberCard({ member }: TeamMemberCardProps) {
+export function TeamMemberCard({ member, size = "compact" }: TeamMemberCardProps) {
+  const avatarSize = size === "large"
+    ? "h-35 w-35 sm:h-35 sm:w-35 md:h-48 md:w-48 lg:h-48 lg:w-48"
+    : "h-30 w-30 sm:h-30 sm:w-30 md:h-40 md:w-40 lg:h-40 lg:w-40";
+
+  const nameSize = size === "large"
+    ? "text-base md:text-lg"
+    : "text-sm md:text-base";
+
+  const roleSize = size === "large"
+    ? "text-sm md:text-base"
+    : "text-xs md:text-sm";
+
+  const fallbackTextSize = size === "large"
+    ? "text-3xl sm:text-3xl md:text-4xl"
+    : "text-2xl sm:text-2xl md:text-3xl";
   const SocialIcon = ({ platform }: { platform: string }) => {
     if (platform.toLowerCase().includes("linkedin"))
       return <LinkedinIcon className="h-3.5 w-3.5" />;
@@ -58,7 +74,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
     <Dialog>
       <DialogTrigger asChild>
         <button className="group flex flex-col items-center gap-4 cursor-pointer text-center hover:opacity-80 transition-opacity w-full">
-          <Avatar className="h-30 w-30 sm:h-30 sm:w-30 md:h-40 md:w-40 lg:h-40 lg:w-40 rounded-full flex-shrink-0">
+          <Avatar className={`${avatarSize} rounded-full flex-shrink-0`}>
             {member.image && (
               <AvatarImage
                 src={member.image}
@@ -66,15 +82,15 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
                 className="object-cover"
               />
             )}
-            <AvatarFallback className="text-2xl sm:text-2xl md:text-3xl font-bold rounded-full">
+            <AvatarFallback className={`${fallbackTextSize} font-bold rounded-full`}>
               {member.name.substring(0, 2).toUpperCase()}
             </AvatarFallback>
           </Avatar>
           <div className="space-y-1 w-full px-2">
-            <div className="text-sm md:text-base font-bold leading-tight">
+            <div className={`${nameSize} font-bold leading-tight`}>
               {member.name}
             </div>
-            <div className="text-primary font-medium text-xs md:text-sm">
+            <div className={`text-primary font-medium ${roleSize}`}>
               {member.role}
             </div>
             {member.socials && member.socials.length > 0 && (
