@@ -250,7 +250,7 @@ export default async function CommunityPage() {
                       )}
 
                       {/* Content */}
-                      <div className="flex flex-col flex-1 p-5 space-y-2">
+                      <div className="flex flex-col flex-1 p-5 space-y-3">
                         {/* Date & Location (small text) */}
                         <div className="space-y-0.5">
                           <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
@@ -269,10 +269,17 @@ export default async function CommunityPage() {
                           )}
                         </div>
 
-                        {/* Title (up to 2 lines) */}
-                        <h3 className="text-base font-bold text-slate-900 leading-tight line-clamp-2">
+                        {/* Title */}
+                        <h3 className="text-base font-bold text-slate-900 leading-tight">
                           {event.title}
                         </h3>
+
+                        {/* Description (full text) */}
+                        {event.description && (
+                          <p className="text-sm text-slate-600 leading-relaxed">
+                            {event.description}
+                          </p>
+                        )}
 
                         {/* Spacer to push link to bottom */}
                         <div className="flex-1" />
