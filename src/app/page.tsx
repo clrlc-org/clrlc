@@ -12,6 +12,7 @@ import {
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { SectionHeading, Subheading } from "@/components/Heading";
 import { CommunityCarousel } from "@/components/CommunityCarousel";
+import { FeaturedEventCarousel } from "@/components/FeaturedEventCarousel";
 
 import { client } from "@/sanity/lib/client";
 import { EVENTS_QUERY, RESEARCH_QUERY } from "@/sanity/lib/queries";
@@ -28,13 +29,17 @@ interface ResearchArticle {
 }
 
 export default async function Home() {
-  let featuredEvent = null;
+  let featuredEvents: any[] = [];
   let researchArticles: ResearchArticle[] = [];
 
   try {
     const events = await client.fetch(EVENTS_QUERY);
     if (events && events.length > 0) {
-      featuredEvent = events[0];
+      // Get top 2 events and add imageUrls
+      featuredEvents = events.slice(0, 2).map((event: any) => ({
+        ...event,
+        imageUrl: event.image ? urlFor(event.image).width(500).url() : null,
+      }));
     }
   } catch (error) {
     console.error("Error fetching events:", error);
@@ -267,57 +272,18 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Featured Event Card */}
+            {/* Featured Events Carousel */}
             <FadeIn delay={0.1}>
-              <Card className="border-none shadow-none bg-transparent group h-full">
-                <div className="rounded-2xl overflow-hidden mb-4 bg-slate-200 relative w-full aspect-[16/9]">
-                  {featuredEvent?.image ? (
-                    <img
-                      src={urlFor(featuredEvent.image)
-                        .width(500)
-                        .url()}
-                      alt={featuredEvent.title}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-slate-300 animate-pulse group-hover:scale-105 transition-transform duration-500"></div>
-                  )}
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary">
-                    Featured
-                  </div>
-                </div>
-                <CardContent className="p-0 space-y-2">
-                  <div className="flex items-center gap-4 text-sm text-slate-500">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />{" "}
-                      {featuredEvent?.date
-                        ? new Date(featuredEvent.date).toLocaleDateString(
-                            undefined,
-                            {
-                              month: "short",
-                              day: "numeric",
-                              year: "numeric",
-                            },
-                          )
-                        : "Coming Soon"}
-                    </span>
-                    {featuredEvent?.location && (
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" /> {featuredEvent.location}
-                      </span>
-                    )}
-                  </div>
-                  <Subheading className="group-hover:text-primary transition-colors">
-                    <Link href={featuredEvent?.link || "/events"}>
-                      {featuredEvent?.title || "Upcoming Event"}
-                    </Link>
-                  </Subheading>
-                  <p className="text-slate-600">
-                    {featuredEvent?.description ||
-                      "Stay tuned for our next big event. Join us to learn more about low-resource languages in AI."}
-                  </p>
-                </CardContent>
-              </Card>
+              {featuredEvents.length > 0 ? (
+                <FeaturedEventCarousel events={featuredEvents} />
+              ) : (
+                <Card className="border-none shadow-none bg-transparent h-full">
+                  <div className="rounded-2xl overflow-hidden mb-4 bg-slate-300 w-full aspect-[16/9]"></div>
+                  <CardContent className="p-0 space-y-2">
+                    <p className="text-slate-600">No upcoming events</p>
+                  </CardContent>
+                </Card>
+              )}
             </FadeIn>
 
             {/* Secondary Updates List */}
