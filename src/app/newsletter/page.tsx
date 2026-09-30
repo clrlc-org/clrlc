@@ -111,7 +111,7 @@ export default async function NewsletterPage() {
           </FadeIn>
 
           <div className="max-w-6xl mx-auto">
-            <StaggerContainer className="flex flex-wrap justify-center gap-6">
+            <StaggerContainer className="flex flex-wrap gap-6">
               {features.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
