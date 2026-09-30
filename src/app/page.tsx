@@ -312,7 +312,7 @@ export default async function Home() {
                       {featuredEvent?.title || "Upcoming Event"}
                     </Link>
                   </Subheading>
-                  <p className="text-slate-600 line-clamp-2">
+                  <p className="text-slate-600">
                     {featuredEvent?.description ||
                       "Stay tuned for our next big event. Join us to learn more about low-resource languages in AI."}
                   </p>
