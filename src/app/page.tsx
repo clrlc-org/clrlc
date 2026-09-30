@@ -270,7 +270,7 @@ export default async function Home() {
             {/* Featured Event Card */}
             <FadeIn delay={0.1}>
               <Card className="border-none shadow-none bg-transparent group h-full">
-                <div className="rounded-2xl overflow-hidden mb-4 bg-slate-200 relative max-w-lg aspect-[16/9]">
+                <div className="rounded-2xl overflow-hidden mb-4 bg-slate-200 relative w-full aspect-[16/9]">
                   {featuredEvent?.image ? (
                     <img
                       src={urlFor(featuredEvent.image)
