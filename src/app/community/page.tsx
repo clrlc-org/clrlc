@@ -281,9 +281,6 @@ export default async function CommunityPage() {
                           </p>
                         )}
 
-                        {/* Spacer to push link to bottom */}
-                        <div className="flex-1" />
-
                         {/* Link - label based on destination or custom label */}
                         {event.link && (
                           <a
