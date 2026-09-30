@@ -1,6 +1,10 @@
 import { createClient } from '@sanity/client';
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
+
+// Load .env.local
+dotenv.config({ path: '.env.local' });
 
 // Configuration
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'dummyprojectid';

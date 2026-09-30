@@ -119,20 +119,37 @@ export default async function CommunityPage() {
         {sanityEvents.length > 0 ? (
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {sanityEvents.map((event: any) => {
-              const imgSrc = event.image
-                ? urlFor(event.image).width(800).url()
-                : null;
+              let imgSrc = null;
+              let imgPosition = "top";
+              if (event.image) {
+                let imageBuilder = urlFor(event.image).width(800);
+                // Use hotspot if available, otherwise default to top
+                if (event.image.hotspot) {
+                  imageBuilder = imageBuilder.rect(
+                    event.image.hotspot.x,
+                    event.image.hotspot.y,
+                    event.image.hotspot.height,
+                    event.image.hotspot.width
+                  );
+                  imgPosition = "center";
+                } else {
+                  imgPosition = "top";
+                }
+                imgSrc = imageBuilder.url();
+              }
 
               return (
                 <FadeIn key={event._id}>
                   <div className="flex flex-col rounded-lg overflow-hidden bg-white border border-slate-200 shadow-sm h-full">
-                    {/* Image: 1.9:1 aspect ratio, fills box centered */}
+                    {/* Image: 1.9:1 aspect ratio, uses hotspot if available, defaults to top */}
                     {imgSrc && (
                       <div className="relative w-full aspect-[1.9/1] overflow-hidden bg-slate-100">
                         <img
                           src={imgSrc}
                           alt={event.title}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className={`absolute inset-0 w-full h-full object-cover ${
+                            imgPosition === "center" ? "object-center" : "object-top"
+                          }`}
                         />
                       </div>
                     )}

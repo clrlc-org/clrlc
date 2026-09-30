@@ -278,7 +278,7 @@ export default async function Home() {
                         .height(450)
                         .url()}
                       alt={featuredEvent.title}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <div className="absolute inset-0 bg-slate-300 animate-pulse group-hover:scale-105 transition-transform duration-500"></div>
