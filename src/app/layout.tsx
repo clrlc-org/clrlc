@@ -74,11 +74,43 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "CLRLC",
+    alternateName: "Center for Low-Resource Languages and Cultures",
+    url: "https://www.clrlc.org",
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "CLRLC",
+    alternateName: "Center for Low-Resource Languages and Cultures",
+    url: "https://www.clrlc.org",
+    logo: "https://www.clrlc.org/logo.png",
+    sameAs: [
+      "https://x.com/clrlc_org",
+      "https://www.linkedin.com/company/center-for-low-resource-languages-and-culture/",
+      "https://github.com/clrlc-org",
+    ],
+  };
+
   return (
     <html
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} h-full`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="flex min-h-full flex-col font-sans antialiased text-foreground bg-background">
         <Navbar />
         <main className="flex-1">{children}</main>
