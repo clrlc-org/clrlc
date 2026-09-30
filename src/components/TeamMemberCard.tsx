@@ -2,9 +2,6 @@
 
 import React from "react";
 import {
-  Card,
-  CardContent,
-  CardHeader,
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
@@ -60,31 +57,29 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Card className="group overflow-hidden hover:shadow-md transition-shadow cursor-pointer h-full flex flex-col">
-          <CardHeader className="flex flex-col items-center gap-3 pb-3 pt-4 px-3 text-center">
-            <Avatar className="h-28 w-28 border-2 border-slate-200">
-              {member.image && (
-                <AvatarImage
-                  src={member.image}
-                  alt={member.name}
-                  className="object-cover"
-                />
-              )}
-              <AvatarFallback className="text-xl font-bold">
-                {member.name.substring(0, 2).toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
-            <div className="space-y-1">
-              <CardTitle className="text-base font-bold leading-tight">
-                {member.name}
-              </CardTitle>
-              <CardDescription className="text-primary font-medium text-xs">
-                {member.role}
-              </CardDescription>
+        <button className="group flex flex-col items-center gap-4 cursor-pointer text-center hover:opacity-80 transition-opacity w-full">
+          <Avatar className="h-30 w-30 sm:h-30 sm:w-30 md:h-40 md:w-40 lg:h-40 lg:w-40 rounded-full flex-shrink-0">
+            {member.image && (
+              <AvatarImage
+                src={member.image}
+                alt={member.name}
+                className="object-cover"
+              />
+            )}
+            <AvatarFallback className="text-2xl sm:text-2xl md:text-3xl font-bold rounded-full">
+              {member.name.substring(0, 2).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          <div className="space-y-1 w-full px-2">
+            <div className="text-sm md:text-base font-bold leading-tight">
+              {member.name}
+            </div>
+            <div className="text-primary font-medium text-xs md:text-sm">
+              {member.role}
             </div>
             {member.socials && member.socials.length > 0 && (
               <div
-                className="flex gap-2 pt-2"
+                className="flex gap-2 pt-2 justify-center"
                 onClick={(e) => e.stopPropagation()}
               >
                 {member.socials.map((social, idx) => (
@@ -101,8 +96,8 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
                 ))}
               </div>
             )}
-          </CardHeader>
-        </Card>
+          </div>
+        </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
