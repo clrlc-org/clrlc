@@ -107,7 +107,7 @@ export default async function NewsletterPage() {
           <FadeIn delay={0.1}>
             <div className="text-center mb-16">
               <SectionHeading as="h2" className="mb-4">
-                What You'll Get
+                What You Will Get
               </SectionHeading>
               <p className="text-xl text-slate-600">
                 News and updates from CLRLC, sent to your inbox.
