@@ -218,8 +218,8 @@ export default function AboutPage() {
           </FadeIn>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {teamData.map((member) => (
-              <FadeIn key={member._id}>
+            {teamData.map((member, index) => (
+              <FadeIn key={member._id} className={index === 2 ? "mb-8" : ""}>
                 <TeamMemberCard member={member} size="large" />
               </FadeIn>
             ))}
