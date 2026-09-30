@@ -38,6 +38,10 @@ const navItems: NavItem[] = [
     href: "/research",
   },
   {
+    name: "Newsletter",
+    href: "/newsletter",
+  },
+  {
     name: "Community",
     items: [
       { name: "Community Overview", href: "/community" },
