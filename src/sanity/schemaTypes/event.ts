@@ -56,6 +56,12 @@ export default defineType({
       type: "url",
     }),
     defineField({
+      name: "linkLabel",
+      title: "Custom Link Label (optional)",
+      type: "string",
+      description: "E.g. 'View Workshop Details'. Leave empty to auto-detect (YouTube = 'Watch recording', other = 'Read more')",
+    }),
+    defineField({
       name: "image",
       title: "Event Image",
       type: "image",

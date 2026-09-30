@@ -277,7 +277,7 @@ export default async function CommunityPage() {
                         {/* Spacer to push link to bottom */}
                         <div className="flex-1" />
 
-                        {/* Link - label based on destination */}
+                        {/* Link - label based on destination or custom label */}
                         {event.link && (
                           <a
                             href={event.link}
@@ -285,9 +285,10 @@ export default async function CommunityPage() {
                             rel="noreferrer"
                             className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors"
                           >
-                            {event.link.includes("youtube.com") || event.link.includes("youtu.be")
-                              ? "Watch recording"
-                              : "Read more"}
+                            {event.linkLabel ||
+                              (event.link.includes("youtube.com") || event.link.includes("youtu.be")
+                                ? "Watch recording"
+                                : "Read more")}
                             <ArrowRight className="w-3.5 h-3.5" />
                           </a>
                         )}
