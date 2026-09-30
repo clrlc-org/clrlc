@@ -159,7 +159,7 @@ export default async function CommunityPage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <FadeIn>
-            <div className="max-w-4xl mx-auto mb-12">
+            <div className="mb-12">
               <SectionHeading as="h2" className="mb-4">Ways to Get Involved</SectionHeading>
               <p className="text-xl text-muted-foreground">
                 Multiple ways to contribute to our mission of advancing language technology.
@@ -220,7 +220,7 @@ export default async function CommunityPage() {
       <section className="py-24 bg-slate-50 border-t">
         <div className="container mx-auto px-4 md:px-6">
           <FadeIn>
-            <div className="max-w-4xl mx-auto mb-12">
+            <div className="mb-12">
               <SectionHeading as="h2" className="mb-4">Our Community at Work</SectionHeading>
               <p className="text-xl text-muted-foreground">
                 Highlights from our recent events and community gatherings around the world.
