@@ -88,8 +88,7 @@ export default async function NewsletterPage() {
                   Join Our Community of Language Technologists
                 </h1>
                 <p className="text-lg text-primary-foreground/90">
-                  Be part of a global movement advancing AI for every language. Get curated research,
-                  new datasets, and community stories delivered to your inbox every week.
+                  Stay up to date with our research, dataset releases and community events, and find ways to contribute.
                 </p>
               </div>
 
@@ -116,7 +115,7 @@ export default async function NewsletterPage() {
                 What You'll Get
               </SectionHeading>
               <p className="text-xl text-slate-600">
-                Curated insights and updates delivered to your inbox
+                News and updates from CLRLC, sent to your inbox.
               </p>
             </div>
           </FadeIn>
