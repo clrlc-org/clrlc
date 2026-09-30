@@ -106,7 +106,14 @@ export default async function CommunityPage() {
             {/* Right Column: Community Carousel */}
             <FadeIn delay={0.3} direction="right">
               <div className="flex justify-center md:justify-start">
-                <CommunityCarousel />
+                <CommunityCarousel images={[
+                  '/images/hero-1.jpg',
+                  '/images/hero-2.jpg',
+                  '/images/hero-3.jpg',
+                  '/images/hero-4.jpg',
+                  '/images/hero-5.jpg',
+                  ...galleryImages.map((img: any) => urlFor(img.image).width(400).url())
+                ]} />
               </div>
             </FadeIn>
           </div>

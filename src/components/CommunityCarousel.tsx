@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const IMAGES = [
+const DEFAULT_IMAGES = [
   '/images/hero-1.jpg',
   '/images/hero-2.jpg',
   '/images/hero-3.jpg',
@@ -13,7 +13,11 @@ const IMAGES = [
 
 const ROTATION_INTERVAL = 4500; // 4.5 seconds
 
-export function CommunityCarousel() {
+interface CommunityCarouselProps {
+  images?: string[];
+}
+
+export function CommunityCarousel({ images = DEFAULT_IMAGES }: CommunityCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
 
@@ -21,11 +25,11 @@ export function CommunityCarousel() {
     if (!isAutoRotating) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % IMAGES.length);
+      setCurrentIndex((prev) => (prev + 1) % images.length);
     }, ROTATION_INTERVAL);
 
     return () => clearInterval(interval);
-  }, [isAutoRotating]);
+  }, [isAutoRotating, images]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -37,7 +41,7 @@ export function CommunityCarousel() {
       {/* Carousel Container - Circle with Subtle Shadow */}
       <div className="relative w-full max-w-md aspect-square overflow-hidden rounded-full shadow-md mx-auto">
         {/* Images */}
-        {IMAGES.map((src, idx) => (
+        {images.map((src, idx) => (
           <div
             key={src}
             className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
@@ -57,7 +61,7 @@ export function CommunityCarousel() {
 
       {/* Dot Indicators */}
       <div className="flex gap-2 justify-center">
-        {IMAGES.map((_, idx) => (
+        {images.map((_, idx) => (
           <button
             key={idx}
             onClick={() => goToSlide(idx)}
