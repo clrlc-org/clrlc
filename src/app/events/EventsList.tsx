@@ -238,36 +238,6 @@ export default function EventsList({ events }: { events: any[] }) {
           )}
         </section>
 
-        {/* Past Events */}
-        {pastEvents.length > 0 && (
-          <section id="past" aria-labelledby="past-heading">
-            <FadeIn>
-              <div className="flex items-center gap-4 mb-8">
-                <div>
-                  <h2
-                    id="past-heading"
-                    className="text-3xl font-bold text-slate-500"
-                  >
-                    Past Events
-                  </h2>
-                  <p className="text-slate-400 mt-1">
-                    {pastEvents.length} event
-                    {pastEvents.length === 1 ? "" : "s"} completed
-                  </p>
-                </div>
-                <div className="flex-1 h-px bg-gradient-to-r from-slate-200 to-transparent" />
-              </div>
-            </FadeIn>
-
-            <StaggerContainer className="space-y-6">
-              {pastEvents.map((event: any) => (
-                <FadeIn key={event._id}>
-                  <EventRow event={event} isPast />
-                </FadeIn>
-              ))}
-            </StaggerContainer>
-          </section>
-        )}
       </div>
     </>
   );
