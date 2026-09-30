@@ -152,7 +152,7 @@ export default async function NewsletterPage() {
             </FadeIn>
 
             <StaggerContainer className="max-w-3xl mx-auto space-y-6">
-              {recentPosts.map((post, idx) => (
+              {recentPosts.map((post: any, idx: number) => (
                 <FadeIn key={idx} delay={0.1 + idx * 0.1}>
                   <a
                     href={post.url}
