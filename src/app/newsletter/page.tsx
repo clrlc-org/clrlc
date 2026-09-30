@@ -70,11 +70,6 @@ export default async function NewsletterPage() {
       title: "Opportunities",
       description: "Calls for annotators, volunteers, collaborators and speakers.",
     },
-    {
-      icon: Sparkles,
-      title: "Founder's Notes",
-      description: "Reflections on building AI for every language.",
-    },
   ];
 
   return (
@@ -115,26 +110,29 @@ export default async function NewsletterPage() {
             </div>
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {features.map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <FadeIn key={idx} delay={0.1 + idx * 0.05}>
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 h-full">
-                    <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                      <Icon className="w-6 h-6 text-primary" />
+          <div className="max-w-6xl mx-auto">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {features.map((feature, idx) => {
+                const Icon = feature.icon;
+                const isLastRow = idx >= 3;
+                return (
+                  <FadeIn key={idx} delay={0.1 + idx * 0.05} className={isLastRow && features.length === 5 ? "md:col-start-2" : ""}>
+                    <div className="bg-white rounded-2xl p-6 border border-slate-200 h-full">
+                      <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              );
-            })}
-          </StaggerContainer>
+                  </FadeIn>
+                );
+              })}
+            </StaggerContainer>
+          </div>
         </div>
       </section>
 

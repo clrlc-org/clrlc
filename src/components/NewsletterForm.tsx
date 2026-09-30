@@ -89,10 +89,6 @@ export function NewsletterForm({ variant = 'light' }: NewsletterFormProps) {
               {error}
             </p>
           )}
-
-          <p className={`text-sm text-center ${labelClass}`}>
-            No spam.
-          </p>
         </div>
       </form>
     </div>
