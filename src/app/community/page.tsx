@@ -141,9 +141,9 @@ export default async function CommunityPage() {
               return (
                 <FadeIn key={event._id}>
                   <div className="flex flex-col rounded-lg overflow-hidden bg-white border border-slate-200 shadow-sm h-full">
-                    {/* Image: 1.9:1 aspect ratio, uses hotspot if available, defaults to top */}
+                    {/* Image: 4:3 aspect ratio, shows almost full image with small bottom crop */}
                     {imgSrc && (
-                      <div className="relative w-full aspect-[1.9/1] overflow-hidden bg-slate-100">
+                      <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-100">
                         <img
                           src={imgSrc}
                           alt={event.title}

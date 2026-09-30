@@ -270,18 +270,17 @@ export default async function Home() {
             {/* Featured Event Card */}
             <FadeIn delay={0.1}>
               <Card className="border-none shadow-none bg-transparent group h-full">
-                <div className="aspect-[16/9] rounded-2xl overflow-hidden mb-4 bg-slate-200 relative">
+                <div className="rounded-2xl overflow-hidden mb-4 bg-slate-200 relative inline-block w-full">
                   {featuredEvent?.image ? (
                     <img
                       src={urlFor(featuredEvent.image)
                         .width(800)
-                        .height(450)
                         .url()}
                       alt={featuredEvent.title}
-                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="absolute inset-0 bg-slate-300 animate-pulse group-hover:scale-105 transition-transform duration-500"></div>
+                    <div className="w-full aspect-[16/9] bg-slate-300 animate-pulse group-hover:scale-105 transition-transform duration-500"></div>
                   )}
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary">
                     Featured
