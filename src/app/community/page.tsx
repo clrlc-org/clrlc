@@ -128,11 +128,11 @@ export default async function CommunityPage() {
                   <div className="flex flex-col rounded-lg overflow-hidden bg-white border border-slate-200 shadow-sm h-full">
                     {/* Image */}
                     {imgSrc && (
-                      <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-100">
+                      <div className="relative w-full aspect-[16/9] bg-slate-100 flex items-center justify-center">
                         <img
                           src={imgSrc}
                           alt={event.title}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                     )}
