@@ -34,10 +34,6 @@ const navItems: NavItem[] = [
     href: "/about", // <-- Cleaned up to be a direct link!
   },
   {
-    name: "Events",
-    href: "/events",
-  },
-  {
     name: "Research",
     href: "/research",
   },
@@ -45,7 +41,6 @@ const navItems: NavItem[] = [
     name: "Community",
     items: [
       { name: "Community Overview", href: "/community" },
-      { name: "Gallery", href: "/gallery" },
       { name: "Partners & Sponsorship", href: "/partners" },
     ],
   },

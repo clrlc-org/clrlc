@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         destination: "/about#team",
         permanent: true,
       },
+      {
+        source: "/events",
+        destination: "/community#community-at-work",
+        permanent: true,
+      },
+      {
+        source: "/gallery",
+        destination: "/community#community-at-work",
+        permanent: true,
+      },
     ];
   },
 };
