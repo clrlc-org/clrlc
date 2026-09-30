@@ -110,32 +110,29 @@ export default async function NewsletterPage() {
             </div>
           </FadeIn>
 
-          <div className="max-w-6xl mx-auto">
-            <StaggerContainer className="flex flex-wrap gap-6">
-              {features.map((feature, idx) => {
-                const Icon = feature.icon;
-                return (
-                  <FadeIn
-                    key={idx}
-                    delay={0.1 + idx * 0.05}
-                    className="w-full sm:w-1/2 md:w-1/3"
-                  >
-                    <div className="bg-white rounded-2xl p-6 border border-slate-200 h-full">
-                      <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                        <Icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        {feature.description}
-                      </p>
+          <StaggerContainer className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {features.map((feature, idx) => {
+              const Icon = feature.icon;
+              return (
+                <FadeIn
+                  key={idx}
+                  delay={0.1 + idx * 0.05}
+                >
+                  <div className="bg-white rounded-2xl p-6 border border-slate-200 h-full">
+                    <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                      <Icon className="w-6 h-6 text-primary" />
                     </div>
-                  </FadeIn>
-                );
-              })}
-            </StaggerContainer>
-          </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </FadeIn>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </section>
 
