@@ -7,7 +7,7 @@ const exploreLinks = [
   { name: "About Us", href: "/about" },
   { name: "Research", href: "/research" },
   { name: "Events", href: "/events" },
-  { name: "Team", href: "/team" },
+  { name: "Team", href: "/about#team" },
   { name: "Community", href: "/community" },
 ];
 

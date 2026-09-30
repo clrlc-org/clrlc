@@ -205,7 +205,7 @@ export default function AboutPage() {
       </div>
 
       {/* 4. Meet the Team */}
-      <div className="py-24 bg-[#F7FAFC]">
+      <div id="team" className="py-24 bg-[#F7FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn delay={0.2}>
             <div className="max-w-3xl mb-16 border-l-4 border-[#1B7586] pl-6">

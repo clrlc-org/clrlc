@@ -202,7 +202,7 @@ export default async function Home() {
                   className="rounded-full px-8"
                   asChild
                 >
-                  <Link href="/team">Meet the Team</Link>
+                  <Link href="/about#team">Meet the Team</Link>
                 </Button>
               </div>
             </FadeIn>
