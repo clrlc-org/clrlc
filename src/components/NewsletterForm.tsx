@@ -67,7 +67,16 @@ export function NewsletterForm({ variant = 'light' }: NewsletterFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-all disabled:opacity-50 flex items-center gap-2 whitespace-nowrap"
+            style={{
+              backgroundColor: '#FF6719',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#E5570F';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#FF6719';
+            }}
+            className="px-6 py-3 text-white font-semibold rounded-lg transition-all disabled:opacity-50 flex items-center gap-2 whitespace-nowrap"
           >
             {isSubmitting ? 'Subscribing...' : 'Subscribe'}
             <ArrowRight className="w-4 h-4" />
@@ -81,7 +90,7 @@ export function NewsletterForm({ variant = 'light' }: NewsletterFormProps) {
         )}
 
         <p className={`text-sm ${labelClass}`}>
-          No spam. Unsubscribe anytime.
+          No spam.
         </p>
       </div>
     </form>
