@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, Users, Zap, Calendar, Lightbulb, Sparkles } from "lucide-react";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { SectionHeading, Subheading } from "@/components/Heading";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "Newsletter - CLRLC",
@@ -93,13 +94,7 @@ export default async function NewsletterPage() {
               </div>
 
               <div>
-                <iframe
-                  src="https://clrlcorg.substack.com/embed"
-                  width="100%"
-                  height="320"
-                  style={{ border: "none", background: "transparent" }}
-                  title="CLRLC Newsletter Subscribe"
-                />
+                <NewsletterForm variant="dark" />
               </div>
             </div>
           </FadeIn>
