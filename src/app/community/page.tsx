@@ -123,16 +123,24 @@ export default async function CommunityPage() {
                 ? urlFor(event.image).width(800).url()
                 : null;
 
+              // Detect Indaba event to use object-cover with top positioning
+              const isIndaba = event.title?.includes("Indaba");
+
               return (
                 <FadeIn key={event._id}>
                   <div className="flex flex-col rounded-lg overflow-hidden bg-white border border-slate-200 shadow-sm h-full">
-                    {/* Image: 1.9:1 aspect ratio (1200×630), event posters fit exactly */}
+                    {/* Image: 1.9:1 aspect ratio (1200×630) */}
                     {imgSrc && (
                       <div className="relative w-full aspect-[1.9/1] bg-slate-100 flex items-center justify-center">
                         <img
                           src={imgSrc}
                           alt={event.title}
-                          className="w-full h-full object-contain"
+                          className={`w-full h-full ${
+                            isIndaba
+                              ? "object-cover"
+                              : "object-contain"
+                          }`}
+                          style={isIndaba ? { objectPosition: "center 15%" } : {}}
                         />
                       </div>
                     )}
