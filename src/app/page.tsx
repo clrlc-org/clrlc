@@ -309,14 +309,7 @@ export default async function Home() {
                     </Link>
                   </FadeIn>
                 ))
-              ) : (
-                <div className="col-span-1 md:col-span-1 flex items-center justify-center p-12 bg-white rounded-xl border border-slate-200 text-center">
-                  <div>
-                    <p className="text-slate-500 mb-2">More updates coming soon</p>
-                    <p className="text-sm text-slate-400">Check back for the latest research and news</p>
-                  </div>
-                </div>
-              )}
+              ) : null}
             </StaggerContainer>
           </div>
         </div>
