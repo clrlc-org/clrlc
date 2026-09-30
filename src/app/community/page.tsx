@@ -21,8 +21,7 @@ export default async function CommunityPage() {
     const now = new Date();
     sanityEvents = (allEvents || [])
       .filter((e: any) => new Date(e.date) < now)
-      .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 3);
+      .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch (error) {
     console.error("Error fetching past events:", error);
   }
