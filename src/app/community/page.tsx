@@ -312,45 +312,6 @@ export default async function CommunityPage() {
         </div>
       </section>
 
-      {/* GALLERY SECTION */}
-      {galleryImages.length > 0 && (
-        <section className="py-24 bg-white border-t">
-          <div className="container mx-auto px-4 md:px-6">
-            <FadeIn>
-              <div className="max-w-4xl mx-auto mb-12">
-                <SectionHeading as="h2" className="mb-4">Gallery</SectionHeading>
-                <p className="text-xl text-muted-foreground">
-                  Moments from our community events and collaborations.
-                </p>
-              </div>
-            </FadeIn>
-
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {galleryImages.map((image: any) => {
-                const imgSrc = image.image
-                  ? urlFor(image.image).width(400).height(300).url()
-                  : null;
-
-                return (
-                  <FadeIn key={image._id}>
-                    <div className="rounded-2xl overflow-hidden bg-slate-200 aspect-square">
-                      {imgSrc ? (
-                        <img
-                          src={imgSrc}
-                          alt={image.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-slate-300" />
-                      )}
-                    </div>
-                  </FadeIn>
-                );
-              })}
-            </StaggerContainer>
-          </div>
-        </section>
-      )}
     </div>
   );
 }
