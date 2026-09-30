@@ -120,19 +120,19 @@ export default async function CommunityPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {sanityEvents.map((event: any) => {
               const imgSrc = event.image
-                ? urlFor(event.image).width(400).height(300).url()
+                ? urlFor(event.image).width(600).url()
                 : null;
 
               return (
                 <FadeIn key={event._id}>
-                  <div className="flex flex-col rounded-lg overflow-hidden bg-white border border-slate-200 shadow-sm h-full">
+                  <div className="flex flex-col rounded-lg bg-white border border-slate-200 shadow-sm h-full">
                     {/* Image */}
                     {imgSrc && (
-                      <div className="relative w-full aspect-[16/9] bg-slate-100 flex items-center justify-center">
+                      <div className="w-full bg-slate-100">
                         <img
                           src={imgSrc}
                           alt={event.title}
-                          className="w-full h-full object-contain"
+                          className="w-full h-auto"
                         />
                       </div>
                     )}
@@ -162,9 +162,9 @@ export default async function CommunityPage() {
                         {event.title}
                       </h3>
 
-                      {/* Description (1 line) */}
+                      {/* Description */}
                       {event.description && (
-                        <p className="text-sm text-slate-600 line-clamp-1">
+                        <p className="text-sm text-slate-600">
                           {event.description}
                         </p>
                       )}
