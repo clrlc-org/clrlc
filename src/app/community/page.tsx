@@ -120,29 +120,29 @@ export default async function CommunityPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {sanityEvents.map((event: any) => {
               const imgSrc = event.image
-                ? urlFor(event.image).width(600).url()
+                ? urlFor(event.image).width(800).url()
                 : null;
 
               return (
                 <FadeIn key={event._id}>
-                  <div className="flex flex-col rounded-lg bg-white border border-slate-200 shadow-sm h-full">
-                    {/* Image */}
+                  <div className="flex flex-col rounded-lg overflow-hidden bg-white border border-slate-200 shadow-sm h-full">
+                    {/* Image: 1.9:1 aspect ratio, fills box centered */}
                     {imgSrc && (
-                      <div className="w-full bg-slate-100">
+                      <div className="relative w-full aspect-[1.9/1] overflow-hidden bg-slate-100">
                         <img
                           src={imgSrc}
                           alt={event.title}
-                          className="w-full h-auto"
+                          className="absolute inset-0 w-full h-full object-cover"
                         />
                       </div>
                     )}
 
                     {/* Content */}
-                    <div className="flex flex-col flex-1 p-5 space-y-3">
-                      {/* Date & Location Label */}
-                      <div className="space-y-1.5">
+                    <div className="flex flex-col flex-1 p-5 space-y-2">
+                      {/* Date & Location (small text) */}
+                      <div className="space-y-0.5">
                         <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-                          <Calendar className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                          <Calendar className="w-3 h-3 text-primary flex-shrink-0" />
                           {new Date(event.date).toLocaleDateString("en-US", {
                             month: "short",
                             day: "numeric",
@@ -151,23 +151,16 @@ export default async function CommunityPage() {
                         </div>
                         {event.location && (
                           <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-                            <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                            <MapPin className="w-3 h-3 text-primary flex-shrink-0" />
                             {event.location}
                           </div>
                         )}
                       </div>
 
-                      {/* Title */}
-                      <h3 className="text-lg font-bold text-slate-900 leading-snug">
+                      {/* Title (up to 2 lines) */}
+                      <h3 className="text-base font-bold text-slate-900 leading-tight line-clamp-2">
                         {event.title}
                       </h3>
-
-                      {/* Description */}
-                      {event.description && (
-                        <p className="text-sm text-slate-600">
-                          {event.description}
-                        </p>
-                      )}
 
                       {/* Spacer to push link to bottom */}
                       <div className="flex-1" />
@@ -178,10 +171,10 @@ export default async function CommunityPage() {
                           href={event.link}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors self-start group"
+                          className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors"
                         >
                           Read more
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="w-3.5 h-3.5" />
                         </a>
                       )}
                     </div>
