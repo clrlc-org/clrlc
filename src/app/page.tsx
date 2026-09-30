@@ -145,7 +145,7 @@ export default async function Home() {
 
             {/* Feature 2 */}
             <FadeIn>
-              <Link href="/events" className="group block">
+              <Link href="/community#community-at-work" className="group block">
                 <div className="relative bg-white rounded-2xl p-8 transition-all duration-300 hover:shadow-lg border border-slate-200/50 hover:border-primary/30 h-full flex flex-col">
                   <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Calendar className="w-6 h-6 text-primary" />
@@ -156,7 +156,7 @@ export default async function Home() {
                     to foster knowledge exchange and collaboration.
                   </p>
                   <div className="inline-flex items-center font-semibold text-primary group-hover:translate-x-1 transition-transform">
-                    Upcoming Events <ArrowRight className="w-4 h-4 ml-2" />
+                    View Our Community at Work <ArrowRight className="w-4 h-4 ml-2" />
                   </div>
                 </div>
               </Link>
@@ -267,7 +267,7 @@ export default async function Home() {
               asChild
               className="hidden md:inline-flex rounded-full"
             >
-              <Link href="/events">View All Events</Link>
+              <Link href="/community#community-at-work">View All Events</Link>
             </Button>
           </div>
 

@@ -216,8 +216,8 @@ export default async function CommunityPage() {
         </div>
       </section>
 
-      {/* COMMUNITY IN ACTION */}
-      <section className="py-24 bg-slate-50 border-t">
+      {/* COMMUNITY AT WORK */}
+      <section id="community-at-work" className="py-24 bg-slate-50 border-t">
         <div className="container mx-auto px-4 md:px-6">
           <FadeIn>
             <div className="mb-12">
