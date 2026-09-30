@@ -111,12 +111,15 @@ export default async function NewsletterPage() {
           </FadeIn>
 
           <div className="max-w-6xl mx-auto">
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <StaggerContainer className="flex flex-wrap justify-center gap-6">
               {features.map((feature, idx) => {
                 const Icon = feature.icon;
-                const isLastRow = idx >= 3;
                 return (
-                  <FadeIn key={idx} delay={0.1 + idx * 0.05} className={isLastRow && features.length === 5 ? "md:col-start-2" : ""}>
+                  <FadeIn
+                    key={idx}
+                    delay={0.1 + idx * 0.05}
+                    className="w-full sm:w-1/2 md:w-1/3"
+                  >
                     <div className="bg-white rounded-2xl p-6 border border-slate-200 h-full">
                       <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                         <Icon className="w-6 h-6 text-primary" />
