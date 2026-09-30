@@ -60,12 +60,12 @@ export function FeaturedEventCarousel({ events }: FeaturedEventCarouselProps) {
       {/* Featured Card */}
       <div className="border-none shadow-none bg-transparent h-full">
         {/* Image with fade transition */}
-        <div className="rounded-2xl overflow-hidden mb-4 bg-slate-200 relative w-full aspect-[16/9]">
+        <div className="rounded-2xl overflow-hidden mb-4 bg-slate-200 relative w-full h-[360px]">
           {currentEvent.imageUrl ? (
             <img
               src={currentEvent.imageUrl}
               alt={currentEvent.title}
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
             <div className="w-full h-full bg-slate-300 animate-pulse group-hover:scale-105 transition-transform duration-500"></div>
