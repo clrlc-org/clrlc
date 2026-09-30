@@ -38,8 +38,8 @@ interface TeamMemberCardProps {
 export function TeamMemberCard({ member }: TeamMemberCardProps) {
   const SocialIcon = ({ platform }: { platform: string }) => {
     if (platform.toLowerCase().includes("linkedin"))
-      return <LinkedinIcon className="h-5 w-5" />;
-    
+      return <LinkedinIcon className="h-3.5 w-3.5" />;
+
     if (
       platform.toLowerCase().includes("twitter") ||
       platform.toLowerCase().includes("x")
@@ -48,21 +48,21 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
-          className="w-5 h-5 fill-current"
+          className="w-3.5 h-3.5 fill-current"
         >
           <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
         </svg>
       );
-      
-    return <Globe className="h-5 w-5" />;
+
+    return <Globe className="h-3.5 w-3.5" />;
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Card className="group overflow-hidden hover:shadow-md transition-shadow cursor-pointer h-full flex flex-col">
-          <CardHeader className="flex flex-col items-center gap-4 pb-2 text-center">
-            <Avatar className="h-48 w-48 border-4 border-white shadow-lg">
+          <CardHeader className="flex flex-col items-center gap-3 pb-3 pt-4 px-3 text-center">
+            <Avatar className="h-28 w-28 border-2 border-slate-200">
               {member.image && (
                 <AvatarImage
                   src={member.image}
@@ -70,33 +70,21 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
                   className="object-cover"
                 />
               )}
-              <AvatarFallback className="text-4xl">
+              <AvatarFallback className="text-xl font-bold">
                 {member.name.substring(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <div className="space-y-1">
-              <CardTitle className="text-2xl font-bold">
+              <CardTitle className="text-base font-bold leading-tight">
                 {member.name}
               </CardTitle>
-              <CardDescription className="text-primary font-medium text-lg">
+              <CardDescription className="text-primary font-medium text-xs">
                 {member.role}
               </CardDescription>
             </div>
-          </CardHeader>
-          <CardContent className="space-y-4 flex-grow flex flex-col">
-            <p className="text-lg text-muted-foreground line-clamp-4 leading-relaxed">
-              {member.bio}
-            </p>
-
-            <div className="pt-2 flex justify-center w-full">
-              <span className="text-primary font-medium group-hover:underline text-sm uppercase tracking-wide">
-                Read More
-              </span>
-            </div>
-
             {member.socials && member.socials.length > 0 && (
               <div
-                className="flex gap-3 pt-4 mt-auto justify-center"
+                className="flex gap-2 pt-2"
                 onClick={(e) => e.stopPropagation()}
               >
                 {member.socials.map((social, idx) => (
@@ -105,7 +93,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
                     href={social.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-slate-100 rounded-full"
+                    className="text-muted-foreground hover:text-primary transition-colors"
                     title={social.platform}
                   >
                     <SocialIcon platform={social.platform} />
@@ -113,7 +101,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
                 ))}
               </div>
             )}
-          </CardContent>
+          </CardHeader>
         </Card>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
