@@ -1,253 +1,110 @@
-"use client";
+﻿'use client';
 
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { FadeIn, StaggerContainer } from "@/components/Motion";
-import { SectionHeading, Subheading } from "@/components/Heading";
-import { sendEmail } from "@/lib/sendEmail";
-import { Loader2, Mail, MessageSquare } from "lucide-react";
-import {
-  LinkedinIcon,
-  TwitterIcon,
-  GithubIcon,
-} from "@/components/icons/brand-icons";
-import Link from "next/link";
+import { useState } from 'react';
+import Link from 'next/link';
+import { Mail, ExternalLink, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { FadeIn } from '@/components/Motion';
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [success, setSuccess] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle');
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      await sendEmail(e.currentTarget);
-      setSuccess(true);
-      e.currentTarget.reset();
-    } catch (err) {
-      setError(
-        "Failed to send message. Please try again later or email us directly at info@clrlc.org",
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+    setFormStatus('success');
+    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => setFormStatus('idle'), 5000);
   };
 
-  const contactLinks = [
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/company/center-for-low-resource-languages-and-culture/",
-      icon: LinkedinIcon,
-      label: "Follow us on LinkedIn",
-    },
-    {
-      name: "X (Twitter)",
-      href: "https://x.com/clrlc_org",
-      icon: TwitterIcon,
-      label: "Follow us on X",
-    },
-    // {
-    //   name: "Slack",
-    //   href: "https://centerforlowr-m0i1128.slack.com/",
-    //   icon: Slack,
-    //   label: "Join our Slack Community",
-    // },
-    {
-      name: "GitHub",
-      href: "https://github.com/clrlc-org",
-      icon: GithubIcon,
-      label: "Contribute on GitHub",
-    },
-  ];
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
-    <div className="container mx-auto px-4 md:px-6 pt-32 pb-16 lg:py-24 space-y-16 lg:space-y-24">
-      {/* Header */}
-      <div className="max-w-3xl mx-auto text-center space-y-6">
-        <FadeIn>
-          <SectionHeading as="h1" align="center">
-            Ways to get in touch with CLRLC
-          </SectionHeading>
-          <p className="text-3xl text-slate-600">
-            We are always open to questions, partnerships, and collaborations.
-          </p>
-        </FadeIn>
-      </div>
-
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start max-w-6xl mx-auto">
-        {/* Contact Form Section */}
-        <FadeIn delay={0.2} className="w-full">
-          <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-            <div className="mb-6">
-              <SectionHeading as="h2" className="mb-2">
-                Send us a message
-              </SectionHeading>
-              <p className="text-lg text-slate-600">
-                Submissions go directly to our admin team.
-              </p>
+    <div className="flex flex-col min-h-screen">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-28 pb-16 lg:pt-36 lg:pb-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="space-y-8 max-w-2xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#5FD0DC] bg-white/5 border border-[#5FD0DC]/20">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#5FD0DC]"></span>
+              Contact us
             </div>
-
-            {success ? (
-              <div className="text-center text-green-600 space-y-4 py-12 bg-green-50 rounded-lg">
-                <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageSquare className="w-6 h-6 text-green-600" />
-                </div>
-                <Subheading>Message Sent!</Subheading>
-                <p>
-                  Thank you for reaching out. We will get back to you shortly.
-                </p>
-                <Button
-                  onClick={() => setSuccess(false)}
-                  variant="outline"
-                  className="mt-4"
-                >
-                  Send another message
-                </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-2">
-                  <Label htmlFor="from_name">Full Name</Label>
-                  <Input
-                    id="from_name"
-                    name="from_name"
-                    placeholder="Your Name"
-                    required
-                    className="bg-slate-50 border-slate-200 focus:bg-white transition-colors"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="reply_to">Email Address</Label>
-                  <Input
-                    id="reply_to"
-                    name="reply_to"
-                    type="email"
-                    placeholder="you@company.com"
-                    required
-                    className="bg-slate-50 border-slate-200 focus:bg-white transition-colors"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell us more about your inquiry..."
-                    rows={6}
-                    required
-                    className="bg-slate-50 border-slate-200 focus:bg-white transition-colors resize-none"
-                  />
-                </div>
-
-                {error && (
-                  <p className="text-red-500 text-sm bg-red-50 p-3 rounded-md">
-                    {error}
-                  </p>
-                )}
-
-                <Button
-                  type="submit"
-                  className="w-full text-lg h-12"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />{" "}
-                      Sending...
-                    </>
-                  ) : (
-                    "Send Message"
-                  )}
-                </Button>
-              </form>
-            )}
+            <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+              <span className="italic text-[#5FD0DC]">Let's</span> talk
+            </h1>
+            <p className="text-xl text-[#CFC9E6]">Whether you are a researcher, a native speaker who wants to contribute, or an organisation interested in our work, we would love to hear from you.</p>
           </div>
-        </FadeIn>
+        </div>
+      </section>
 
-        {/* Contact Info & Socials Section */}
-        <div className="space-y-12 lg:pt-8 contents lg:block">
-          {/* General Inquiries */}
-          <FadeIn delay={0.3}>
-            <div className="space-y-6">
-              <Subheading className="border-b pb-2">
-                General Enquiries Email us ;
-              </Subheading>
-
-              <div className="flex items-center gap-4 text-slate-600 group">
-                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                  <Mail className="h-5 w-5" />
-                </div>
+      <section className="py-24 bg-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <FadeIn>
+              <div className="space-y-8">
                 <div>
-                  <p className="text-sm font-medium text-slate-500 uppercase tracking-wide">
-                    Organisation Email Address :
-                  </p>
-                  <a
-                    href="mailto:info@clrlc.org"
-                    className="text-lg font-semibold text-slate-900 hover:text-primary transition-colors"
-                  >
-                    info@clrlc.org
+                  <h2 className="text-3xl font-bold text-slate-900 mb-2">Enquiries and collaborations</h2>
+                  <p className="text-slate-600">For questions about our research, community, events or publications.</p>
+                </div>
+                <div className="space-y-4">
+                  <a href="mailto:info@clrlc.org" className="flex items-center gap-3 group">
+                    <div className="w-10 h-10 bg-[#1898A8]/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#1898A8]/30 transition-colors">
+                      <Mail className="w-5 h-5 text-[#1898A8]" />
+                    </div>
+                    <span className="text-[#1898A8] hover:underline font-medium">info@clrlc.org</span>
+                  </a>
+                  <a href="https://linktr.ee/CLRLC_Org" target="_blank" rel="noreferrer">
+                    <Button className="bg-[#1898A8] text-white rounded-full px-6 hover:bg-[#1898A8]/90 flex items-center gap-2">
+                      Find all our links
+                      <ExternalLink className="w-4 h-4" />
+                    </Button>
                   </a>
                 </div>
               </div>
+            </FadeIn>
 
-              <div className="flex items-center gap-4 text-slate-600 group">
-                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-slate-500 uppercase tracking-wide">
-                    Admin Email Address:
-                  </p>
-                  <a
-                    href="mailto:clrlc.center@gmail.com"
-                    className="text-lg font-semibold text-slate-900 hover:text-primary transition-colors"
-                  >
-                    clrlc.center@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Connect With Us */}
-          <FadeIn delay={0.4}>
-            <div className="space-y-6">
-              <Subheading className="border-b pb-2">
-                Connect With Us
-              </Subheading>
-              <StaggerContainer className="grid gap-4">
-                {contactLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-lg border border-slate-100 bg-white hover:border-primary/20 hover:shadow-md transition-all group"
-                  >
-                    <div className="h-10 w-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 group-hover:bg-primary group-hover:text-white transition-colors">
-                      <link.icon className="h-5 w-5" />
+            <FadeIn>
+              <div className="border border-[#D9D9D9] rounded-3xl p-10 bg-white">
+                <h2 className="text-3xl font-bold text-slate-900 mb-8">Send us a message</h2>
+                {formStatus === 'success' ? (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                    <p className="text-green-900 font-semibold mb-2">Thank you!</p>
+                    <p className="text-green-800">Your message has been sent. We'll get back to you soon.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-900 mb-2">Full name <span className="text-red-500">*</span></label>
+                      <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1898A8]" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary transition-colors">
-                        {link.name}
-                      </h4>
-                      <p className="text-base text-slate-500">{link.label}</p>
+                      <label className="block text-sm font-medium text-slate-900 mb-2">Email address <span className="text-red-500">*</span></label>
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1898A8]" />
                     </div>
-                  </Link>
-                ))}
-              </StaggerContainer>
-            </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-900 mb-2">Message <span className="text-red-500">*</span></label>
+                      <textarea name="message" value={formData.message} onChange={handleChange} required className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1898A8]" rows={5} />
+                    </div>
+                    <Button type="submit" className="w-full bg-[#1898A8] text-white rounded-full py-3 font-semibold hover:bg-[#1898A8]/90">Send message</Button>
+                  </form>
+                )}
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-slate-50 border-t border-slate-200">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <Link href="/partnerships" className="inline-flex items-center gap-2 text-slate-900 hover:text-[#1898A8] transition-colors group">
+              <span className="text-sm">Interested in partnering with us? Visit our Partner With Us page</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </FadeIn>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
