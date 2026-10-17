@@ -73,8 +73,8 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
 
               {/* Heading with split color */}
               <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight max-w-[560px]">
-                From voices{' '}
-                <span className="text-[#5FD0DC]">to models</span>
+                Advancing the Frontiers of{' '}
+                <span className="text-[#5FD0DC]">Language and AI</span>
               </h1>
 
               {/* Description */}
