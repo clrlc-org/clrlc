@@ -40,11 +40,11 @@ export default function PartnershipsPage() {
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
-              Help us build AI for <span className="italic text-[#5FD0DC]">every low-resource language</span>
+              Shape the <span className="italic text-[#5FD0DC]">future of language technology</span>
             </h1>
 
             <p className="text-xl text-[#CFC9E6] max-w-2xl">
-              We work with native speakers, linguists and researchers to create the data, benchmarks and models that low-resource languages need. Our work depends on partners who share that goal.
+              We work with native speakers, linguists and researchers to create the data, benchmarks and models that low-resource languages need. Partners make this work possible.
             </p>
 
             <div className="flex items-center gap-4 flex-wrap pt-4">
@@ -94,12 +94,8 @@ export default function PartnershipsPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="mb-12">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#1898A8] bg-white/5 border border-[#1898A8]/20 mb-6">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1898A8]"></span>
-                Why we exist
-              </div>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-8">
-                Most languages are left behind by AI
+                The gap we are closing
               </h2>
               <div className="space-y-6 text-lg text-slate-700 max-w-3xl">
                 <p>
@@ -119,7 +115,7 @@ export default function PartnershipsPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center space-y-8">
-              <h3 className="text-2xl font-bold text-slate-900">Recognition</h3>
+              <h3 className="text-2xl font-bold text-slate-900">Where our work has been recognised</h3>
               <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
                 {[
                   'WiML Symposium @ ICML 2026',
@@ -136,40 +132,11 @@ export default function PartnershipsPage() {
         </div>
       </section>
 
-      {/* 5. INSTITUTIONS */}
-      <section className="py-24 bg-[#F7F4EE]">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <h2 className="text-4xl font-bold text-slate-900 mb-16">Institutions we have partnered with</h2>
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { name: '[Partner name 1]', type: 'Partnership type and year', placeholder: true },
-                { name: '[Partner name 2]', type: 'Partnership type and year', placeholder: true },
-                { name: '[Partner name 3]', type: 'Partnership type and year', placeholder: true },
-                { name: '[Partner name 4]', type: 'Partnership type and year', placeholder: true },
-                { name: '[Partner name 5]', type: 'Partnership type and year', placeholder: true },
-                { name: '[Partner name 6]', type: 'Partnership type and year', placeholder: true },
-              ].map((partner, idx) => (
-                <FadeIn key={idx}>
-                  <div className="border border-[#D9D9D9] rounded-xl p-8 bg-white/50 backdrop-blur-sm hover:bg-white transition-colors">
-                    <div className="h-16 bg-slate-200 rounded-lg mb-6 flex items-center justify-center text-sm text-slate-500">
-                      [Logo]
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{partner.name}</h3>
-                    <p className="text-sm text-slate-600">{partner.type}</p>
-                  </div>
-                </FadeIn>
-              ))}
-            </StaggerContainer>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 6. WAYS TO HELP */}
+      {/* 5. WAYS TO HELP */}
       <section className="py-24 bg-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <h2 className="text-4xl font-bold text-slate-900 mb-16">Every contribution moves this forward</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-16">How you can partner with us</h2>
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
@@ -204,7 +171,7 @@ export default function PartnershipsPage() {
         </div>
       </section>
 
-      {/* 7. CONTACT FORM */}
+      {/* 6. CONTACT FORM */}
       <section id="contact" className="py-24 bg-[#F7F4EE]">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
@@ -318,11 +285,13 @@ export default function PartnershipsPage() {
         </div>
       </section>
 
-      {/* 8. CLOSING BAND */}
+      {/* 7. CLOSING BAND */}
       <section className="py-24 bg-gradient-to-r from-[#2E2357] to-[#1F6F86] text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
           <FadeIn>
-            <h2 className="text-5xl font-bold mb-8">Let's build this together</h2>
+            <h2 className="text-5xl font-bold mb-8">
+              Languages thrive <span className="italic text-[#5FD0DC]">when we work together</span>
+            </h2>
             <Button
               size="lg"
               className="bg-white text-[#2E2357] rounded-full px-8 hover:bg-white/90"
