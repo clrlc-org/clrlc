@@ -213,21 +213,6 @@ export default function LangturePage() {
         </div>
       </section>
 
-      {/* Progress Section */}
-      <section className="bg-[#F7F4EE] py-16 lg:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 inline-block">
-            <span className="text-sm font-semibold uppercase tracking-widest text-[#1898A8]">
-              Status
-            </span>
-          </div>
-
-          <p className="text-lg text-[#1F1F1F] leading-relaxed max-w-3xl">
-            Data curation is under way across all ten languages, led by language teams of native-speaker contributors.
-          </p>
-        </div>
-      </section>
-
       {/* The Road Ahead */}
       <section className="bg-white py-16 lg:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
