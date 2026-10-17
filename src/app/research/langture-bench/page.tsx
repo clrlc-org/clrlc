@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Mail, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Mail, ArrowRight, Lock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Langture-Bench - CLRLC",
@@ -258,42 +258,47 @@ export default function LangtureBenchPage() {
             </h2>
           </div>
 
-          <div className="relative">
-            {/* Connection line - hidden on mobile */}
-            <div className="hidden lg:block absolute top-8 left-0 right-0 h-1 bg-[#D9D9D9]" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Phase 1 - Current */}
+            <div className="bg-gradient-to-r from-[#2E2357] to-[#1F6F86] rounded-lg p-8 lg:p-10 text-white flex flex-col justify-center lg:col-span-1">
+              <div className="mb-6">
+                <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold uppercase tracking-widest bg-green-100/20 text-green-300 rounded-full border border-green-300/30">
+                  <span className="w-2 h-2 rounded-full bg-green-400" />
+                  Now
+                </span>
+              </div>
+              <div className="text-sm font-semibold uppercase tracking-widest text-white/70 mb-2">
+                Phase 1
+              </div>
+              <h3 className="text-3xl font-bold text-white">
+                Langture-Bench
+              </h3>
+            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
-              {phases.map((phase, idx) => (
-                <div key={idx} className="flex flex-col items-center lg:items-center">
-                  {/* Circle indicator */}
-                  <div className="mb-6 relative">
-                    {idx === 0 ? (
-                      // Current phase - green circle
-                      <div className="relative">
-                        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center border-4 border-green-500">
-                          <CheckCircle2 className="w-8 h-8 text-green-600" />
-                        </div>
-                        <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-semibold uppercase tracking-widest text-green-600 whitespace-nowrap">
-                          Current phase
-                        </span>
-                      </div>
-                    ) : (
-                      // Future phases - faded circle
-                      <div className="w-16 h-16 rounded-full bg-gray-200/50 flex items-center justify-center border-2 border-gray-300/50 opacity-40" />
-                    )}
-                  </div>
+            {/* Phase 2 - Future */}
+            <div className="rounded-lg p-8 lg:p-10 border-2 border-dashed border-purple-200 opacity-55 flex flex-col justify-center">
+              <div className="mb-6">
+                <Lock className="w-5 h-5 text-purple-400" />
+              </div>
+              <div className="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-2">
+                Phase 2
+              </div>
+              <h3 className="text-3xl font-bold text-[#111111]">
+                Langture-Speech
+              </h3>
+            </div>
 
-                  {/* Phase content */}
-                  <div className={`text-center mt-8 ${idx !== 0 ? 'opacity-40 blur-sm' : ''}`}>
-                    <div className="text-sm font-semibold uppercase tracking-widest text-[#1898A8] mb-2">
-                      {phase.name}
-                    </div>
-                    <h3 className="text-xl font-bold text-[#111111]">
-                      {phase.title}
-                    </h3>
-                  </div>
-                </div>
-              ))}
+            {/* Phase 3 - Future */}
+            <div className="rounded-lg p-8 lg:p-10 border-2 border-dashed border-purple-200 opacity-55 flex flex-col justify-center">
+              <div className="mb-6">
+                <Lock className="w-5 h-5 text-purple-400" />
+              </div>
+              <div className="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-2">
+                Phase 3
+              </div>
+              <h3 className="text-3xl font-bold text-[#111111]">
+                LangtureLM
+              </h3>
             </div>
           </div>
         </div>
