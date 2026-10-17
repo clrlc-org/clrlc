@@ -55,6 +55,19 @@ export default defineType({
       type: 'number',
     }),
     defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      description: 'Optional status (e.g., "Under review", "Preprint", "Published")',
+      options: {
+        list: [
+          { title: 'Under review', value: 'under-review' },
+          { title: 'Preprint', value: 'preprint' },
+          { title: 'Published', value: 'published' },
+        ],
+      },
+    }),
+    defineField({
       name: 'description',
       title: 'Abstract/Description',
       type: 'text',

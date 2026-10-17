@@ -29,6 +29,7 @@ export const RESEARCH_QUERY = groq`*[_type == "research"] | order(year desc) {
   authors,
   venue,
   year,
+  status,
   description,
   paperLink,
   posterImage {

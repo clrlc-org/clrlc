@@ -11,6 +11,7 @@ interface Publication {
   authors?: string[];
   venue?: string;
   year?: number;
+  status?: string;
   paperLink?: string;
   posterImage?: {
     asset?: {
@@ -122,30 +123,38 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
                           {pub.authors?.join(', ')} {pub.venue && `· ${pub.venue}`}
                         </p>
 
-                        {/* Type tag and action buttons */}
+                        {/* Type tag and action buttons/status */}
                         <div className="flex flex-wrap gap-2 items-center">
                           <span className="px-2 py-1 text-xs font-medium uppercase tracking-wide bg-gray-100 text-[#1F1F1F] rounded">
                             {pub.type}
                           </span>
 
-                          <div className="flex gap-3 ml-auto">
-                            {pub.posterImage && (
-                              <button
-                                onClick={() => setSelectedPoster(pub)}
-                                className="text-sm font-medium text-[#1898A8] hover:text-[#2E2357] transition-colors"
-                              >
-                                View poster
-                              </button>
-                            )}
-                            {pub.paperLink && (
-                              <a
-                                href={pub.paperLink}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex items-center gap-1 text-sm font-medium text-[#1898A8] hover:text-[#2E2357] transition-colors"
-                              >
-                                Read paper →
-                              </a>
+                          <div className="flex gap-3 ml-auto items-center">
+                            {pub.status ? (
+                              <span className="px-3 py-1 text-xs font-medium uppercase tracking-wide bg-amber-100 text-amber-800 rounded">
+                                {pub.status === 'under-review' ? 'Under Review' : pub.status === 'preprint' ? 'Preprint' : 'Published'}
+                              </span>
+                            ) : (
+                              <>
+                                {pub.posterImage && (
+                                  <button
+                                    onClick={() => setSelectedPoster(pub)}
+                                    className="text-sm font-medium text-[#1898A8] hover:text-[#2E2357] transition-colors"
+                                  >
+                                    View poster
+                                  </button>
+                                )}
+                                {pub.paperLink && (
+                                  <a
+                                    href={pub.paperLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-1 text-sm font-medium text-[#1898A8] hover:text-[#2E2357] transition-colors"
+                                  >
+                                    Read paper →
+                                  </a>
+                                )}
+                              </>
                             )}
                           </div>
                         </div>

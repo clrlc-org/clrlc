@@ -56,14 +56,14 @@ const SAMPLE_PUBLICATIONS = [
   },
   {
     _id: '2',
-    title: 'Building African Language Models: Challenges and Opportunities',
+    title: 'YorGe-CS: A Human-Validated Yoruba-German Code-Switched Corpus for Machine Translation Models',
     type: 'paper' as const,
-    researchArea: 'speech',
-    authors: ['Allison Koh', 'Joy Olusanya'],
-    venue: 'ACL 2025',
-    year: 2025,
-    description: 'An overview of the challenges in building NLP systems for African languages.',
-    paperLink: 'https://example.com/paper',
+    researchArea: 'code-switching',
+    authors: ['Joy Olusanya', 'Alimot Ekundayo Omolaja', 'Quadri Yahya', 'Opeyemi Osakuade', 'Abiodun Awokoya', 'Ganiyat Afolabi', 'Olajumoke Oluwatosin Adebayo', 'Ikeoluwa Sarah Oladimeji', 'Abiola Akorede Alex', 'Yusuf Ismail Abayomi', 'Praise Tolulope Adeyemi'],
+    venue: 'arXiv',
+    year: 2026,
+    status: 'under-review',
+    description: 'A human-validated corpus of Yoruba-German code-switched text for training and evaluating machine translation models.',
   },
 ];
 
