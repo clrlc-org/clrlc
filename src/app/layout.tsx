@@ -20,10 +20,13 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Center for Low-Resource Languages & Cultures (CLRLC)",
+  title: {
+    default: "CLRLC | Center for Low-Resource Languages & Cultures",
+    template: "%s | CLRLC",
+  },
   description:
-    "Advancing the representation of low-resource languages and cultures in Artificial Intelligence.",
-  metadataBase: new URL("https://clrlc.org"),
+    "CLRLC is a global community advancing AI for low-resource languages through community-led data, cultural benchmarks and inclusive language models.",
+  metadataBase: new URL("https://www.clrlc.org"),
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -40,10 +43,10 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Center for Low-Resource Languages & Cultures (CLRLC)",
+    title: "CLRLC | Center for Low-Resource Languages & Cultures",
     description:
-      "Advancing the representation of low-resource languages and cultures in Artificial Intelligence.",
-    url: "https://clrlc.org",
+      "CLRLC is a global community advancing AI for low-resource languages through community-led data, cultural benchmarks and inclusive language models.",
+    url: "https://www.clrlc.org",
     siteName: "CLRLC",
     images: [
       {
@@ -58,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Center for Low-Resource Languages & Cultures (CLRLC)",
+    title: "CLRLC | Center for Low-Resource Languages & Cultures",
     description:
-      "Advancing the representation of low-resource languages and cultures in Artificial Intelligence.",
+      "CLRLC is a global community advancing AI for low-resource languages through community-led data, cultural benchmarks and inclusive language models.",
     images: ["/logo.jpg"],
     site: "@clrlc_org",
     creator: "@clrlc_org",
@@ -80,7 +83,10 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "CLRLC",
-    alternateName: "Center for Low-Resource Languages and Cultures",
+    alternateName: [
+      "Center for Low-Resource Languages & Cultures",
+      "Center for Low-Resource Languages and Cultures",
+    ],
     url: "https://www.clrlc.org",
   };
 
