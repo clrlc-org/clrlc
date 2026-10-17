@@ -46,7 +46,7 @@ export default function LangturePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-12 pb-16 lg:pt-16 lg:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-16 pb-16 lg:pt-24 lg:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC]">
@@ -139,82 +139,77 @@ export default function LangturePage() {
 
       {/* Languages Section */}
       <section className="bg-[#F7F4EE] py-16 lg:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <span className="text-sm font-semibold uppercase tracking-widest text-[#1898A8]">
-              Coverage
-            </span>
-            <h2 className="text-4xl font-bold text-[#111111] mt-4">
-              10+ African languages, including:
-            </h2>
-            <p className="text-[#1F1F1F] mt-6">
-              Target: 1,000 proverbs per language
-            </p>
-          </div>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-[#1898A8]">
+            Coverage
+          </span>
+          <h2 className="text-4xl font-bold text-[#111111] mt-4">
+            10+ African languages, including:
+          </h2>
+          <p className="text-[#1F1F1F] mt-6">
+            Target: 1,000 proverbs per language
+          </p>
+        </div>
 
-          <style>{`
-            @keyframes scroll-left {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
+        <style>{`
+          @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+          }
+          @media (prefers-reduced-motion: no-preference) {
+            .language-carousel-left {
+              animation: scroll-left 40s linear infinite;
             }
-            @keyframes scroll-right {
-              0% { transform: translateX(-50%); }
-              100% { transform: translateX(0); }
+            .language-carousel-right {
+              animation: scroll-right 40s linear infinite;
             }
-            @media (prefers-reduced-motion: no-preference) {
-              .language-carousel-left {
-                animation: scroll-left 30s linear infinite;
-              }
-              .language-carousel-right {
-                animation: scroll-right 30s linear infinite;
-              }
-              .language-carousel-container:hover .language-carousel-left,
-              .language-carousel-container:hover .language-carousel-right {
-                animation-play-state: paused;
-              }
+            .language-carousel-container:hover .language-carousel-left,
+            .language-carousel-container:hover .language-carousel-right {
+              animation-play-state: paused;
             }
-          `}</style>
+          }
+          .language-carousel-container {
+            position: relative;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+          }
+        `}</style>
 
-          <div className="space-y-8">
-            {/* Top row - scrolls left */}
-            <div className="language-carousel-container overflow-hidden">
-              <div className="language-carousel-left flex gap-3 w-fit">
-                {[...languageList.slice(0, 6), ...languageList.slice(0, 6)].map((lang, idx) => (
-                  <div
-                    key={idx}
-                    className="px-4 py-3 bg-white rounded-full border border-[#D9D9D9] whitespace-nowrap flex-shrink-0"
-                  >
-                    <div className="text-[#111111] font-medium">{lang.name}</div>
-                    <div className="text-xs text-[#1F1F1F]/60">{lang.region}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Bottom row - scrolls right */}
-            <div className="language-carousel-container overflow-hidden">
-              <div className="language-carousel-right flex gap-3 w-fit">
-                {[...languageList.slice(6), ...languageList.slice(6)].map((lang, idx) => (
-                  <div
-                    key={idx}
-                    className="px-4 py-3 bg-white rounded-full border border-[#D9D9D9] whitespace-nowrap flex-shrink-0"
-                  >
-                    <div className="text-[#111111] font-medium">{lang.name}</div>
-                    <div className="text-xs text-[#1F1F1F]/60">{lang.region}</div>
-                  </div>
-                ))}
-              </div>
+        <div className="space-y-8">
+          {/* Top row - scrolls left - full bleed */}
+          <div className="language-carousel-container">
+            <div className="language-carousel-left flex gap-3 w-fit px-4">
+              {[...languageList.slice(0, 6), ...languageList.slice(0, 6), ...languageList.slice(0, 6)].map((lang, idx) => (
+                <div
+                  key={idx}
+                  className="px-4 py-3 bg-white rounded-full border border-[#D9D9D9] whitespace-nowrap flex-shrink-0"
+                >
+                  <div className="text-[#111111] font-medium">{lang.name}</div>
+                  <div className="text-xs text-[#1F1F1F]/60">{lang.region}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Gradient fade overlays */}
-          <style>{`
-            .language-carousel-container {
-              position: relative;
-              mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-              -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-            }
-          `}</style>
+          {/* Bottom row - scrolls right - full bleed */}
+          <div className="language-carousel-container">
+            <div className="language-carousel-right flex gap-3 w-fit px-4">
+              {[...languageList.slice(6), ...languageList.slice(6), ...languageList.slice(6)].map((lang, idx) => (
+                <div
+                  key={idx}
+                  className="px-4 py-3 bg-white rounded-full border border-[#D9D9D9] whitespace-nowrap flex-shrink-0"
+                >
+                  <div className="text-[#111111] font-medium">{lang.name}</div>
+                  <div className="text-xs text-[#1F1F1F]/60">{lang.region}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
