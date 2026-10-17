@@ -87,7 +87,7 @@ export default function AboutPage() {
           </FadeIn>
           
           <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-tight mb-6">
+            <h1 className="text-4xl lg:text-5xl font-heading font-black text-slate-900 tracking-tight mb-6 leading-tight">
               We Build <span className="text-[#1898A8]">Together</span>
             </h1>
           </FadeIn>
@@ -129,7 +129,7 @@ export default function AboutPage() {
               <div className="w-14 h-14 bg-[#1B7586]/10 rounded-2xl flex items-center justify-center mb-6 text-[#1B7586]">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"></path></svg>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">Our Mission</h2>
+              <h2 className="text-2xl sm:text-3xl font-heading font-black text-slate-900 tracking-tight mb-4">Our Mission</h2>
               <p className="text-lg text-black font-normal leading-relaxed">
                 Our mission is to solve one problem: building inclusive AI that speaks African and other low-resource languages. We bring together researchers, linguists, technologists, and communities to create the high-quality datasets and models that make it possible.
               </p>
@@ -141,7 +141,7 @@ export default function AboutPage() {
               <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6 text-white backdrop-blur-sm">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Vision</h2>
+              <h2 className="text-2xl sm:text-3xl font-heading font-black text-slate-900 tracking-tight mb-4">Our Vision</h2>
               <p className="text-lg text-white font-normal leading-relaxed">
                 A future where African and other low-resource languages are fully part of AI, and where the technology works for the people who speak them, from the elders who carry each language and its culture forward to the youngest generation.
               </p>
@@ -156,7 +156,7 @@ export default function AboutPage() {
           <FadeIn delay={0.1}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-[#1B7586] font-bold tracking-widest text-sm mb-2">Our Pillars</h2>
-              <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">Our work runs across four connected areas</h3>
+              <h3 className="text-2xl sm:text-3xl font-heading font-black text-slate-900 tracking-tight mb-4">Our work runs across four connected areas</h3>
             </div>
           </FadeIn>
 
@@ -210,7 +210,7 @@ export default function AboutPage() {
           <FadeIn delay={0.2}>
             <div className="max-w-3xl mb-16 border-l-4 border-[#1B7586] pl-6">
               <h2 className="text-[#1B7586] font-bold tracking-widest text-sm mb-2">Our Network</h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-black mb-4 tracking-tight">Meet the Team</h3>
+              <h3 className="text-2xl sm:text-3xl font-heading font-black text-slate-900 tracking-tight mb-4">Meet the Team</h3>
               <p className="text-lg text-black font-light leading-relaxed">
                 A global network of researchers, linguists, and engineers dedicated to building inclusive language technologies.
               </p>
