@@ -42,7 +42,7 @@ export function Footer() {
   const isResearchPage = pathname === '/research';
 
   return (
-    <footer className="bg-gradient-to-br from-[#1e7a99] to-[#0d5f6b] text-white">
+    <footer className="bg-gradient-to-r from-[#2E2357] to-[#1F6F86] text-white">
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Left block: logo + tagline */}
@@ -130,8 +130,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className={`mt-8 pt-8 border-t text-center text-base text-white/70 ${
-          isResearchPage ? 'border-white/20' : 'border-white/10'
+        <div className={`mt-8 pt-8 text-center text-base text-white/70 ${
+          isResearchPage || pathname === '/' ? '' : 'border-t border-white/10'
         }`}>
           © {new Date().getFullYear()} CLRLC. All rights reserved.
         </div>
