@@ -12,18 +12,31 @@ export default defineType({
       validation: rule => rule.required(),
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
+      name: 'type',
+      title: 'Publication Type',
       type: 'string',
       options: {
         list: [
-          { title: 'NLP', value: 'nlp' },
-          { title: 'Speech Technology', value: 'speech' },
-          { title: 'Machine Learning', value: 'ml' },
-          { title: 'Dataset Curation', value: 'dataset' },
+          { title: 'Paper', value: 'paper' },
+          { title: 'Poster', value: 'poster' },
+          { title: 'Dataset', value: 'dataset' },
+          { title: 'Talk', value: 'talk' },
         ],
       },
       validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'researchArea',
+      title: 'Research Area',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Code-switching', value: 'code-switching' },
+          { title: 'Speech', value: 'speech' },
+          { title: 'Translation', value: 'translation' },
+          { title: 'Cultural AI', value: 'cultural-ai' },
+        ],
+      },
     }),
     defineField({
       name: 'authors',
@@ -32,14 +45,32 @@ export default defineType({
       of: [{ type: 'string' }],
     }),
     defineField({
+      name: 'venue',
+      title: 'Venue/Conference',
+      type: 'string',
+    }),
+    defineField({
+      name: 'year',
+      title: 'Year',
+      type: 'number',
+    }),
+    defineField({
       name: 'description',
       title: 'Abstract/Description',
       type: 'text',
     }),
     defineField({
-      name: 'link',
-      title: 'Publication Link',
+      name: 'paperLink',
+      title: 'Paper/Document Link',
       type: 'url',
+    }),
+    defineField({
+      name: 'posterImage',
+      title: 'Poster Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'publishedAt',

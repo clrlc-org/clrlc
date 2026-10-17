@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
 import { Menu, X, Home, Mic2, FileText, Files, Database, Heart, Settings, LogOut } from 'lucide-react';
 
 const navItems = [
@@ -41,13 +40,8 @@ export function Sidebar() {
         {/* Header */}
         <div className="p-6 border-b border-slate-200">
           <div className="flex items-center gap-3">
-            <div className="relative w-8 h-8">
-              <Image
-                src="/logo.png"
-                alt="CLRLC Logo"
-                fill
-                className="object-contain"
-              />
+            <div className="w-8 h-8 bg-primary/10 rounded flex items-center justify-center">
+              <span className="text-lg font-bold text-primary">🌍</span>
             </div>
             <div>
               <div className="text-sm font-bold text-slate-900">CLRLC</div>

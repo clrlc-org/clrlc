@@ -21,13 +21,19 @@ export const EVENTS_QUERY = groq`*[_type == "event"] | order(date desc) {
   image
 }`;
 
-export const RESEARCH_QUERY = groq`*[_type == "research"] | order(publishedAt desc) {
+export const RESEARCH_QUERY = groq`*[_type == "research"] | order(year desc) {
   _id,
   title,
-  category,
+  type,
+  researchArea,
   authors,
+  venue,
+  year,
   description,
-  link,
+  paperLink,
+  posterImage {
+    asset->{ url }
+  },
   publishedAt
 }`;
 

@@ -1,0 +1,127 @@
+'use client';
+
+import { useState } from 'react';
+
+const floatAnimClass: Record<number, string> = {
+  1: '[animation-name:research-float-1]',
+  2: '[animation-name:research-float-2]',
+  3: '[animation-name:research-float-3]',
+};
+
+const FILTER_OPTIONS = [
+  { label: 'All', value: 'all' },
+  { label: 'Code-switching', value: 'code-switching' },
+  { label: 'Speech', value: 'speech' },
+  { label: 'Translation', value: 'translation' },
+  { label: 'Cultural AI', value: 'cultural-ai' },
+];
+
+interface ResearchHeroProps {
+  languages: Array<{
+    name: string;
+    top: string;
+    left: string;
+    duration: string;
+    delay: string;
+    size: string;
+    anim: number;
+    color: string;
+  }>;
+  onFilterChange?: (filter: string) => void;
+}
+
+export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    onFilterChange?.(filter);
+  };
+
+  return (
+    <>
+      <style>{`
+        @keyframes research-float-1 {
+          0%, 100% { opacity: 0; transform: translateY(0); }
+          15%, 50% { opacity: 0.35; transform: translateY(-6px); }
+          85% { opacity: 0; transform: translateY(6px); }
+        }
+        @keyframes research-float-2 {
+          0%, 100% { opacity: 0; transform: translateY(0); }
+          15%, 50% { opacity: 0.55; transform: translateY(-6px); }
+          85% { opacity: 0; transform: translateY(6px); }
+        }
+        @keyframes research-float-3 {
+          0%, 100% { opacity: 0; transform: translateY(0); }
+          15%, 50% { opacity: 0.75; transform: translateY(-6px); }
+          85% { opacity: 0; transform: translateY(6px); }
+        }
+      `}</style>
+
+      <section className="relative overflow-hidden bg-[#2E2357] pt-20 pb-16 lg:pt-28 lg:pb-20">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          {/* Label */}
+          <div className="mb-6 inline-block">
+            <span className="text-sm font-semibold uppercase tracking-widest text-[#1898A8]">
+              CLRLC Research
+            </span>
+          </div>
+
+          {/* Heading with split color */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Research for the languages{' '}
+            <span className="text-[#1898A8]">AI leaves out</span>
+          </h1>
+
+          {/* Description */}
+          <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl">
+            Speech and text datasets, benchmarks and models for low-resource
+            languages, built with the communities who speak them.
+          </p>
+
+          {/* Filter pills */}
+          <div className="flex flex-wrap gap-3 mb-12">
+            {FILTER_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => handleFilterChange(option.value)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeFilter === option.value
+                    ? 'bg-[#1898A8] text-white'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Languages animation - right side */}
+          <div className="absolute right-0 top-0 h-full w-full lg:w-1/2 pointer-events-none">
+            <div className="relative h-full min-h-96">
+              {languages.map((item) => (
+                <span
+                  key={item.name}
+                  className={`absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-heading font-semibold pointer-events-none motion-reduce:[animation-name:none] ${floatAnimClass[item.anim]} ${item.size} ${item.color}`}
+                  style={{
+                    top: item.top,
+                    left: item.left,
+                    animationDuration: item.duration,
+                    animationDelay: item.delay,
+                    animationTimingFunction: 'ease-in-out',
+                    animationIterationCount: 'infinite',
+                  }}
+                >
+                  {item.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Teal underline */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1898A8] to-[#2E2357]" />
+      </section>
+    </>
+  );
+}
