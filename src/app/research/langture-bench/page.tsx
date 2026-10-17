@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Mail, ArrowRight, Lock } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Langture-Bench - CLRLC",
@@ -35,24 +35,6 @@ export default function LangtureBenchPage() {
       title: "Validation",
       description:
         "A native-speaker linguist reviews each entry and writes the multiple-choice question.",
-    },
-  ];
-
-  const phases = [
-    {
-      name: "Phase 1",
-      title: "Langture-Bench",
-      description: "The proverb corpus and a paper (now)",
-    },
-    {
-      name: "Phase 2",
-      title: "Langture-Speech",
-      description: "Recorded proverbs",
-    },
-    {
-      name: "Phase 3",
-      title: "LangtureLM",
-      description: "A model built on both corpora",
     },
   ];
 
@@ -258,48 +240,79 @@ export default function LangtureBenchPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Phase 1 - Current */}
-            <div className="bg-gradient-to-r from-[#2E2357] to-[#1F6F86] rounded-lg p-8 lg:p-10 text-white flex flex-col justify-center lg:col-span-1">
-              <div className="mb-6">
-                <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold uppercase tracking-widest bg-green-100/20 text-green-300 rounded-full border border-green-300/30">
-                  <span className="w-2 h-2 rounded-full bg-green-400" />
+          {/* Progress track - desktop */}
+          <div className="hidden lg:block">
+            <div className="relative mb-16">
+              {/* "Now" pill above Phase 1 */}
+              <div className="absolute -top-10 left-0 z-10">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold uppercase tracking-widest bg-green-100/20 text-green-600 rounded-full border border-green-300/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                   Now
                 </span>
               </div>
-              <div className="text-sm font-semibold uppercase tracking-widest text-white/70 mb-2">
-                Phase 1
+
+              {/* Progress bar */}
+              <div className="flex gap-0 h-2 rounded-full overflow-hidden bg-gray-200">
+                <div className="flex-1 bg-[#1898A8]" />
+                <div className="flex-1 bg-gray-300" />
+                <div className="flex-1 bg-gray-300" />
               </div>
-              <h3 className="text-3xl font-bold text-white">
-                Langture-Bench
-              </h3>
             </div>
 
-            {/* Phase 2 - Future */}
-            <div className="rounded-lg p-8 lg:p-10 border-2 border-dashed border-purple-200 opacity-55 flex flex-col justify-center">
-              <div className="mb-6">
-                <Lock className="w-5 h-5 text-purple-400" />
+            {/* Phase labels */}
+            <div className="grid grid-cols-3 gap-0">
+              <div className="text-left">
+                <div className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-1">
+                  Phase 1
+                </div>
+                <h3 className="text-lg font-bold text-[#111111]">
+                  Langture-Bench
+                </h3>
               </div>
-              <div className="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-2">
-                Phase 2
+              <div className="text-center opacity-45">
+                <div className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-1">
+                  Phase 2
+                </div>
+                <h3 className="text-lg font-bold text-[#111111]">
+                  Langture-Speech
+                </h3>
               </div>
-              <h3 className="text-3xl font-bold text-[#111111]">
-                Langture-Speech
-              </h3>
+              <div className="text-right opacity-45">
+                <div className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-1">
+                  Phase 3
+                </div>
+                <h3 className="text-lg font-bold text-[#111111]">
+                  LangtureLM
+                </h3>
+              </div>
             </div>
+          </div>
 
-            {/* Phase 3 - Future */}
-            <div className="rounded-lg p-8 lg:p-10 border-2 border-dashed border-purple-200 opacity-55 flex flex-col justify-center">
-              <div className="mb-6">
-                <Lock className="w-5 h-5 text-purple-400" />
+          {/* Progress track - mobile (stacked) */}
+          <div className="lg:hidden space-y-6">
+            {[
+              { num: 1, name: "Langture-Bench", isCurrent: true },
+              { num: 2, name: "Langture-Speech", isCurrent: false },
+              { num: 3, name: "LangtureLM", isCurrent: false },
+            ].map((phase) => (
+              <div key={phase.num} className={phase.isCurrent ? "" : "opacity-45"}>
+                {phase.isCurrent && (
+                  <div className="mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold uppercase tracking-widest bg-green-100/20 text-green-600 rounded-full border border-green-300/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                      Now
+                    </span>
+                  </div>
+                )}
+                <div className="h-2 rounded-full bg-[#1898A8] mb-3" />
+                <div className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-1">
+                  Phase {phase.num}
+                </div>
+                <h3 className="text-lg font-bold text-[#111111]">
+                  {phase.name}
+                </h3>
               </div>
-              <div className="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-2">
-                Phase 3
-              </div>
-              <h3 className="text-3xl font-bold text-[#111111]">
-                LangtureLM
-              </h3>
-            </div>
+            ))}
           </div>
         </div>
       </section>
