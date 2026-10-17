@@ -58,7 +58,7 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
         }
       `}</style>
 
-      <section className="relative overflow-hidden bg-[#F7F4EE] pt-20 pb-16 lg:pt-28 lg:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-20 pb-16 lg:pt-28 lg:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Two-column layout: text left, animation right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -66,18 +66,19 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
             <div className="flex flex-col">
               {/* Label */}
               <div className="mb-6 inline-block w-fit">
-                <span className="text-sm font-semibold uppercase tracking-widest text-[#111111]">
+                <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC]">
                   CLRLC Research
                 </span>
               </div>
 
-              {/* Heading - all black */}
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-[#111111] mb-6 leading-tight max-w-[560px]">
-                Research for the languages AI leaves out
+              {/* Heading with split color */}
+              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight max-w-[560px]">
+                Research for the languages{' '}
+                <span className="text-[#5FD0DC]">AI leaves out</span>
               </h1>
 
               {/* Description */}
-              <p className="text-lg sm:text-xl text-[#1F1F1F] mb-10 max-w-[560px]">
+              <p className="text-lg sm:text-xl text-[#CFC9E6] mb-10 max-w-[560px]">
                 Speech and text datasets, benchmarks and models for low-resource
                 languages, built with the communities who speak them.
               </p>
@@ -91,7 +92,7 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                       activeFilter === option.value
                         ? 'bg-[#1898A8] text-white'
-                        : 'border-2 border-[#D4C5E2] text-[#1F1F1F] hover:border-[#B8A3D0]'
+                        : 'border-2 border-[#B8A3D0] text-[#DDF3F5] hover:border-[#CFC9E6]'
                     }`}
                   >
                     {option.label}
