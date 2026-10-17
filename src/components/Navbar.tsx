@@ -79,66 +79,30 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {navItems.map((item) => {
-            if (item.items) {
-              return (
-                <DropdownMenu key={item.name}>
-                  <DropdownMenuTrigger
-                    className={cn(
-                      "flex items-center gap-1 text-lg font-medium transition-colors hover:text-primary outline-none focus:text-primary",
-                      "text-slate-600 hover:text-primary",
-                      isCurrent(item) ? "text-primary font-semibold" : "",
-                    )}
-                  >
-                    {item.name}
-                    <ChevronDown className="h-4 w-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-[200px]">
-                    {item.items.map((subItem) => (
-                      <DropdownMenuItem key={subItem.href} asChild>
-                        <Link
-                          href={subItem.href}
-                          className={cn(
-                            "cursor-pointer w-full",
-                            pathname === subItem.href &&
-                              "text-primary font-medium",
-                          )}
-                        >
-                          {subItem.name}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              );
-            }
-
-            return (
-              <Link
-                key={item.name}
-                href={item.href!}
+        <nav className="hidden lg:flex items-center gap-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href!}
+              className={cn(
+                "font-sans text-base font-medium transition-colors relative group py-2",
+                pathname === item.href ? "text-[#1898A8] font-semibold" : "text-[#1A1A1A] hover:text-[#1898A8]",
+              )}
+            >
+              {item.name}
+              <span
                 className={cn(
-                  "text-lg font-medium transition-colors hover:text-primary relative group py-2",
-                  "text-slate-600 hover:text-primary",
-                  pathname === item.href ? "text-primary font-semibold" : "",
+                  "absolute bottom-0 left-0 w-full h-0.5 bg-[#1898A8] scale-x-0 transition-transform origin-right group-hover:origin-left group-hover:scale-x-100",
+                  pathname === item.href ? "scale-x-100" : "",
                 )}
-              >
-                {item.name}
-                <span
-                  className={cn(
-                    "absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform origin-right group-hover:origin-left group-hover:scale-x-100",
-                    pathname === item.href ? "scale-x-100" : "",
-                  )}
-                />
-              </Link>
-            );
-          })}
+              />
+            </Link>
+          ))}
           <Button
             asChild
-            className="rounded-full px-6 bg-primary text-white hover:bg-primary/90"
+            className="rounded-full px-6 bg-[#1898A8] text-white hover:bg-[#1898A8]/90"
           >
-            <Link href="/contact" className="text-lg">
+            <Link href="/contact" className="text-base font-medium">
               Contact Us
             </Link>
           </Button>
@@ -178,59 +142,33 @@ export function Navbar() {
                 </SheetDescription>
               </VisuallyHidden.Root>
 
-              <div className="flex-1 overflow-y-auto py-6 px-6">
+              <div className="flex-1 overflow-y-auto py-8 px-6">
                 <nav className="flex flex-col gap-6">
                   {navItems.map((item) => (
-                    <div key={item.name} className="space-y-3">
-                      <div className="text-lg font-bold text-slate-400 uppercase tracking-wider">
-                        {item.name}
-                      </div>
-                      {item.items ? (
-                        <div className="flex flex-col gap-2 pl-4 border-l-2 border-slate-100">
-                          {item.items.map((subItem) => (
-                            <Link
-                              key={subItem.href}
-                              href={subItem.href}
-                              onClick={() => setIsOpen(false)}
-                              className={cn(
-                                "text-2xl font-medium transition-colors block py-1",
-                                pathname === subItem.href
-                                  ? "text-primary font-semibold"
-                                  : "text-slate-600 hover:text-slate-900",
-                              )}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      ) : (
-                        <Link
-                          href={item.href!}
-                          onClick={() => setIsOpen(false)}
-                          className={cn(
-                            "text-2xl font-medium block py-1",
-                            pathname === item.href
-                              ? "text-primary font-semibold"
-                              : "text-slate-600 hover:text-slate-900",
-                          )}
-                        >
-                          {item.name}
-                        </Link>
+                    <Link
+                      key={item.name}
+                      href={item.href!}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        "font-sans text-base font-medium transition-colors block",
+                        pathname === item.href
+                          ? "text-[#1898A8]"
+                          : "text-[#1A1A1A] hover:text-[#1898A8]",
                       )}
-                    </div>
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </nav>
               </div>
 
-              <div className="p-6 border-t bg-slate-50">
+              <div className="p-6 border-t bg-white">
                 <Button
-                  className="w-full rounded-full h-12 text-base shadow-md"
+                  className="w-full rounded-full h-12 bg-[#1898A8] text-white hover:bg-[#1898A8]/90 font-medium"
                   asChild
                   onClick={() => setIsOpen(false)}
                 >
-                  <Link href="/contact" className="text-xl">
-                    Contact Us
-                  </Link>
+                  <Link href="/contact">Contact Us</Link>
                 </Button>
               </div>
             </SheetContent>
