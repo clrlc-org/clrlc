@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   description:
     "CLRLC is a global community advancing AI for low-resource languages through community-led data, cultural benchmarks and inclusive language models.",
   metadataBase: new URL("https://www.clrlc.org"),
+  verification: {
+    google: "Xf8_zGKt2vftH6UNjRV4y6qyqKjwfa_PVzjDoD9Hzxc",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
