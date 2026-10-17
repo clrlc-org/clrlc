@@ -46,7 +46,7 @@ export default function LangturePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-16 pb-16 lg:pt-24 lg:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-28 pb-16 lg:pt-36 lg:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC]">
