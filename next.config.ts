@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         destination: "/community#community-at-work",
         permanent: true,
       },
+      {
+        source: "/research/langture-bench",
+        destination: "/langture",
+        permanent: true,
+      },
     ];
   },
 };

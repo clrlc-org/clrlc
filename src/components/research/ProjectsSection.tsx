@@ -44,7 +44,7 @@ export function ProjectsSection({ filter = null }: ProjectsSectionProps) {
 
           {/* Langture-Bench Card */}
           <a
-            href="/research/langture-bench"
+            href="/langture"
             className="bg-[#2E2357] rounded-[16px] p-[2.2rem] transition-all hover:shadow-lg hover:-translate-y-2 flex flex-col h-full"
           >
             <div className="mb-4">

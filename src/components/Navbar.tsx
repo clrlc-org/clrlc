@@ -38,6 +38,10 @@ const navItems: NavItem[] = [
     href: "/research",
   },
   {
+    name: "Langture AI",
+    href: "/langture",
+  },
+  {
     name: "Newsletter",
     href: "/newsletter",
   },

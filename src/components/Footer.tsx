@@ -9,6 +9,7 @@ import { XIcon, GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons"
 const exploreLinks = [
   { name: "About Us", href: "/about" },
   { name: "Research", href: "/research" },
+  { name: "Langture AI", href: "/langture" },
   { name: "Newsletter", href: "/newsletter" },
   { name: "Team", href: "/about#team" },
   { name: "Community", href: "/community" },
