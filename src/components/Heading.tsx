@@ -18,7 +18,7 @@ export function SectionHeading({
   return (
     <Tag
       className={cn(
-        "font-heading font-extrabold uppercase tracking-wide text-slate-900",
+        "font-heading font-extrabold tracking-wide text-slate-900",
         sizeClasses,
         align === "center" && "text-center",
         className,

@@ -85,7 +85,7 @@ export default async function NewsletterPage() {
                   Stay Connected
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-white">
-                  Join Our Community of <span className="italic text-[#5FD0DC]">Language Technologists</span>
+                  Join Our Community of Language Technologists
                 </h1>
                 <p className="text-lg text-[#CFC9E6]">
                   Stay up to date with our research, dataset releases and community events, and find ways to contribute.

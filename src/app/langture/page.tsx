@@ -55,7 +55,7 @@ export default function LangturePage() {
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
-              <span className="italic text-[#5FD0DC]">Langture-Bench</span>
+              Langture-Bench
             </h1>
 
             <p className="text-xl text-[#CFC9E6] max-w-2xl">
@@ -378,13 +378,6 @@ export default function LangturePage() {
               >
                 Apply to contribute
                 <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href="mailto:info@clrlc.org"
-                className="inline-flex items-center gap-2 text-white hover:text-[#5FD0DC] transition-colors text-sm font-medium"
-              >
-                <Mail className="w-4 h-4" />
-                Questions? Email info@clrlc.org
               </a>
             </div>
           </div>
