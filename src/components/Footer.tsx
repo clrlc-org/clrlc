@@ -1,6 +1,9 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { XIcon, GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
 
 const exploreLinks = [
@@ -38,10 +41,14 @@ interface FooterProps {
   gradientBackground?: boolean;
 }
 
-export function Footer({ gradientBackground = false }: FooterProps) {
+export function Footer({ gradientBackground: forcedGradient }: FooterProps) {
+  const pathname = usePathname();
+  const isResearchPage = pathname === '/research';
+  const useGradient = forcedGradient || isResearchPage;
+
   return (
     <footer className={`${
-      gradientBackground
+      useGradient
         ? 'bg-gradient-to-r from-[#2E2357] via-[#3d2e6f] to-[#1898A8] text-white'
         : 'border-t bg-primary text-primary-foreground'
     }`}>
@@ -57,7 +64,7 @@ export function Footer({ gradientBackground = false }: FooterProps) {
                 className="object-contain brightness-0 invert"
               />
             </Link>
-            <p className={`text-lg ${gradientBackground ? 'text-white/90' : 'text-gray-300'}`}>
+            <p className={`text-lg ${useGradient ? 'text-white/90' : 'text-gray-300'}`}>
               Building inclusive language technologies for low-resource
               languages and cultures.
             </p>
@@ -66,7 +73,7 @@ export function Footer({ gradientBackground = false }: FooterProps) {
           {/* Explore column */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Explore</h4>
-            <ul className={`grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-lg ${gradientBackground ? 'text-white/80' : 'text-gray-300'}`}>
+            <ul className={`grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-lg ${useGradient ? 'text-white/80' : 'text-gray-300'}`}>
               {exploreLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -83,7 +90,7 @@ export function Footer({ gradientBackground = false }: FooterProps) {
           {/* Contact column */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
-            <ul className={`space-y-3 text-lg ${gradientBackground ? 'text-white/80' : 'text-gray-300'}`}>
+            <ul className={`space-y-3 text-lg ${useGradient ? 'text-white/80' : 'text-gray-300'}`}>
               <li>
                 <Link
                   href="/contact"
@@ -133,7 +140,7 @@ export function Footer({ gradientBackground = false }: FooterProps) {
         </div>
 
         <div className={`mt-8 pt-8 border-t text-center text-base ${
-          gradientBackground
+          useGradient
             ? 'border-white/20 text-white/70'
             : 'border-gray-700 text-gray-400'
         }`}>
