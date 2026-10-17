@@ -16,14 +16,9 @@ export function ProjectsSection({ filter = null }: ProjectsSectionProps) {
         </div>
 
         {/* Heading */}
-        <h2 className="text-4xl font-bold text-[#111111] mb-4">
-          What We're Building
+        <h2 className="text-4xl font-bold text-[#111111] mb-12">
+          What We Are Building
         </h2>
-
-        {/* Subtext */}
-        <p className="text-lg text-[#1F1F1F] mb-12 max-w-2xl">
-          Open resources and research advancing language technology for low-resource languages.
-        </p>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
