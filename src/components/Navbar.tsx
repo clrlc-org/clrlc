@@ -47,9 +47,7 @@ const navItems: NavItem[] = [
   },
   {
     name: "Community",
-    items: [
-      { name: "Community Overview", href: "/community" },
-    ],
+    href: "/community",
   },
   {
     name: "Partner With Us",
