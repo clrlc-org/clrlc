@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Download } from 'lucide-react';
 
 interface Publication {
   _id: string;
@@ -36,7 +35,6 @@ interface PublicationsSectionProps {
 
 export function PublicationsSection({ publications }: PublicationsSectionProps) {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedPoster, setSelectedPoster] = useState<Publication | null>(null);
 
   // Get available filter types based on data
   const availableTypes = new Set(
@@ -136,13 +134,15 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
                               </span>
                             ) : (
                               <>
-                                {pub.posterImage && (
-                                  <button
-                                    onClick={() => setSelectedPoster(pub)}
+                                {pub.posterImage?.url && (
+                                  <a
+                                    href={pub.posterImage.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-sm font-medium text-[#1898A8] hover:text-[#2E2357] transition-colors"
                                   >
                                     View poster
-                                  </button>
+                                  </a>
                                 )}
                                 {pub.paperLink && (
                                   <a
@@ -168,50 +168,6 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
         </div>
       </section>
 
-      {/* Poster viewer modal */}
-      {selectedPoster && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h2 className="text-xl font-semibold text-[#111111]">
-                {selectedPoster.title}
-              </h2>
-              <button
-                onClick={() => setSelectedPoster(null)}
-                className="p-2 hover:bg-gray-100 rounded transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Image */}
-            <div className="flex-1 overflow-y-auto">
-              {selectedPoster.posterImage?.url && (
-                <img
-                  src={selectedPoster.posterImage.url}
-                  alt={selectedPoster.title}
-                  className="w-full h-auto"
-                />
-              )}
-            </div>
-
-            {/* Footer with download */}
-            <div className="p-6 border-t border-gray-200 flex justify-end gap-3">
-              {selectedPoster.posterImage?.url && (
-                <a
-                  href={selectedPoster.posterImage.url}
-                  download
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#1898A8] text-white rounded-lg font-medium hover:bg-[#157a8a] transition-colors"
-                >
-                  <Download className="w-4 h-4" />
-                  Download
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }
