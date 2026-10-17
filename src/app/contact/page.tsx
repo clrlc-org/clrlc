@@ -56,7 +56,7 @@ export default function ContactPage() {
                   </a>
                   <a href="https://linktr.ee/CLRLC_Org" target="_blank" rel="noreferrer">
                     <Button className="bg-[#1898A8] text-white rounded-full px-6 hover:bg-[#1898A8]/90 flex items-center gap-2">
-                      Find all our links
+                      Connect with us
                       <ExternalLink className="w-4 h-4" />
                     </Button>
                   </a>
