@@ -47,8 +47,8 @@ export function NewsletterForm({ variant = 'light' }: NewsletterFormProps) {
   };
 
   const isDark = variant === 'dark';
-  const inputBgClass = isDark ? 'bg-white/10 text-white placeholder-white/60' : 'bg-white text-slate-900 placeholder-slate-400';
-  const inputBorderClass = isDark ? 'border-white/20 focus:border-white/40' : 'border-slate-200 focus:border-primary';
+  const inputBgClass = isDark ? 'bg-white text-slate-900 placeholder-slate-400' : 'bg-white text-slate-900 placeholder-slate-400';
+  const inputBorderClass = isDark ? 'border-white focus:border-slate-300' : 'border-slate-200 focus:border-primary';
   const errorTextClass = isDark ? 'text-red-200' : 'text-red-600';
   const labelClass = isDark ? 'text-white/90' : 'text-slate-600';
 

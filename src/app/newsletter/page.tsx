@@ -75,15 +75,18 @@ export default async function NewsletterPage() {
   return (
     <div className="flex flex-col min-h-screen pt-20 lg:pt-28">
       {/* Header Section with Newsletter CTA */}
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-primary to-[#0d5f6b] text-white">
+      <section className="py-20 lg:py-28 bg-gradient-to-r from-[#2E2357] to-[#1F6F86] text-white">
         <div className="container mx-auto px-4 md:px-6">
           <FadeIn delay={0.1}>
             <div className="max-w-3xl mx-auto text-center space-y-8">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC] block mb-4">
+                  Stay Connected
+                </span>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-white">
                   Join Our Community of Language Technologists
                 </h1>
-                <p className="text-lg text-primary-foreground/90">
+                <p className="text-lg text-[#CFC9E6]">
                   Stay up to date with our research, dataset releases and community events, and find ways to contribute.
                 </p>
               </div>
