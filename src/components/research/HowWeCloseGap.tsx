@@ -37,9 +37,10 @@ export function HowWeCloseGap() {
           {approaches.map((item) => (
             <div
               key={item.number}
-              className="bg-white border border-gray-200 rounded-lg p-8 transition-all hover:shadow-lg hover:scale-105 flex flex-col h-full"
+              className="bg-white border-[1px] rounded-[8px] p-8 shadow-sm transition-all hover:shadow-md flex flex-col h-full"
+              style={{ borderColor: '#D9D9D9' }}
             >
-              <div className="text-5xl font-bold text-[#111111] mb-4">
+              <div className="text-5xl font-bold text-[#2E2357] mb-4">
                 {item.number}
               </div>
               <h3 className="text-xl font-semibold text-[#111111] mb-3">
