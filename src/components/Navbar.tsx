@@ -122,9 +122,10 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[300px] sm:w-[400px] flex flex-col gap-0 px-0"
+              className="fixed inset-0 w-full max-w-none p-0 bg-white border-0"
             >
-              <div className="p-6 border-b flex items-center justify-between">
+              {/* Header with logo and close button */}
+              <div className="flex items-center justify-between p-6 border-b border-slate-200">
                 <div className="relative h-10 w-28">
                   <Image
                     src="/logo.png"
@@ -142,15 +143,16 @@ export function Navbar() {
                 </SheetDescription>
               </VisuallyHidden.Root>
 
-              <div className="flex-1 overflow-y-auto py-8 px-6">
-                <nav className="flex flex-col gap-6">
+              {/* Scrollable nav links */}
+              <div className="flex flex-col items-center justify-start overflow-y-auto flex-1 py-16 px-6">
+                <nav className="flex flex-col items-center gap-7 w-full">
                   {navItems.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href!}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        "font-sans text-base font-medium transition-colors block",
+                        "font-sans text-[24px] font-semibold transition-colors block",
                         pathname === item.href
                           ? "text-[#1898A8]"
                           : "text-[#1A1A1A] hover:text-[#1898A8]",
@@ -162,9 +164,10 @@ export function Navbar() {
                 </nav>
               </div>
 
-              <div className="p-6 border-t bg-white">
+              {/* Contact button at bottom */}
+              <div className="flex justify-center pb-12 px-6">
                 <Button
-                  className="w-full rounded-full h-12 bg-[#1898A8] text-white hover:bg-[#1898A8]/90 font-medium"
+                  className="rounded-full px-8 py-3 bg-[#1898A8] text-white hover:bg-[#1898A8]/90 font-semibold text-[18px] h-auto"
                   asChild
                   onClick={() => setIsOpen(false)}
                 >
