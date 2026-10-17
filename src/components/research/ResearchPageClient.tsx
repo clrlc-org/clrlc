@@ -6,6 +6,7 @@ import { HowWeCloseGap } from './HowWeCloseGap';
 import { ProjectsSection } from './ProjectsSection';
 import { PublicationsSection } from './PublicationsSection';
 import { ResearchWithUs } from './ResearchWithUs';
+import { Footer } from '@/components/Footer';
 
 interface Publication {
   _id: string;
@@ -57,7 +58,12 @@ export function ResearchPageClient({
       <HowWeCloseGap />
       <ProjectsSection filter={activeFilter} />
       <PublicationsSection publications={filteredPublications} />
-      <ResearchWithUs />
+
+      {/* Research with us + Footer as one continuous gradient block */}
+      <div className="bg-gradient-to-r from-[#2E2357] via-[#3d2e6f] to-[#1898A8]">
+        <ResearchWithUs />
+        <Footer gradientBackground={true} />
+      </div>
     </div>
   );
 }
