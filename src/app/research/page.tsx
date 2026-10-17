@@ -42,13 +42,44 @@ const floatingLanguages = [
   { name: "Kinyarwanda", top: "95%", left: "88%", duration: "12s", delay: "-11.5s", size: "text-sm sm:text-base", anim: 3, color: "text-white" },
 ];
 
+const SAMPLE_PUBLICATIONS = [
+  {
+    _id: '1',
+    title: 'Activation Editing for Low-Resource Cross-Lingual Machine Translation: Does JoLA Transfer?',
+    type: 'poster' as const,
+    researchArea: 'translation',
+    authors: ['Joy Olusanya', 'Erika Germinario', 'Pooja Srinivas', 'Praveenkumar Kondikoppa', 'Shreyas Jagadeep Shete', 'Steven Lawrence Fernandes'],
+    venue: 'WiML Symposium @ ICML 2026',
+    year: 2026,
+    description: 'First evaluation of JoLA for translating Yorùbá dialects and Nigerian Pidgin into English.',
+    posterImage: { asset: { url: 'https://via.placeholder.com/1200x1600' } },
+  },
+  {
+    _id: '2',
+    title: 'Building African Language Models: Challenges and Opportunities',
+    type: 'paper' as const,
+    researchArea: 'speech',
+    authors: ['Allison Koh', 'Joy Olusanya'],
+    venue: 'ACL 2025',
+    year: 2025,
+    description: 'An overview of the challenges in building NLP systems for African languages.',
+    paperLink: 'https://example.com/paper',
+  },
+];
+
 export default async function ResearchPage() {
   let publications = [];
   try {
     publications = await client.fetch(RESEARCH_QUERY);
   } catch (error) {
     console.error("Sanity fetch error:", error);
-    publications = [];
+    // Use sample data if Sanity is unavailable
+    publications = SAMPLE_PUBLICATIONS;
+  }
+
+  // If no publications from Sanity, use samples
+  if (publications.length === 0) {
+    publications = SAMPLE_PUBLICATIONS;
   }
 
   return (
