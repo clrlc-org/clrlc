@@ -72,7 +72,7 @@ export default async function Home() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <SectionHeading as="h1">
+                <SectionHeading as="h1" className="uppercase">
                   Every Voice <br />
                   <span className="italic text-[#1898A8]">Deserves To Be Heard</span>
                 </SectionHeading>
