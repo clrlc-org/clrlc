@@ -57,8 +57,7 @@ export default function PartnershipsPage() {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-white text-white rounded-full px-8 hover:bg-white/10"
+                className="bg-white text-[#1A1A1A] rounded-full px-8 hover:bg-[#F2F2F2]"
                 asChild
               >
                 <Link href="/research">See our research</Link>
