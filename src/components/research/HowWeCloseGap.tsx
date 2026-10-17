@@ -2,18 +2,23 @@ export function HowWeCloseGap() {
   const approaches = [
     {
       number: '01',
-      title: 'Community data',
-      description: 'Corpora collected and annotated with native speakers.',
+      title: 'Data Curation',
+      description: 'We collect, transcribe and annotate text and speech with native speakers and trained linguists, including code-switched language and regional dialects, and validate every sample before release.',
     },
     {
       number: '02',
-      title: 'Cultural benchmarks',
-      description: 'Tests of whether models understand culture and context.',
+      title: 'Cultural Benchmarks',
+      description: 'We design benchmarks that test whether models grasp idioms, everyday expressions and cultural context, not just vocabulary.',
     },
     {
       number: '03',
-      title: 'Inclusive models',
-      description: 'Speech and language models built on that data.',
+      title: 'Inclusive Models',
+      description: 'We adapt and fine-tune speech and language models for low-resource languages, including efficient methods that work with limited data and compute.',
+    },
+    {
+      number: '04',
+      title: 'Evaluation',
+      description: 'We assess models through automatic and human evaluation, with native speakers and linguists reviewing outputs to find where models fail and why.',
     },
   ];
 
@@ -28,26 +33,21 @@ export function HowWeCloseGap() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {approaches.map((item) => (
             <div
               key={item.number}
-              className="bg-white rounded-lg overflow-hidden transition-all hover:shadow-lg hover:scale-105"
+              className="bg-white border border-gray-200 rounded-lg p-8 transition-all hover:shadow-lg hover:scale-105 flex flex-col h-full"
             >
-              {/* Colored top border */}
-              <div className="h-1 bg-[#1898A8]" />
-
-              <div className="p-8">
-                <div className="text-5xl font-bold text-[#2E2357] mb-4">
-                  {item.number}
-                </div>
-                <h3 className="text-xl font-semibold text-[#111111] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-base text-[#1F1F1F] leading-relaxed">
-                  {item.description}
-                </p>
+              <div className="text-5xl font-bold text-[#111111] mb-4">
+                {item.number}
               </div>
+              <h3 className="text-xl font-semibold text-[#111111] mb-3">
+                {item.title}
+              </h3>
+              <p className="text-base text-[#1F1F1F] leading-relaxed flex-grow">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
