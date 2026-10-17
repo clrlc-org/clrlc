@@ -1,6 +1,9 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { XIcon, GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
 
 const exploreLinks = [
@@ -35,8 +38,11 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  const isResearchPage = pathname === '/research';
+
   return (
-    <footer className="bg-gradient-to-r from-[#2E2357] via-[#3d2e6f] to-[#1898A8] text-white">
+    <footer className="bg-gradient-to-br from-[#1e7a99] to-[#0d5f6b] text-white">
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Left block: logo + tagline */}
@@ -124,7 +130,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/20 text-center text-base text-white/70">
+        <div className={`mt-8 pt-8 border-t text-center text-base text-white/70 ${
+          isResearchPage ? 'border-white/20' : 'border-white/10'
+        }`}>
           © {new Date().getFullYear()} CLRLC. All rights reserved.
         </div>
       </div>
