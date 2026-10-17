@@ -347,7 +347,7 @@ export default async function Home() {
                   className="h-12 px-8 rounded-full text-lg font-semibold transition-all hover:scale-105"
                   asChild
                 >
-                  <Link href="/contact">Partner With Us</Link>
+                  <Link href="/partnerships">Partner With Us</Link>
                 </Button>
               </div>
             </FadeIn>
