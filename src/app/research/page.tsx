@@ -52,7 +52,7 @@ const SAMPLE_PUBLICATIONS = [
     venue: 'WiML Symposium @ ICML 2026',
     year: 2026,
     description: 'First evaluation of JoLA for translating Yorùbá dialects and Nigerian Pidgin into English.',
-    posterImage: { asset: { url: '/images/jola-poster.jpg' } },
+    posterImage: { url: '/images/jola-poster.jpg' },
   },
   {
     _id: '2',
