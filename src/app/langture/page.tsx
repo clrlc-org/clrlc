@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -8,19 +7,19 @@ export const metadata: Metadata = {
 };
 
 export default function LangturePage() {
-  const languages = [
-    {
-      region: "West Africa",
-      languages: ["Yoruba", "Ewe", "Hausa", "Igbo", "Twi/Akan", "Bambara"],
-    },
-    {
-      region: "East Africa",
-      languages: ["Swahili", "Kikuyu", "Kinyarwanda"],
-    },
-    {
-      region: "Central Africa",
-      languages: ["Lingala"],
-    },
+  const languageList = [
+    { name: "Yoruba", region: "West Africa" },
+    { name: "Ewe", region: "West Africa" },
+    { name: "Hausa", region: "West Africa" },
+    { name: "Igbo", region: "West Africa" },
+    { name: "Twi/Akan", region: "West Africa" },
+    { name: "Bambara", region: "West Africa" },
+    { name: "Igala", region: "West Africa" },
+    { name: "Fon", region: "West Africa" },
+    { name: "Swahili", region: "East Africa" },
+    { name: "Kikuyu", region: "East Africa" },
+    { name: "Kinyarwanda", region: "East Africa" },
+    { name: "Lingala", region: "Central Africa" },
   ];
 
   const steps = [
@@ -153,25 +152,69 @@ export default function LangturePage() {
             </p>
           </div>
 
+          <style>{`
+            @keyframes scroll-left {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes scroll-right {
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+            @media (prefers-reduced-motion: no-preference) {
+              .language-carousel-left {
+                animation: scroll-left 30s linear infinite;
+              }
+              .language-carousel-right {
+                animation: scroll-right 30s linear infinite;
+              }
+              .language-carousel-container:hover .language-carousel-left,
+              .language-carousel-container:hover .language-carousel-right {
+                animation-play-state: paused;
+              }
+            }
+          `}</style>
+
           <div className="space-y-8">
-            {languages.map((group) => (
-              <div key={group.region}>
-                <h3 className="text-lg font-semibold text-[#111111] mb-4">
-                  {group.region}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {group.languages.map((lang) => (
-                    <span
-                      key={lang}
-                      className="px-4 py-2 bg-white rounded-full text-[#111111] font-medium border border-[#D9D9D9]"
-                    >
-                      {lang}
-                    </span>
-                  ))}
-                </div>
+            {/* Top row - scrolls left */}
+            <div className="language-carousel-container overflow-hidden">
+              <div className="language-carousel-left flex gap-3 w-fit">
+                {[...languageList.slice(0, 6), ...languageList.slice(0, 6)].map((lang, idx) => (
+                  <div
+                    key={idx}
+                    className="px-4 py-3 bg-white rounded-full border border-[#D9D9D9] whitespace-nowrap flex-shrink-0"
+                  >
+                    <div className="text-[#111111] font-medium">{lang.name}</div>
+                    <div className="text-xs text-[#1F1F1F]/60">{lang.region}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Bottom row - scrolls right */}
+            <div className="language-carousel-container overflow-hidden">
+              <div className="language-carousel-right flex gap-3 w-fit">
+                {[...languageList.slice(6), ...languageList.slice(6)].map((lang, idx) => (
+                  <div
+                    key={idx}
+                    className="px-4 py-3 bg-white rounded-full border border-[#D9D9D9] whitespace-nowrap flex-shrink-0"
+                  >
+                    <div className="text-[#111111] font-medium">{lang.name}</div>
+                    <div className="text-xs text-[#1F1F1F]/60">{lang.region}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+
+          {/* Gradient fade overlays */}
+          <style>{`
+            .language-carousel-container {
+              position: relative;
+              mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+              -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+            }
+          `}</style>
         </div>
       </section>
 
