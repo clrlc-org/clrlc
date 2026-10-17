@@ -58,7 +58,7 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
         }
       `}</style>
 
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] -mt-20 pt-32 pb-16 lg:-mt-28 lg:pt-40 lg:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-20 pb-16 lg:pt-28 lg:pb-20 mt-16 lg:mt-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Two-column layout: text left, animation right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">

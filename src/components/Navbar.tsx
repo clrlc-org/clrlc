@@ -57,13 +57,6 @@ const navItems: NavItem[] = [
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
-  const [scrolled, setScrolled] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const isCurrent = (item: NavItem) => {
     if (item.href) return pathname === item.href;
@@ -71,22 +64,9 @@ export function Navbar() {
     return false;
   };
 
-  const isHeroPage = ["/langture", "/newsletter", "/research"].includes(pathname);
-  const isScrolledPastHero = scrolled && isHeroPage;
-
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolledPastHero
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b py-2"
-          : isHeroPage
-          ? "bg-transparent py-4"
-          : scrolled || pathname !== "/"
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b py-2"
-          : "bg-transparent py-4",
-      )}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white py-2 border-b border-slate-200">
+
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="relative h-12 w-32">
           <Image
@@ -106,11 +86,7 @@ export function Navbar() {
                   <DropdownMenuTrigger
                     className={cn(
                       "flex items-center gap-1 text-lg font-medium transition-colors hover:text-primary outline-none focus:text-primary",
-                      isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
-                        ? "text-slate-600 hover:text-primary"
-                        : isHeroPage && !scrolled
-                        ? "text-white hover:text-white/80"
-                        : "text-slate-600 hover:text-slate-900",
+                      "text-slate-600 hover:text-primary",
                       isCurrent(item) ? "text-primary font-semibold" : "",
                     )}
                   >
@@ -143,11 +119,7 @@ export function Navbar() {
                 href={item.href!}
                 className={cn(
                   "text-lg font-medium transition-colors hover:text-primary relative group py-2",
-                  isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
-                    ? "text-slate-600 hover:text-primary"
-                    : isHeroPage && !scrolled
-                    ? "text-white hover:text-white/80"
-                    : "text-slate-600 hover:text-slate-900",
+                  "text-slate-600 hover:text-primary",
                   pathname === item.href ? "text-primary font-semibold" : "",
                 )}
               >
@@ -163,14 +135,7 @@ export function Navbar() {
           })}
           <Button
             asChild
-            className={cn(
-              "rounded-full px-6",
-              isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
-                ? "bg-primary text-white hover:bg-primary/90"
-                : isHeroPage && !scrolled
-                ? "bg-white text-[#2E2357] hover:bg-white/90"
-                : "bg-primary text-white hover:bg-primary/90",
-            )}
+            className="rounded-full px-6 bg-primary text-white hover:bg-primary/90"
           >
             <Link href="/contact" className="text-lg">
               Contact Us
@@ -185,13 +150,6 @@ export function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={cn(
-                  isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
-                    ? ""
-                    : isHeroPage && !scrolled
-                    ? "text-white"
-                    : "text-slate-900",
-                )}
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
