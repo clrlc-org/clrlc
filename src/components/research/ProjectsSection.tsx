@@ -42,15 +42,26 @@ export function ProjectsSection({ filter = null }: ProjectsSectionProps) {
             </a>
           )}
 
-          {/* Langture Card */}
-          <div className="bg-[#2E2357] rounded-[16px] p-[2.2rem] transition-all hover:shadow-lg hover:-translate-y-2 flex flex-col items-center justify-center h-full min-h-64">
+          {/* Langture-Bench Card */}
+          <a
+            href="/research/langture-bench"
+            className="bg-[#2E2357] rounded-[16px] p-[2.2rem] transition-all hover:shadow-lg hover:-translate-y-2 flex flex-col h-full"
+          >
+            <div className="mb-4">
+              <span className="px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white bg-white/20 rounded-full">
+                In progress
+              </span>
+            </div>
             <h3 className="text-2xl font-bold text-white mb-4">
-              LANGTURE
+              Langture-Bench
             </h3>
-            <span className="px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white border border-white/30 rounded-full">
-              Coming soon
+            <p className="text-white leading-relaxed mb-6 flex-grow text-sm">
+              A multilingual and multicultural corpus of African proverbs, also built as a benchmark to test how well language models understand culture.
+            </p>
+            <span className="inline-flex items-center gap-2 text-white font-medium text-sm">
+              View project →
             </span>
-          </div>
+          </a>
         </div>
       </div>
     </section>
