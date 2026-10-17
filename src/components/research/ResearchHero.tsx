@@ -79,8 +79,7 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
 
               {/* Description */}
               <p className="text-lg sm:text-xl text-[#CFC9E6] mb-10 max-w-[560px]">
-                Speech and text datasets, benchmarks and models for low-resource
-                languages, built with the communities who speak them.
+                At CLRLC, we research how to advance AI for low-resource languages, from collecting and validating speech and text data to developing and evaluating language technologies, in collaboration with the communities who speak them.
               </p>
 
               {/* Filter pills */}
