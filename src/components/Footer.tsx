@@ -1,9 +1,6 @@
-'use client';
-
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { XIcon, GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
 
 const exploreLinks = [
@@ -37,21 +34,9 @@ const socialLinks = [
   },
 ];
 
-interface FooterProps {
-  gradientBackground?: boolean;
-}
-
-export function Footer({ gradientBackground: forcedGradient }: FooterProps) {
-  const pathname = usePathname();
-  const isResearchPage = pathname === '/research';
-  const useGradient = forcedGradient || isResearchPage;
-
+export function Footer() {
   return (
-    <footer className={`${
-      useGradient
-        ? 'bg-gradient-to-r from-[#2E2357] via-[#3d2e6f] to-[#1898A8] text-white'
-        : 'border-t bg-primary text-primary-foreground'
-    }`}>
+    <footer className="bg-gradient-to-r from-[#2E2357] via-[#3d2e6f] to-[#1898A8] text-white">
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Left block: logo + tagline */}
@@ -64,7 +49,7 @@ export function Footer({ gradientBackground: forcedGradient }: FooterProps) {
                 className="object-contain brightness-0 invert"
               />
             </Link>
-            <p className={`text-lg ${useGradient ? 'text-white/90' : 'text-gray-300'}`}>
+            <p className="text-lg text-white/90">
               Building inclusive language technologies for low-resource
               languages and cultures.
             </p>
@@ -73,7 +58,7 @@ export function Footer({ gradientBackground: forcedGradient }: FooterProps) {
           {/* Explore column */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Explore</h4>
-            <ul className={`grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-lg ${useGradient ? 'text-white/80' : 'text-gray-300'}`}>
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-lg text-white/80">
               {exploreLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -90,7 +75,7 @@ export function Footer({ gradientBackground: forcedGradient }: FooterProps) {
           {/* Contact column */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
-            <ul className={`space-y-3 text-lg ${useGradient ? 'text-white/80' : 'text-gray-300'}`}>
+            <ul className="space-y-3 text-lg text-white/80">
               <li>
                 <Link
                   href="/contact"
@@ -139,11 +124,7 @@ export function Footer({ gradientBackground: forcedGradient }: FooterProps) {
           </div>
         </div>
 
-        <div className={`mt-8 pt-8 border-t text-center text-base ${
-          useGradient
-            ? 'border-white/20 text-white/70'
-            : 'border-gray-700 text-gray-400'
-        }`}>
+        <div className="mt-8 pt-8 border-t border-white/20 text-center text-base text-white/70">
           © {new Date().getFullYear()} CLRLC. All rights reserved.
         </div>
       </div>
