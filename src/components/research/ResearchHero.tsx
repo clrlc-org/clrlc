@@ -59,46 +59,50 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
       `}</style>
 
       <section className="relative overflow-hidden bg-[#2E2357] pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {/* Label */}
-          <div className="mb-6 inline-block">
-            <span className="text-sm font-semibold uppercase tracking-widest text-[#1898A8]">
-              CLRLC Research
-            </span>
-          </div>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          {/* Two-column layout: text left, animation right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left column: text content */}
+            <div className="flex flex-col">
+              {/* Label */}
+              <div className="mb-6 inline-block w-fit">
+                <span className="text-sm font-semibold uppercase tracking-widest text-[#1898A8]">
+                  CLRLC Research
+                </span>
+              </div>
 
-          {/* Heading with split color */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Research for the languages{' '}
-            <span className="text-[#1898A8]">AI leaves out</span>
-          </h1>
+              {/* Heading with split color */}
+              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight max-w-[560px]">
+                Research for the languages{' '}
+                <span className="text-[#1898A8]">AI leaves out</span>
+              </h1>
 
-          {/* Description */}
-          <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl">
-            Speech and text datasets, benchmarks and models for low-resource
-            languages, built with the communities who speak them.
-          </p>
+              {/* Description */}
+              <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-[560px]">
+                Speech and text datasets, benchmarks and models for low-resource
+                languages, built with the communities who speak them.
+              </p>
 
-          {/* Filter pills */}
-          <div className="flex flex-wrap gap-3 mb-12">
-            {FILTER_OPTIONS.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => handleFilterChange(option.value)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeFilter === option.value
-                    ? 'bg-[#1898A8] text-white'
-                    : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
+              {/* Filter pills */}
+              <div className="flex flex-wrap gap-3">
+                {FILTER_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => handleFilterChange(option.value)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                      activeFilter === option.value
+                        ? 'bg-[#1898A8] text-white'
+                        : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-          {/* Languages animation - right side */}
-          <div className="absolute right-0 top-0 h-full w-full lg:w-1/2 pointer-events-none">
-            <div className="relative h-full min-h-96">
+            {/* Right column: floating languages animation */}
+            <div className="relative h-96 lg:h-[420px] pointer-events-none">
               {languages.map((item) => (
                 <span
                   key={item.name}
