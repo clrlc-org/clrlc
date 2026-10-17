@@ -71,11 +71,18 @@ export function Navbar() {
     return false;
   };
 
+  const isHeroPage = ["/langture", "/newsletter", "/research"].includes(pathname);
+  const isScrolledPastHero = scrolled && isHeroPage;
+
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled || pathname !== "/"
+        isScrolledPastHero
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b py-2"
+          : isHeroPage
+          ? "bg-transparent py-4"
+          : scrolled || pathname !== "/"
           ? "bg-white/90 backdrop-blur-md shadow-sm border-b py-2"
           : "bg-transparent py-4",
       )}
@@ -99,9 +106,11 @@ export function Navbar() {
                   <DropdownMenuTrigger
                     className={cn(
                       "flex items-center gap-1 text-lg font-medium transition-colors hover:text-primary outline-none focus:text-primary",
-                      !scrolled && pathname === "/"
-                        ? "text-slate-600 hover:text-slate-900"
-                        : "text-slate-600 hover:text-primary",
+                      isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
+                        ? "text-slate-600 hover:text-primary"
+                        : isHeroPage && !scrolled
+                        ? "text-white hover:text-white/80"
+                        : "text-slate-600 hover:text-slate-900",
                       isCurrent(item) ? "text-primary font-semibold" : "",
                     )}
                   >
@@ -134,9 +143,11 @@ export function Navbar() {
                 href={item.href!}
                 className={cn(
                   "text-lg font-medium transition-colors hover:text-primary relative group py-2",
-                  !scrolled && pathname === "/"
-                    ? "text-slate-600 hover:text-slate-900"
-                    : "text-slate-600 hover:text-primary",
+                  isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
+                    ? "text-slate-600 hover:text-primary"
+                    : isHeroPage && !scrolled
+                    ? "text-white hover:text-white/80"
+                    : "text-slate-600 hover:text-slate-900",
                   pathname === item.href ? "text-primary font-semibold" : "",
                 )}
               >
@@ -154,9 +165,11 @@ export function Navbar() {
             asChild
             className={cn(
               "rounded-full px-6",
-              !scrolled && pathname === "/"
+              isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
                 ? "bg-primary text-white hover:bg-primary/90"
-                : "bg-primary text-white",
+                : isHeroPage && !scrolled
+                ? "bg-white text-[#2E2357] hover:bg-white/90"
+                : "bg-primary text-white hover:bg-primary/90",
             )}
           >
             <Link href="/contact" className="text-lg">
@@ -173,7 +186,11 @@ export function Navbar() {
                 variant="ghost"
                 size="icon"
                 className={cn(
-                  !scrolled && pathname === "/" ? "text-slate-900" : "",
+                  isScrolledPastHero || (scrolled && !isHeroPage) || (pathname !== "/" && !isHeroPage)
+                    ? ""
+                    : isHeroPage && !scrolled
+                    ? "text-white"
+                    : "text-slate-900",
                 )}
               >
                 <Menu className="h-6 w-6" />

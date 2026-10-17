@@ -73,9 +73,9 @@ export default async function NewsletterPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen pt-20 lg:pt-28">
+    <div className="flex flex-col min-h-screen">
       {/* Header Section with Newsletter CTA */}
-      <section className="py-20 lg:py-28 bg-gradient-to-r from-[#2E2357] to-[#1F6F86] text-white">
+      <section className="-mt-20 pt-32 lg:-mt-28 lg:pt-40 pb-20 lg:pb-28 bg-gradient-to-r from-[#2E2357] to-[#1F6F86] text-white">
         <div className="container mx-auto px-4 md:px-6">
           <FadeIn delay={0.1}>
             <div className="max-w-3xl mx-auto text-center space-y-8">

@@ -47,15 +47,8 @@ export default function LangturePage() {
   return (
     <div className="flex flex-col min-h-screen pt-20 lg:pt-28">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-20 pb-16 lg:pt-28 lg:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] -mt-20 pt-32 pb-16 lg:-mt-28 lg:pt-40 lg:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 text-sm"
-          >
-            ← Back to home
-          </Link>
-
           <div className="space-y-8">
             <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC]">
               Langture AI
