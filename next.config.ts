@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
         destination: "/langture",
         permanent: true,
       },
+      {
+        source: "/partners",
+        destination: "/partnerships",
+        permanent: true,
+      },
     ];
   },
 };

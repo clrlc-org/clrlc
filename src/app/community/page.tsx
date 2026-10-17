@@ -56,8 +56,8 @@ export default async function CommunityPage() {
       icon: Handshake,
       title: "Partner With Us",
       description: "Collaborate with us on research, events or funding.",
-      linkText: "Contact us",
-      linkUrl: "/contact",
+      linkText: "Learn more",
+      linkUrl: "/partnerships",
       external: false,
     },
   ];

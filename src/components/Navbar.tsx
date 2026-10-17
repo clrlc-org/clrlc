@@ -49,7 +49,7 @@ const navItems: NavItem[] = [
     name: "Community",
     items: [
       { name: "Community Overview", href: "/community" },
-      { name: "Partners & Sponsorship", href: "/partners" },
+      { name: "Partnerships", href: "/partnerships" },
     ],
   },
 ];
