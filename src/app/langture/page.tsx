@@ -49,12 +49,13 @@ export default function LangturePage() {
       <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-28 pb-16 lg:pt-36 lg:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
-            <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC]">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#5FD0DC] bg-white/5 border border-[#5FD0DC]/20">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#5FD0DC]"></span>
               Langture AI
-            </span>
+            </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
-              Langture-Bench
+              <span className="italic text-[#5FD0DC]">Langture-Bench</span>
             </h1>
 
             <p className="text-xl text-[#CFC9E6] max-w-2xl">

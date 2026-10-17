@@ -66,16 +66,15 @@ export default async function Home() {
             {/* Left Column: Text Content */}
             <div className="space-y-6 md:space-y-8 text-center md:text-left">
               <FadeIn delay={0.1}>
-                <div className="inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium text-slate-600 bg-white shadow-sm mx-auto md:mx-0">
-                  <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+                <div className="eyebrow-label mx-auto md:mx-0 !text-slate-600 !bg-transparent !border-slate-300">
                   Advancing AI for Every Language
                 </div>
               </FadeIn>
 
               <FadeIn delay={0.2}>
                 <SectionHeading as="h1">
-                  <span className="italic">Every Voice</span> Deserves <br />
-                  <span className="text-primary">to be Heard</span>
+                  Every Voice <br />
+                  <span className="italic text-[#1898A8]">Deserves To Be Heard</span>
                 </SectionHeading>
               </FadeIn>
 

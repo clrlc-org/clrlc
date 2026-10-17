@@ -80,11 +80,12 @@ export default async function NewsletterPage() {
           <FadeIn delay={0.1}>
             <div className="max-w-3xl mx-auto text-center space-y-8">
               <div>
-                <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC] block mb-4">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#5FD0DC] bg-white/5 border border-[#5FD0DC]/20 mb-4 block">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#5FD0DC]"></span>
                   Stay Connected
-                </span>
+                </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-white">
-                  Join Our Community of Language Technologists
+                  Join Our Community of <span className="italic text-[#5FD0DC]">Language Technologists</span>
                 </h1>
                 <p className="text-lg text-[#CFC9E6]">
                   Stay up to date with our research, dataset releases and community events, and find ways to contribute.

@@ -90,7 +90,29 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-bold text-slate-900 tracking-tight;
+    @apply font-heading font-black text-slate-900 tracking-tight;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  button,
+  a {
+    @apply font-sans;
+  }
+  p, span, label, li {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .eyebrow-label {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#1898A8] bg-white/5 border border-[#1898A8]/20;
+    font-family: var(--font-outfit), sans-serif;
+  }
+
+  .eyebrow-label::before {
+    @apply inline-block w-1.5 h-1.5 rounded-full;
+    background-color: #1898A8;
+    content: '';
   }
 }
 

@@ -65,16 +65,15 @@ export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
             {/* Left column: text content */}
             <div className="flex flex-col">
               {/* Label */}
-              <div className="mb-6 inline-block w-fit">
-                <span className="text-sm font-semibold uppercase tracking-widest text-[#5FD0DC]">
-                  CLRLC Research
-                </span>
+              <div className="mb-6 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#5FD0DC] bg-white/5 border border-[#5FD0DC]/20">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#5FD0DC]"></span>
+                CLRLC Research
               </div>
 
               {/* Heading with split color */}
               <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight max-w-[560px]">
                 Advancing the Frontiers of{' '}
-                <span className="text-[#5FD0DC]">Language and AI</span>
+                <span className="italic text-[#5FD0DC]">Language and AI</span>
               </h1>
 
               {/* Description */}
