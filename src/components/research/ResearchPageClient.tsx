@@ -43,11 +43,11 @@ export function ResearchPageClient({
   publications,
   languages,
 }: ResearchPageClientProps) {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
   // Filter publications based on research area
   const filteredPublications =
-    activeFilter === 'all'
+    activeFilter === null
       ? publications
       : publications.filter((p) => p.researchArea === activeFilter);
 

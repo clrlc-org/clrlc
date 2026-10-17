@@ -1,9 +1,9 @@
 interface ProjectsSectionProps {
-  filter?: string;
+  filter?: string | null;
 }
 
-export function ProjectsSection({ filter = 'all' }: ProjectsSectionProps) {
-  const showYorGe = filter === 'all' || filter === 'code-switching';
+export function ProjectsSection({ filter = null }: ProjectsSectionProps) {
+  const showYorGe = filter === null || filter === 'code-switching';
 
   return (
     <section className="bg-white py-16 lg:py-24">

@@ -9,7 +9,6 @@ const floatAnimClass: Record<number, string> = {
 };
 
 const FILTER_OPTIONS = [
-  { label: 'All', value: 'all' },
   { label: 'Code-switching', value: 'code-switching' },
   { label: 'Speech', value: 'speech' },
   { label: 'Translation', value: 'translation' },
@@ -27,15 +26,16 @@ interface ResearchHeroProps {
     anim: number;
     color: string;
   }>;
-  onFilterChange?: (filter: string) => void;
+  onFilterChange?: (filter: string | null) => void;
 }
 
 export function ResearchHero({ languages, onFilterChange }: ResearchHeroProps) {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
   const handleFilterChange = (filter: string) => {
-    setActiveFilter(filter);
-    onFilterChange?.(filter);
+    const newFilter = activeFilter === filter ? null : filter;
+    setActiveFilter(newFilter);
+    onFilterChange?.(newFilter);
   };
 
   return (
