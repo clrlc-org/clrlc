@@ -2,15 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Metadata } from 'next';
-import { ArrowRight, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FadeIn, StaggerContainer } from '@/components/Motion';
-
-export const metadata: Metadata = {
-  title: 'Partnerships - CLRLC',
-  description: 'Partner with CLRLC to advance inclusive AI for low-resource languages.',
-};
 
 export default function PartnershipsPage() {
   const [formStatus, setFormStatus] = useState<'idle' | 'success'>('idle');
