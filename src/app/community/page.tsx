@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
@@ -9,10 +9,11 @@ import { urlFor } from "@/sanity/lib/image";
 import { MapPin, Calendar, ArrowRight, Users, Briefcase, Handshake } from "lucide-react";
 import { CommunityCarousel } from "@/components/CommunityCarousel";
 
-export const metadata: Metadata = {
-  title: "Community",
-  description: "Join the CLRLC community.",
-};
+export const metadata = pageMetadata(
+  "Community",
+  "/community",
+  "Join the CLRLC community.",
+);
 
 export default async function CommunityPage() {
   let sanityEvents: any[] = [];

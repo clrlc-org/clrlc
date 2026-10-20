@@ -1,10 +1,11 @@
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Mail, ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Langture AI",
-  description: "A multilingual and multicultural corpus of African proverbs and benchmark for testing language model cultural understanding.",
-};
+export const metadata = pageMetadata(
+  "Langture AI",
+  "/langture",
+  "A multilingual and multicultural corpus of African proverbs and benchmark for testing language model cultural understanding.",
+);
 
 export default function LangturePage() {
   const languageList = [

@@ -1,14 +1,15 @@
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Users, Zap, Calendar, Lightbulb, Sparkles } from "lucide-react";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { SectionHeading, Subheading } from "@/components/Heading";
 import { NewsletterForm } from "@/components/NewsletterForm";
 
-export const metadata: Metadata = {
-  title: "Newsletter",
-  description: "Research updates, dataset releases, and community highlights in low-resource language technology.",
-};
+export const metadata = pageMetadata(
+  "Newsletter",
+  "/newsletter",
+  "Research updates, dataset releases, and community highlights in low-resource language technology.",
+);
 
 async function getRecentPosts() {
   try {

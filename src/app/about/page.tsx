@@ -3,11 +3,9 @@
 import React from 'react';
 import { TeamMemberCard } from '@/components/TeamMemberCard';
 import { FadeIn, StaggerContainer } from "@/components/Motion";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-};
+export const metadata = pageMetadata("About", "/about");
 
 export default function AboutPage() {
   

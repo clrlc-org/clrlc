@@ -1,13 +1,13 @@
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { client } from "@/sanity/lib/client";
 import { RESEARCH_QUERY } from "@/sanity/lib/queries";
 import { ResearchPageClient } from "@/components/research/ResearchPageClient";
 
-export const metadata: Metadata = {
-  title: "Research",
-  description:
-    "Speech and text datasets, benchmarks and models for low-resource languages.",
-};
+export const metadata = pageMetadata(
+  "Research",
+  "/research",
+  "Speech and text datasets, benchmarks and models for low-resource languages.",
+);
 
 export const revalidate = 60;
 
