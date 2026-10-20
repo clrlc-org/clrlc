@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Mail, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Langture-Bench - CLRLC",
+  title: "Langture AI",
   description: "A multilingual and multicultural corpus of African proverbs and benchmark for testing language model cultural understanding.",
 };
 

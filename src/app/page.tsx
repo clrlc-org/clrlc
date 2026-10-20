@@ -28,6 +28,37 @@ interface ResearchArticle {
   publishedAt?: string;
 }
 
+const SITE_DESCRIPTION =
+  "Center for Low-Resource Languages and Cultures (CLRLC) is a language research AI organisation dedicated to advancing research and innovation for low-resource languages.";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "clrlc.org",
+  alternateName: [
+    "CLRLC",
+    "Center for Low-Resource Languages & Cultures (CLRLC)",
+  ],
+  url: "https://www.clrlc.org/",
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Center for Low-Resource Languages & Cultures (CLRLC)",
+  alternateName: "CLRLC",
+  url: "https://www.clrlc.org/",
+  logo: "https://www.clrlc.org/logo.png",
+  email: "info@clrlc.org",
+  description: SITE_DESCRIPTION,
+  sameAs: [
+    "https://linktr.ee/CLRLC_Org",
+    "https://www.linkedin.com/company/center-for-low-resource-languages-and-culture/",
+    "https://x.com/clrlc_org",
+    "https://github.com/clrlc-org",
+  ],
+};
+
 export default async function Home() {
   let featuredEvents: any[] = [];
   let researchArticles: ResearchArticle[] = [];
@@ -54,6 +85,14 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       {/* ... (Hero and Features sections remain unchanged) ... */}
       {/* --- HERO SECTION --- */}
       <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-background">

@@ -4,7 +4,7 @@ import { RESEARCH_QUERY } from "@/sanity/lib/queries";
 import { ResearchPageClient } from "@/components/research/ResearchPageClient";
 
 export const metadata: Metadata = {
-  title: "Research - CLRLC",
+  title: "Research",
   description:
     "Speech and text datasets, benchmarks and models for low-resource languages.",
 };

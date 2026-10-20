@@ -10,7 +10,7 @@ import { MapPin, Calendar, ArrowRight, Users, Briefcase, Handshake } from "lucid
 import { CommunityCarousel } from "@/components/CommunityCarousel";
 
 export const metadata: Metadata = {
-  title: "Community - CLRLC",
+  title: "Community",
   description: "Join the CLRLC community.",
 };
 

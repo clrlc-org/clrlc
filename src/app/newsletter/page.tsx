@@ -6,7 +6,7 @@ import { SectionHeading, Subheading } from "@/components/Heading";
 import { NewsletterForm } from "@/components/NewsletterForm";
 
 export const metadata: Metadata = {
-  title: "Newsletter - CLRLC",
+  title: "Newsletter",
   description: "Research updates, dataset releases, and community highlights in low-resource language technology.",
 };
 
