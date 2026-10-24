@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Playfair_Display } from "next/font/google";
+import { Inter, Outfit, Playfair_Display, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -16,6 +16,21 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "700", "900"],
   style: ["normal", "italic"],
   variable: "--font-playfair-display",
+  display: "swap",
+});
+
+// Fonts from the pre-Playfair design. Only the homepage hero uses these.
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -82,7 +97,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${playfairDisplay.variable} h-full`}
+      className={`${outfit.variable} ${playfairDisplay.variable} ${inter.variable} ${spaceGrotesk.variable} h-full`}
     >
       <body className="flex min-h-full flex-col font-sans antialiased text-foreground bg-background">
         <Navbar />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
-import createGlobe from "cobe";
+import createGlobe, { type Marker } from "cobe";
 import { HERO_LANGUAGES, type HeroLanguage } from "@/lib/hero-languages";
 
 const ASH_GREY: [number, number, number] = [199 / 255, 199 / 255, 204 / 255]; // #C7C7CC
@@ -9,8 +9,8 @@ const GLOW: [number, number, number] = [0.93, 0.93, 0.95];
 const TEAL: [number, number, number] = [24 / 255, 152 / 255, 168 / 255]; // #1898A8
 const TEAL_BRIGHT: [number, number, number] = [95 / 255, 208 / 255, 220 / 255]; // #5FD0DC
 
-const MARKER_SIZE = 0.035;
-const MARKER_SIZE_ACTIVE = 0.075;
+const MARKER_SIZE = 0.03;
+const MARKER_SIZE_ACTIVE = 0.05;
 const MARKER_SURFACE = 0.85; // cobe draws markers at 0.8 + markerElevation (0.05) of the radius
 const HIT_RADIUS_PX = 16;
 const SPIN_PER_FRAME = 0.0015;
@@ -208,19 +208,21 @@ export function LanguageGlobe() {
 
       const active = activeLanguagesRef.current;
       const sizes = sizesRef.current;
-      globe.update({
-        phi: rotation.phi,
-        theta: rotation.theta,
-        markers: MARKERS.map((marker, index) => {
-          const isActive = active.has(marker.languageIndex);
-          sizes[index] += ((isActive ? MARKER_SIZE_ACTIVE : MARKER_SIZE) - sizes[index]) * 0.15;
-          return {
+      const front: Marker[] = [];
+      MARKERS.forEach((marker, index) => {
+        const isActive = active.has(marker.languageIndex);
+        sizes[index] += ((isActive ? MARKER_SIZE_ACTIVE : MARKER_SIZE) - sizes[index]) * 0.15;
+        // Only front-facing markers are sent to cobe. cobe does not hide back-facing
+        // markers that sit just outside its disc, which is what drew the large blobs.
+        if (project(marker.location, rotation).visible) {
+          front.push({
             location: marker.location,
             size: sizes[index],
             color: isActive ? TEAL_BRIGHT : TEAL,
-          };
-        }),
+          });
+        }
       });
+      globe.update({ phi: rotation.phi, theta: rotation.theta, markers: front });
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
@@ -233,7 +235,14 @@ export function LanguageGlobe() {
 
   // Cycle the pills every few seconds. Paused for reduced motion and while a card is open.
   useEffect(() => {
-    if (reducedMotion || selected !== null) return;
+    // When cycling stops, show every pill. Otherwise a swap interrupted by an open card
+    // would leave its pill faded.
+    if (reducedMotion || selected !== null) {
+      setSlots((prev) =>
+        prev.every((item) => item.visible) ? prev : prev.map((item) => ({ ...item, visible: true })),
+      );
+      return;
+    }
 
     const timers: number[] = [];
     let cursor = PILL_COUNT;
@@ -374,7 +383,7 @@ export function LanguageGlobe() {
       <canvas
         ref={canvasRef}
         style={{ width: size || undefined, height: size || undefined }}
-        className="block touch-none cursor-grab active:cursor-grabbing"
+        className="block touch-none cursor-grab active:cursor-grabbing drop-shadow-[0_2px_12px_rgba(15,31,61,0.18)]"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
