@@ -51,7 +51,7 @@ export function Footer() {
             <Link href="/" className="block relative h-12 w-32">
               <Image
                 src="/logo.png"
-                alt="CLRLC Logo"
+                alt="Center for Low-Resource Languages & Cultures (CLRLC)"
                 fill
                 className="object-contain brightness-0 invert"
               />

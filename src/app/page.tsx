@@ -34,11 +34,8 @@ const SITE_DESCRIPTION =
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "clrlc.org",
-  alternateName: [
-    "CLRLC",
-    "Center for Low-Resource Languages & Cultures (CLRLC)",
-  ],
+  name: "Center for Low-Resource Languages & Cultures (CLRLC)",
+  alternateName: ["CLRLC", "clrlc.org"],
   url: "https://www.clrlc.org/",
 };
 

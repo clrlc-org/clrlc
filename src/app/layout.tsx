@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Center for Low-Resource Languages & Cultures (CLRLC)",
     description: SITE_DESCRIPTION,
     url: "https://www.clrlc.org",
-    siteName: "clrlc.org",
+    siteName: "Center for Low-Resource Languages & Cultures (CLRLC)",
     images: [
       {
         url: "/logo.jpg",

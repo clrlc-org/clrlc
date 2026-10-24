@@ -16,7 +16,7 @@ export function pageMetadata(
       title,
       description,
       url: `https://www.clrlc.org${path}`,
-      siteName: "clrlc.org",
+      siteName: "Center for Low-Resource Languages & Cultures (CLRLC)",
       images: [image],
       locale: "en_US",
       type: "website",

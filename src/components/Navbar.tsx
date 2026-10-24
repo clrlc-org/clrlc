@@ -72,7 +72,7 @@ export function Navbar() {
         <Link href="/" className="relative h-12 w-32">
           <Image
             src="/logo.png"
-            alt="CLRLC Logo"
+            alt="Center for Low-Resource Languages & Cultures (CLRLC)"
             fill
             className="object-contain transition-all duration-300"
           />
@@ -129,7 +129,7 @@ export function Navbar() {
                 <div className="relative h-10 w-28">
                   <Image
                     src="/logo.png"
-                    alt="CLRLC Logo"
+                    alt="Center for Low-Resource Languages & Cultures (CLRLC)"
                     fill
                     className="object-contain"
                   />
