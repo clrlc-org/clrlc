@@ -10,7 +10,7 @@ export const heroTheme = HOMEPAGE_GRADIENT
       eyebrow: "border border-white/30 bg-white/10 text-[#5FD0DC]",
       eyebrowDot: "bg-[#5FD0DC]",
       heading: "text-white",
-      accent: "text-[#5FD0DC]",
+      accent: "text-white",
       intro: "text-white/85",
       primary: "bg-white text-[#2E2357] hover:bg-white/90",
       secondary: "border-2 border-white text-white hover:bg-white/10",
