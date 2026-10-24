@@ -11,10 +11,28 @@ export const metadata = pageMetadata(
   "Research updates, dataset releases, and community highlights in low-resource language technology.",
 );
 
+export const revalidate = 3600;
+
+const SUBSTACK_FEED_URL = "https://clrlcorg.substack.com/feed";
+
+function readTag(xml: string, tag: string) {
+  const match = xml.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`));
+  if (!match) return "";
+  const cdata = match[1].match(/^<!\[CDATA\[([\s\S]*)\]\]>$/);
+  if (cdata) return cdata[1].trim();
+  return match[1]
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, "&")
+    .trim();
+}
+
 async function getRecentPosts() {
   try {
-    const response = await fetch("https://clrlcorg.substack.com/feed.json", {
-      cache: "no-store",
+    const response = await fetch(SUBSTACK_FEED_URL, {
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
@@ -22,18 +40,25 @@ async function getRecentPosts() {
       return [];
     }
 
-    const data = await response.json();
+    const xml = await response.text();
 
-    // Extract the 3 most recent posts
-    const posts = data.items?.slice(0, 3).map((item: any) => ({
-      title: item.title,
-      date: item.date_published ? new Date(item.date_published).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }) : "",
-      url: item.url,
-    })) || [];
+    // Extract the 3 most recent posts from the RSS feed
+    const posts = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)]
+      .slice(0, 3)
+      .map(([, item]) => {
+        const pubDate = readTag(item, "pubDate");
+        return {
+          title: readTag(item, "title"),
+          date: pubDate
+            ? new Date(pubDate).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })
+            : "",
+          url: readTag(item, "link"),
+        };
+      });
 
     return posts;
   } catch (error) {
