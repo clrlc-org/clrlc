@@ -20,16 +20,13 @@ const MARKER_SIZE_ACTIVE = 0.045; // grows slightly when its language is clicked
 const MARKER_SURFACE = 0.85; // cobe draws markers at 0.8 + markerElevation (0.05) of the radius
 const HIT_RADIUS_PX = 16;
 const SPIN_RADIANS_PER_SECOND = 0.045; // slow, steady, the same on every computer
-const PILL_COUNT = 4;
+const PILL_COUNT = 3;
 const PILL_INTERVAL_MS = 5000;
 const PILL_SWAP_MS = 1000; // one-second fade out, then one-second fade in
-// Desktop: one pill in each corner of the globe, outside the sphere. Phones: a 2 x 2 grid
-// under the globe (the grid is set on the wrapper, so these only apply from md up).
 const PILL_POSITIONS = [
-  "md:absolute md:left-0 md:top-[8%]",
-  "md:absolute md:right-0 md:top-[8%]",
-  "md:absolute md:left-0 md:bottom-[8%]",
-  "md:absolute md:right-0 md:bottom-[8%]",
+  "left-0 top-[8%]",
+  "right-0 top-[38%]",
+  "left-[4%] bottom-[10%]",
 ];
 
 // Every marker of every language, flattened so cobe can draw them in one list.
@@ -379,7 +376,7 @@ export function LanguageGlobe() {
       className="relative mx-auto w-full max-w-[400px] md:w-[575px] md:max-w-none"
       onPointerLeave={() => setHover(null)}
     >
-      <div className="relative mx-auto w-full max-w-[400px] md:w-[575px] md:max-w-none">
+      <div className={`relative mx-auto ${GLOBE_SIZE_CLASSES}`}>
         <canvas
           ref={canvasRef}
           className={`block h-auto touch-none cursor-grab active:cursor-grabbing opacity-[0.85] ${GLOBE_SIZE_CLASSES}`}
@@ -393,25 +390,23 @@ export function LanguageGlobe() {
           role="img"
         />
 
-        <div className="grid grid-cols-2 justify-items-center gap-2 pt-4 md:contents">
-          {slots.map((slot, index) => {
-            const language = HERO_LANGUAGES[slot.languageIndex];
-            return (
-              <button
-                key={index}
-                type="button"
-                onClick={() => selectLanguage(slot.languageIndex)}
-                aria-label={`Show where ${language.name} is spoken`}
-                style={{ fontFamily: "var(--font-outfit), sans-serif" }}
-                className={`${PILL_POSITIONS[index]} whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1.5 text-xs sm:text-sm font-medium text-[#1898A8] shadow-md transition-opacity duration-1000 hover:bg-[#F3F3F5] ${
-                  slot.visible ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {language.name}
-              </button>
-            );
-          })}
-        </div>
+        {slots.map((slot, index) => {
+          const language = HERO_LANGUAGES[slot.languageIndex];
+          return (
+            <button
+              key={index}
+              type="button"
+              onClick={() => selectLanguage(slot.languageIndex)}
+              aria-label={`Show where ${language.name} is spoken`}
+              style={{ fontFamily: "var(--font-outfit), sans-serif" }}
+              className={`absolute ${PILL_POSITIONS[index]} whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1.5 text-xs sm:text-sm font-medium text-[#1898A8] shadow-md transition-opacity duration-1000 hover:bg-[#F3F3F5] ${
+                slot.visible ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {language.name}
+            </button>
+          );
+        })}
 
         {hover && selected === null && (
           <div
