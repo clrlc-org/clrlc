@@ -102,7 +102,7 @@ export default async function Home() {
         />
 
         <div className="container mx-auto relative z-10 px-4 md:px-6">
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center xl:items-start">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center">
             {/* Left Column: Text Content */}
             <div className="space-y-6 md:space-y-8 text-center md:text-left">
               <FadeIn delay={0.1}>
