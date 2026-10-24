@@ -9,11 +9,17 @@ const ASH_GREY: [number, number, number] = [0.62, 0.64, 0.68]; // mid ash grey
 const GLOW: [number, number, number] = [0.15, 0.27, 0.42];
 const TEAL: [number, number, number] = [24 / 255, 152 / 255, 168 / 255]; // #1898A8
 
+// The globe is drawn once at GLOBE_SIZE pixels (sharp at devicePixelRatio 2) and shown
+// scaled. The sphere fills about 80% of the canvas, so the canvas is 400px on phones and
+// 575px on desktop, which gives a sphere of about 320px and 460px.
+const GLOBE_SIZE = 460;
+const GLOBE_SIZE_CLASSES = "aspect-square w-full max-w-[400px] md:max-w-none md:w-[575px]";
+
 const MARKER_SIZE = 0.035;
 const MARKER_SIZE_ACTIVE = 0.045; // grows slightly when its language is clicked
 const MARKER_SURFACE = 0.85; // cobe draws markers at 0.8 + markerElevation (0.05) of the radius
 const HIT_RADIUS_PX = 16;
-const SPIN_PER_FRAME = 0.00075;
+const SPIN_RADIANS_PER_SECOND = 0.045; // slow, steady, the same on every computer
 const PILL_COUNT = 3;
 const PILL_INTERVAL_MS = 5000;
 const PILL_SWAP_MS = 1000; // one-second fade out, then one-second fade in
@@ -113,35 +119,24 @@ export function LanguageGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
+  // Rotation, markers and interaction live in refs, so pill changes and card changes
+  // re-render the component without touching the globe.
   const rotationRef = useRef<Rotation>({ ...START_VIEW });
   const tweenRef = useRef<Rotation | null>(null);
   const sizesRef = useRef<number[]>(MARKERS.map(() => MARKER_SIZE));
   const selectedRef = useRef<number | null>(null);
   const reducedMotionRef = useRef(false);
-  const hoverPausedRef = useRef(false);
   const draggingRef = useRef(false);
   const dragRef = useRef({ x: 0, y: 0, distance: 0 });
   const activeLanguagesRef = useRef<Set<number>>(new Set());
   const slotsRef = useRef<PillSlot[]>([]);
 
-  const [size, setSize] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [slots, setSlots] = useState<PillSlot[]>(() =>
     Array.from({ length: PILL_COUNT }, (_, index) => ({ languageIndex: index, visible: true })),
   );
   const [selected, setSelected] = useState<number | null>(null);
   const [hover, setHover] = useState<Hover | null>(null);
-
-  // Track the globe's width (300px on phones, up to 520px on desktop).
-  useEffect(() => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-    const observer = new ResizeObserver(([entry]) => {
-      setSize(Math.round(entry.contentRect.width));
-    });
-    observer.observe(wrapper);
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -163,15 +158,15 @@ export function LanguageGlobe() {
     slotsRef.current = slots;
   }, [slots]);
 
-  // Create the globe once the canvas has a size. Recreate it when the size changes.
+  // Create the globe once, and destroy it when the page is left.
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || size === 0) return;
+    if (!canvas) return;
 
     const globe = createGlobe(canvas, {
-      devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-      width: size,
-      height: size,
+      devicePixelRatio: 2,
+      width: GLOBE_SIZE,
+      height: GLOBE_SIZE,
       phi: rotationRef.current.phi,
       theta: rotationRef.current.theta,
       dark: 0,
@@ -185,16 +180,21 @@ export function LanguageGlobe() {
     });
 
     // cobe draws a frame each time update() is called, so drive the animation here.
+    // Every movement is scaled by the time since the last frame, so speed is the same on any machine.
     let frame = 0;
-    const tick = () => {
+    let lastTime = performance.now();
+    const tick = (now: number) => {
+      const seconds = Math.min((now - lastTime) / 1000, 0.1);
+      lastTime = now;
       const rotation = rotationRef.current;
       const tween = tweenRef.current;
 
       if (tween) {
         const deltaPhi = tween.phi - rotation.phi;
         const deltaTheta = tween.theta - rotation.theta;
-        rotation.phi += deltaPhi * 0.08;
-        rotation.theta += deltaTheta * 0.08;
+        const ease = 1 - Math.pow(1 - 0.08, seconds * 60);
+        rotation.phi += deltaPhi * ease;
+        rotation.theta += deltaTheta * ease;
         if (Math.abs(deltaPhi) < 0.002 && Math.abs(deltaTheta) < 0.002) {
           rotation.phi = tween.phi;
           rotation.theta = tween.theta;
@@ -202,19 +202,19 @@ export function LanguageGlobe() {
         }
       } else if (
         !reducedMotionRef.current &&
-        !hoverPausedRef.current &&
         !draggingRef.current &&
         selectedRef.current === null
       ) {
-        rotation.phi += SPIN_PER_FRAME;
+        rotation.phi += SPIN_RADIANS_PER_SECOND * seconds;
       }
 
       const active = activeLanguagesRef.current;
       const sizes = sizesRef.current;
+      const sizeEase = 1 - Math.pow(1 - 0.15, seconds * 60);
       const front: Marker[] = [];
       MARKERS.forEach((marker, index) => {
         const isActive = active.has(marker.languageIndex);
-        sizes[index] += ((isActive ? MARKER_SIZE_ACTIVE : MARKER_SIZE) - sizes[index]) * 0.15;
+        sizes[index] += ((isActive ? MARKER_SIZE_ACTIVE : MARKER_SIZE) - sizes[index]) * sizeEase;
         // Only front-facing markers are sent to cobe. cobe does not hide back-facing
         // markers that sit just outside its disc, which is what drew the large blobs.
         if (project(marker.location, rotation).visible) {
@@ -234,7 +234,7 @@ export function LanguageGlobe() {
       cancelAnimationFrame(frame);
       globe.destroy();
     };
-  }, [size]);
+  }, []);
 
   // Cycle the pills every few seconds. Paused for reduced motion and while a card is open.
   useEffect(() => {
@@ -373,61 +373,53 @@ export function LanguageGlobe() {
   return (
     <div
       ref={wrapperRef}
-      className="relative mx-auto w-[300px] sm:w-[440px] lg:w-[520px] max-w-full"
-      onPointerEnter={(event) => {
-        if (event.pointerType === "mouse") hoverPausedRef.current = true;
-      }}
-      onPointerLeave={() => {
-        hoverPausedRef.current = false;
-        setHover(null);
-      }}
+      className="relative mx-auto w-full max-w-[400px] md:w-[575px] md:max-w-none"
+      onPointerLeave={() => setHover(null)}
     >
-      <div className="relative" style={{ width: size || undefined, height: size || undefined }}>
-      <canvas
-        ref={canvasRef}
-        style={{ width: size || undefined, height: size || undefined }}
-        className="block touch-none cursor-grab active:cursor-grabbing opacity-[0.85]"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={() => {
-          draggingRef.current = false;
-        }}
-        aria-label="Interactive globe showing where African languages are spoken. Drag to turn it."
-        role="img"
-      />
-
-      {slots.map((slot, index) => {
-        const language = HERO_LANGUAGES[slot.languageIndex];
-        return (
-          <button
-            key={index}
-            type="button"
-            onClick={() => selectLanguage(slot.languageIndex)}
-            aria-label={`Show where ${language.name} is spoken`}
-            style={{ fontFamily: "var(--font-outfit), sans-serif" }}
-            className={`absolute ${PILL_POSITIONS[index]} whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1.5 text-xs sm:text-sm font-medium text-[#1898A8] shadow-md transition-opacity duration-1000 hover:bg-[#F3F3F5] ${
-              slot.visible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {language.name}
-          </button>
-        );
-      })}
-
-      {hover && selected === null && (
-        <div
-          className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1 text-sm font-medium text-[#1898A8] shadow-md"
-          style={{
-            left: hover.x,
-            top: hover.y - 12,
-            fontFamily: "var(--font-outfit), sans-serif",
+      <div className={`relative mx-auto ${GLOBE_SIZE_CLASSES}`}>
+        <canvas
+          ref={canvasRef}
+          className={`block h-auto touch-none cursor-grab active:cursor-grabbing opacity-[0.85] ${GLOBE_SIZE_CLASSES}`}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={() => {
+            draggingRef.current = false;
           }}
-        >
-          {HERO_LANGUAGES[hover.languageIndex].name}
-        </div>
-      )}
+          aria-label="Interactive globe showing where African languages are spoken. Drag to turn it."
+          role="img"
+        />
 
+        {slots.map((slot, index) => {
+          const language = HERO_LANGUAGES[slot.languageIndex];
+          return (
+            <button
+              key={index}
+              type="button"
+              onClick={() => selectLanguage(slot.languageIndex)}
+              aria-label={`Show where ${language.name} is spoken`}
+              style={{ fontFamily: "var(--font-outfit), sans-serif" }}
+              className={`absolute ${PILL_POSITIONS[index]} whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1.5 text-xs sm:text-sm font-medium text-[#1898A8] shadow-md transition-opacity duration-1000 hover:bg-[#F3F3F5] ${
+                slot.visible ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {language.name}
+            </button>
+          );
+        })}
+
+        {hover && selected === null && (
+          <div
+            className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1 text-sm font-medium text-[#1898A8] shadow-md"
+            style={{
+              left: hover.x,
+              top: hover.y - 12,
+              fontFamily: "var(--font-outfit), sans-serif",
+            }}
+          >
+            {HERO_LANGUAGES[hover.languageIndex].name}
+          </div>
+        )}
       </div>
 
       {/* Reserved slot: on phones the card sits here under the globe, so the hero section

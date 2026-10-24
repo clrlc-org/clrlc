@@ -10,7 +10,7 @@ const LanguageGlobe = dynamic(
     loading: () => (
       <div
         aria-hidden="true"
-        className="mx-auto h-[300px] w-[300px] sm:h-[440px] sm:w-[440px] lg:h-[520px] lg:w-[520px] max-w-full"
+        className="mx-auto aspect-square w-full max-w-[400px] md:w-[575px] md:max-w-none"
       />
     ),
   },
