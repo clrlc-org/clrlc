@@ -102,9 +102,9 @@ export default async function Home() {
         />
 
         <div className="container mx-auto relative z-10 px-4 md:px-6">
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center xl:items-start">
             {/* Left Column: Text Content */}
-            <div className="space-y-6 md:space-y-8 text-center md:text-left">
+            <div className="space-y-6 md:space-y-8 text-center md:text-left xl:pt-[82px]">
               <FadeIn delay={0.1}>
                 <div
                   className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium font-[family-name:var(--font-inter)] ${heroTheme.eyebrow}`}
