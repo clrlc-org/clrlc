@@ -97,7 +97,7 @@ export default async function Home() {
         <div className="absolute inset-0 pattern-grid opacity-30 pointer-events-none" />
 
         <div className="container mx-auto relative z-10 px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center">
             {/* Left Column: Text Content */}
             <div className="space-y-6 md:space-y-8 text-center md:text-left">
               <FadeIn delay={0.1}>
@@ -108,9 +108,11 @@ export default async function Home() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h1 className="font-[family-name:var(--font-space-grotesk)] text-4xl sm:text-5xl lg:text-6xl font-bold uppercase leading-[1.05] tracking-tight text-[#0F1F3D]">
-                  <span className="italic">EVERY VOICE</span>{" "}
-                  <span>DESERVES</span>
+                <h1 className="font-[family-name:var(--font-space-grotesk)] text-4xl sm:text-5xl lg:text-6xl xl:text-5xl font-bold uppercase leading-[1.05] tracking-tight text-[#0F1F3D]">
+                  <span className="md:whitespace-nowrap">
+                    <span className="italic mr-[0.12em]">EVERY VOICE</span>{" "}
+                    <span>DESERVES</span>
+                  </span>
                   <span className="block text-[#1898A8]">TO BE HEARD</span>
                 </h1>
               </FadeIn>
