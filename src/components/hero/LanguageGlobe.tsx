@@ -4,13 +4,13 @@ import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } f
 import createGlobe, { type Marker } from "cobe";
 import { HERO_LANGUAGES, type HeroLanguage } from "@/lib/hero-languages";
 
-const ASH_GREY: [number, number, number] = [199 / 255, 199 / 255, 204 / 255]; // #C7C7CC
-const GLOW: [number, number, number] = [0.93, 0.93, 0.95];
+const ASH_GREY: [number, number, number] = [0.86, 0.87, 0.89]; // soft grey, not white
+const GLOW: [number, number, number] = [0.92, 0.93, 0.95]; // very soft grey glow
 const TEAL: [number, number, number] = [24 / 255, 152 / 255, 168 / 255]; // #1898A8
 const TEAL_BRIGHT: [number, number, number] = [95 / 255, 208 / 255, 220 / 255]; // #5FD0DC
 
-const MARKER_SIZE = 0.03;
-const MARKER_SIZE_ACTIVE = 0.05;
+const MARKER_SIZE = 0.04;
+const MARKER_SIZE_ACTIVE = 0.07;
 const MARKER_SURFACE = 0.85; // cobe draws markers at 0.8 + markerElevation (0.05) of the radius
 const HIT_RADIUS_PX = 16;
 const SPIN_PER_FRAME = 0.0015;
@@ -172,9 +172,9 @@ export function LanguageGlobe() {
       phi: rotationRef.current.phi,
       theta: rotationRef.current.theta,
       dark: 0,
-      diffuse: 1.2,
+      diffuse: 1.6,
       mapSamples: 16000,
-      mapBrightness: 2.4,
+      mapBrightness: 1.4,
       baseColor: ASH_GREY,
       glowColor: GLOW,
       markerColor: TEAL,
@@ -383,7 +383,7 @@ export function LanguageGlobe() {
       <canvas
         ref={canvasRef}
         style={{ width: size || undefined, height: size || undefined }}
-        className="block touch-none cursor-grab active:cursor-grabbing drop-shadow-[0_2px_12px_rgba(15,31,61,0.18)]"
+        className="block touch-none cursor-grab active:cursor-grabbing drop-shadow-[0_6px_16px_rgba(15,31,61,0.1)]"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
