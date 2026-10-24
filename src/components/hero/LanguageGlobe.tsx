@@ -108,7 +108,7 @@ function nearestMarker(
   return best;
 }
 
-export function LanguageGlobe() {
+export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -383,7 +383,11 @@ export function LanguageGlobe() {
       <canvas
         ref={canvasRef}
         style={{ width: size || undefined, height: size || undefined }}
-        className="block touch-none cursor-grab active:cursor-grabbing drop-shadow-[0_6px_16px_rgba(15,31,61,0.1)]"
+        className={`block touch-none cursor-grab active:cursor-grabbing ${
+          onDark
+            ? "drop-shadow-[0_0_24px_rgba(255,255,255,0.35)]"
+            : "drop-shadow-[0_6px_16px_rgba(15,31,61,0.1)]"
+        }`}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}

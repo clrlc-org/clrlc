@@ -12,6 +12,7 @@ import {
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { SectionHeading, Subheading } from "@/components/Heading";
 import { HeroGlobe } from "@/components/hero/HeroGlobe";
+import { heroTheme, HOMEPAGE_GRADIENT } from "@/lib/homepage-theme";
 import { FeaturedEventCarousel } from "@/components/FeaturedEventCarousel";
 
 import { client } from "@/sanity/lib/client";
@@ -92,33 +93,43 @@ export default async function Home() {
       />
       {/* ... (Hero and Features sections remain unchanged) ... */}
       {/* --- HERO SECTION --- */}
-      <section className="relative overflow-hidden bg-white pt-28 pb-16 lg:pt-36 lg:pb-20">
-        {/* Faint grid pattern, as on the original homepage hero */}
-        <div className="absolute inset-0 pattern-grid opacity-30 pointer-events-none" />
+      <section id="home-hero" className={heroTheme.section}>
+        {/* Faint grid pattern, as on the original homepage hero (white version only) */}
+        <div
+          className={`absolute inset-0 pattern-grid opacity-30 pointer-events-none ${
+            heroTheme.showGrid ? "" : "hidden"
+          }`}
+        />
 
         <div className="container mx-auto relative z-10 px-4 md:px-6">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center">
             {/* Left Column: Text Content */}
             <div className="space-y-6 md:space-y-8 text-center md:text-left">
               <FadeIn delay={0.1}>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#D9D9D9] bg-white px-4 py-1.5 text-sm font-medium text-slate-600 shadow-sm font-[family-name:var(--font-inter)]">
-                  <span className="h-2 w-2 rounded-full bg-[#1898A8]" />
+                <div
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium font-[family-name:var(--font-inter)] ${heroTheme.eyebrow}`}
+                >
+                  <span className={`h-2 w-2 rounded-full ${heroTheme.eyebrowDot}`} />
                   Advancing AI for Low-Resource Languages
                 </div>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h1 className="font-[family-name:var(--font-space-grotesk)] text-4xl sm:text-5xl lg:text-6xl xl:text-5xl font-bold uppercase leading-[1.05] tracking-tight text-[#0F1F3D]">
+                <h1
+                  className={`font-[family-name:var(--font-space-grotesk)] text-4xl sm:text-5xl lg:text-6xl xl:text-5xl font-bold uppercase leading-[1.05] tracking-tight ${heroTheme.heading}`}
+                >
                   <span className="md:whitespace-nowrap">
                     <span className="italic mr-[0.12em]">EVERY VOICE</span>{" "}
                     <span>DESERVES</span>
                   </span>
-                  <span className="block text-[#1898A8]">TO BE HEARD</span>
+                  <span className={`block ${heroTheme.accent}`}>TO BE HEARD</span>
                 </h1>
               </FadeIn>
 
               <FadeIn delay={0.3}>
-                <p className="font-[family-name:var(--font-inter)] text-lg md:text-xl text-[#4A4A4A] leading-relaxed mx-auto md:mx-0 md:max-w-xl">
+                <p
+                  className={`font-[family-name:var(--font-inter)] text-lg md:text-xl leading-relaxed mx-auto md:mx-0 md:max-w-xl ${heroTheme.intro}`}
+                >
                   Center for Low-Resource Languages and Cultures (CLRLC) is a
                   language research AI organisation dedicated to advancing
                   research and innovation for low-resource languages.
@@ -129,13 +140,13 @@ export default async function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start font-[family-name:var(--font-inter)]">
                   <Link
                     href="/research"
-                    className="inline-flex h-12 items-center justify-center rounded-full bg-[#1898A8] px-8 text-lg font-medium text-white transition-colors hover:bg-[#1898A8]/90"
+                    className={`inline-flex h-12 items-center justify-center rounded-full px-8 text-lg font-medium transition-colors ${heroTheme.primary}`}
                   >
                     Discover Our Work
                   </Link>
                   <Link
                     href="/community"
-                    className="inline-flex h-12 items-center justify-center rounded-full border border-[#D9D9D9] bg-white px-8 text-lg font-medium text-[#1A1A1A] transition-colors hover:bg-slate-50"
+                    className={`inline-flex h-12 items-center justify-center rounded-full px-8 text-lg font-medium transition-colors ${heroTheme.secondary}`}
                   >
                     Join Community
                   </Link>
@@ -146,7 +157,7 @@ export default async function Home() {
             {/* Right Column: Language globe */}
             <FadeIn delay={0.3} direction="right">
               <div className="flex justify-center md:justify-end">
-                <HeroGlobe />
+                <HeroGlobe onDark={HOMEPAGE_GRADIENT} />
               </div>
             </FadeIn>
           </div>

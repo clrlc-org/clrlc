@@ -16,6 +16,6 @@ const LanguageGlobe = dynamic(
   },
 );
 
-export function HeroGlobe() {
-  return <LanguageGlobe />;
+export function HeroGlobe({ onDark = false }: { onDark?: boolean }) {
+  return <LanguageGlobe onDark={onDark} />;
 }
