@@ -80,10 +80,11 @@ export function FeaturedEventCarousel({ events }: FeaturedEventCarouselProps) {
           <div className="flex items-center gap-4 text-sm text-slate-500">
             <span className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />{' '}
-              {new Date(currentEvent.date).toLocaleDateString(undefined, {
+              {new Date(currentEvent.date).toLocaleDateString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric',
+                timeZone: 'UTC',
               })}
             </span>
             {currentEvent.location && (

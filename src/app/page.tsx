@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { SectionHeading, Subheading } from "@/components/Heading";
-import { CommunityCarousel } from "@/components/CommunityCarousel";
+import { HeroGlobe } from "@/components/hero/HeroGlobe";
 import { FeaturedEventCarousel } from "@/components/FeaturedEventCarousel";
 
 import { client } from "@/sanity/lib/client";
@@ -92,62 +92,54 @@ export default async function Home() {
       />
       {/* ... (Hero and Features sections remain unchanged) ... */}
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-background">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 pattern-grid opacity-30 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2E2357] to-[#1F6F86] pt-28 pb-16 lg:pt-36 lg:pb-20 text-white">
         <div className="container mx-auto relative z-10 px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-[55%_45%] gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left Column: Text Content */}
             <div className="space-y-6 md:space-y-8 text-center md:text-left">
               <FadeIn delay={0.1}>
-                <div className="eyebrow-label mx-auto md:mx-0 !text-slate-600 !bg-transparent !border-slate-300">
-                  Advancing AI for Every Language
+                <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] text-[#5FD0DC]">
+                  ADVANCING AI FOR LOW-RESOURCE LANGUAGES
                 </div>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <SectionHeading as="h1" className="uppercase">
-                  Every Voice <br />
-                  <span className="italic text-[#1898A8]">Deserves To Be Heard</span>
-                </SectionHeading>
+                <h1 className="font-heading font-extrabold tracking-wide uppercase text-4xl sm:text-5xl lg:text-6xl leading-tight text-white">
+                  EVERY VOICE DESERVES{" "}
+                  <span className="italic text-[#5FD0DC]">TO BE HEARD</span>
+                </h1>
               </FadeIn>
 
               <FadeIn delay={0.3}>
-                <p className="text-lg md:text-xl text-slate-600 leading-relaxed mx-auto md:mx-0 md:max-w-xl">
-                  Center for Low-Resource Languages & Cultures (CLRLC) is a global
-                  ecosystem dedicated to democratizing Artificial Intelligence
-                  through ethical data curation, inclusive research, and
-                  community-driven innovation.
+                <p className="text-lg md:text-xl text-white/85 leading-relaxed mx-auto md:mx-0 md:max-w-xl">
+                  Center for Low-Resource Languages and Cultures (CLRLC) is a
+                  language research AI organisation dedicated to advancing
+                  research and innovation for low-resource languages.
                 </p>
               </FadeIn>
 
               <FadeIn delay={0.4}>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
-                  <Button
-                    size="lg"
-                    className="h-12 px-8 rounded-full text-lg shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:scale-105"
-                    asChild
+                  <Link
+                    href="/research"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-white px-8 text-lg font-medium text-[#2E2357] transition-colors hover:bg-white/90"
                   >
-                    <Link href="/research">Discover Our Work</Link>
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="h-12 px-8 rounded-full text-lg border-2 hover:bg-slate-50 transition-all hover:scale-105"
-                    asChild
+                    Discover our work
+                  </Link>
+                  <Link
+                    href="/community"
+                    className="inline-flex h-12 items-center justify-center rounded-full border-2 border-white px-8 text-lg font-medium text-white transition-colors hover:bg-white/10"
                   >
-                    <Link href="/community">Join Community</Link>
-                  </Button>
+                    Join community
+                  </Link>
                 </div>
               </FadeIn>
             </div>
 
-            {/* Right Column: Community Photo Carousel */}
+            {/* Right Column: Language globe */}
             <FadeIn delay={0.3} direction="right">
-              <div className="flex justify-center md:justify-start">
-                <CommunityCarousel />
+              <div className="flex justify-center md:justify-end">
+                <HeroGlobe />
               </div>
             </FadeIn>
           </div>
