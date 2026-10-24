@@ -12,7 +12,7 @@ import {
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { SectionHeading, Subheading } from "@/components/Heading";
 import { HeroGlobe } from "@/components/hero/HeroGlobe";
-import { heroTheme, HOMEPAGE_GRADIENT } from "@/lib/homepage-theme";
+import { heroTheme } from "@/lib/homepage-theme";
 import { FeaturedEventCarousel } from "@/components/FeaturedEventCarousel";
 
 import { client } from "@/sanity/lib/client";
@@ -157,7 +157,7 @@ export default async function Home() {
             {/* Right Column: Language globe */}
             <FadeIn delay={0.3} direction="right">
               <div className="flex justify-center md:justify-end">
-                <HeroGlobe onDark={HOMEPAGE_GRADIENT} />
+                <HeroGlobe />
               </div>
             </FadeIn>
           </div>

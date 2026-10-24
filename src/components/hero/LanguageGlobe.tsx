@@ -4,19 +4,19 @@ import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } f
 import createGlobe, { type Marker } from "cobe";
 import { HERO_LANGUAGES, type HeroLanguage } from "@/lib/hero-languages";
 
-const ASH_GREY: [number, number, number] = [0.86, 0.87, 0.89]; // soft grey, not white
-const GLOW: [number, number, number] = [0.92, 0.93, 0.95]; // very soft grey glow
+const ASH_GREY: [number, number, number] = [0.62, 0.64, 0.68]; // mid ash grey
+// Dark, close to the hero background, so there is no bright halo around the globe.
+const GLOW: [number, number, number] = [0.15, 0.27, 0.42];
 const TEAL: [number, number, number] = [24 / 255, 152 / 255, 168 / 255]; // #1898A8
-const TEAL_BRIGHT: [number, number, number] = [95 / 255, 208 / 255, 220 / 255]; // #5FD0DC
 
-const MARKER_SIZE = 0.04;
-const MARKER_SIZE_ACTIVE = 0.07;
+const MARKER_SIZE = 0.035;
+const MARKER_SIZE_ACTIVE = 0.045; // grows slightly when its language is clicked
 const MARKER_SURFACE = 0.85; // cobe draws markers at 0.8 + markerElevation (0.05) of the radius
 const HIT_RADIUS_PX = 16;
-const SPIN_PER_FRAME = 0.0015;
+const SPIN_PER_FRAME = 0.00075;
 const PILL_COUNT = 3;
-const PILL_INTERVAL_MS = 3000;
-const PILL_SWAP_MS = 600;
+const PILL_INTERVAL_MS = 5000;
+const PILL_SWAP_MS = 1000; // one-second fade out, then one-second fade in
 const PILL_POSITIONS = [
   "left-0 top-[8%]",
   "right-0 top-[38%]",
@@ -108,7 +108,7 @@ function nearestMarker(
   return best;
 }
 
-export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
+export function LanguageGlobe() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -122,6 +122,7 @@ export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
   const draggingRef = useRef(false);
   const dragRef = useRef({ x: 0, y: 0, distance: 0 });
   const activeLanguagesRef = useRef<Set<number>>(new Set());
+  const slotsRef = useRef<PillSlot[]>([]);
 
   const [size, setSize] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -154,11 +155,13 @@ export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
   }, []);
 
   useEffect(() => {
-    activeLanguagesRef.current = new Set([
-      ...slots.map((slot) => slot.languageIndex),
-      ...(selected !== null ? [selected] : []),
-    ]);
-  }, [slots, selected]);
+    // Only the clicked language grows. Pills changing does not affect the markers.
+    activeLanguagesRef.current = new Set(selected !== null ? [selected] : []);
+  }, [selected]);
+
+  useEffect(() => {
+    slotsRef.current = slots;
+  }, [slots]);
 
   // Create the globe once the canvas has a size. Recreate it when the size changes.
   useEffect(() => {
@@ -172,9 +175,9 @@ export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
       phi: rotationRef.current.phi,
       theta: rotationRef.current.theta,
       dark: 0,
-      diffuse: 1.6,
+      diffuse: 1.0,
       mapSamples: 16000,
-      mapBrightness: 1.4,
+      mapBrightness: 1.2,
       baseColor: ASH_GREY,
       glowColor: GLOW,
       markerColor: TEAL,
@@ -218,7 +221,7 @@ export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
           front.push({
             location: marker.location,
             size: sizes[index],
-            color: isActive ? TEAL_BRIGHT : TEAL,
+            color: TEAL,
           });
         }
       });
@@ -256,7 +259,7 @@ export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
       );
 
       const swap = window.setTimeout(() => {
-        const inUse = new Set(activeLanguagesRef.current);
+        const inUse = new Set(slotsRef.current.map((slot) => slot.languageIndex));
         let next = cursor % HERO_LANGUAGES.length;
         for (let step = 0; step < HERO_LANGUAGES.length; step++) {
           const candidate = (cursor + step) % HERO_LANGUAGES.length;
@@ -383,11 +386,7 @@ export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
       <canvas
         ref={canvasRef}
         style={{ width: size || undefined, height: size || undefined }}
-        className={`block touch-none cursor-grab active:cursor-grabbing ${
-          onDark
-            ? "drop-shadow-[0_0_24px_rgba(255,255,255,0.35)]"
-            : "drop-shadow-[0_6px_16px_rgba(15,31,61,0.1)]"
-        }`}
+        className="block touch-none cursor-grab active:cursor-grabbing opacity-[0.85]"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -407,7 +406,7 @@ export function LanguageGlobe({ onDark = false }: { onDark?: boolean }) {
             onClick={() => selectLanguage(slot.languageIndex)}
             aria-label={`Show where ${language.name} is spoken`}
             style={{ fontFamily: "var(--font-outfit), sans-serif" }}
-            className={`absolute ${PILL_POSITIONS[index]} whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1.5 text-xs sm:text-sm font-medium text-[#1898A8] shadow-md transition-opacity duration-500 hover:bg-[#F3F3F5] ${
+            className={`absolute ${PILL_POSITIONS[index]} whitespace-nowrap rounded-full border border-[#D9D9D9] bg-white px-3 py-1.5 text-xs sm:text-sm font-medium text-[#1898A8] shadow-md transition-opacity duration-1000 hover:bg-[#F3F3F5] ${
               slot.visible ? "opacity-100" : "opacity-0"
             }`}
           >
