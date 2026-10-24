@@ -1,14 +1,16 @@
-import { Metadata } from "next";
 import Image from "next/image";
 import { FadeIn, StaggerContainer } from "@/components/Motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/Heading";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Programs - CLRLC",
-  description: "Overview of CLRLC programs, initiatives, and what we do.",
-};
+export const metadata = pageMetadata(
+  "Programs - CLRLC",
+  "/programs",
+  "Overview of CLRLC programs, initiatives, and what we do.",
+  "Programs | CLRLC",
+);
 
 const programs = [
   {

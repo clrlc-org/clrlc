@@ -7,13 +7,14 @@ export function pageMetadata(
   title: string,
   path: string,
   description: string = SITE_DESCRIPTION,
+  shareTitle: string = `${title} | CLRLC`,
 ): Metadata {
   const image = { url: "/logo.jpg", width: 800, height: 600, alt: "CLRLC Logo" };
   return {
     title,
     description,
     openGraph: {
-      title,
+      title: shareTitle,
       description,
       url: `https://www.clrlc.org${path}`,
       siteName: "Center for Low-Resource Languages & Cultures (CLRLC)",
@@ -23,7 +24,7 @@ export function pageMetadata(
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: shareTitle,
       description,
       images: ["/logo.jpg"],
       site: "@clrlc_org",
